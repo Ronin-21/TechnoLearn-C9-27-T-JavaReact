@@ -34,6 +34,7 @@ public class Cursos {
     @Type(JsonType.class)
     @Column(name = "urls", columnDefinition = "jsonb")
     private ArrayList<Object> urls;
+
     @Column(name = "precio")
     private float precio;
 
