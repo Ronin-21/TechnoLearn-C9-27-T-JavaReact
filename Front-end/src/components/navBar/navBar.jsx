@@ -1,37 +1,34 @@
-import React, { useRef } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import {FaSistrix} from "react-icons/fa";
-import Search from "./searchBar";
-import "./navBar.css";
+import React, { useRef, useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import SearchBar from './SearchBar/SearchBar';
+import './Navbar.css';
 
-const NavBar = () => {
-  const navRef = useRef();
+const Navbar = () => {
+	const menuRef = useRef();
+	const [menuOpen, setMenuOpen] = useState(false);
 
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
-  };
+	const handleMenuOpen = () => setMenuOpen(!menuOpen);
+	const showMenu = () => {
+		menuRef.current.classList.toggle('show-menu');
+	};
 
-  return (
-    <div>
-      <header>
-        <h3>LOGO</h3>
-        <nav ref={navRef}>
-          <a href="/#">#</a>
-          <a href="/#">#</a>
-          <a href="/#">#</a>
-          <a href="/#">#</a>
-          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            <FaTimes />
-          </button>
-        </nav>
-        <Search />
-        <FaSistrix justifyContent="flexstart"/>
-        <button className="nav-btn" onClick={showNavbar}>
-          <FaBars />
-        </button>
-      </header>
-    </div>
-  );
+	return (
+		<nav>
+			<h1>LOGO</h1>
+			<SearchBar />
+			<div className='menu-container' onClick={showMenu}>
+				<button className='menu-btn' onClick={handleMenuOpen}>
+					{menuOpen ? <FaTimes /> : <FaBars />}
+				</button>
+			</div>
+			<div className='nav-links' ref={menuRef}>
+				<a href='/#'>#</a>
+				<a href='/#'>#</a>
+				<a href='/#'>#</a>
+				<a href='/#'>#</a>
+			</div>
+		</nav>
+	);
 };
 
-export default NavBar;
+export default Navbar;
