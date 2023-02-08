@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleLeft } from 'react-icons/fa';
-import { bannerImages } from '../../utils/bannerImages';
 import './Slider.css';
 
-const Slider = () => {
+const Slider = ({ sliderData }) => {
 	const [currentImage, setCurrentImage] = useState(0);
-	const handlePrevSlide = () => setCurrentImage(currentImage - 1);
-	const handleNextSlide = () => setCurrentImage(currentImage + 1);
+	const lenght = Object.keys(sliderData).length;
+
+	const handlePrevSlide = () =>
+		setCurrentImage(currentImage === 0 ? lenght - 1 : currentImage - 1);
+
+	const handleNextSlide = () =>
+		setCurrentImage(currentImage === lenght - 1 ? 0 : currentImage + 1);
 
 	return (
 		<div className='slider-container'>
-			<div className='slider-btn prev'>
-				<FaAngleLeft onClick={handlePrevSlide} />
+			<div className='slider-btn prev' onClick={handlePrevSlide}>
+				<FaAngleLeft />
 			</div>
-			<img src={bannerImages[currentImage].img} alt='' />
-			<div className='slider-btn next'>
-				<FaAngleRight onClick={handleNextSlide} />
+			<img src={sliderData[currentImage].img} alt={sliderData[currentImage].alt} />
+			<div className='slider-btn next' onClick={handleNextSlide}>
+				<FaAngleRight />
 			</div>
 		</div>
 	);
