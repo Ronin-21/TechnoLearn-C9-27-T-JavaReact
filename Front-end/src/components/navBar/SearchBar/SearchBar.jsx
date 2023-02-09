@@ -5,7 +5,7 @@ import './SearchBar.css';
 const SearchBar = () => {
 	return (
 		<div className='search'>
-			<input className='input' type='text' placeholder='Search'></input>
+			<input className='search-input' type='text' placeholder='Search'></input>
 			<FaSistrix className='search-icon' />
 		</div>
 	);

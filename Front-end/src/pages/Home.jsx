@@ -4,13 +4,12 @@ import { bannerImages } from '../utils/bannerImages';
 import CardsCourses from '../components/CardsCourses';
 import { Newsletter } from '../components/Newsletter';
 
-
 const Home = () => {
 	return (
 		<>
 			<Slider sliderData={bannerImages} />
-			<CardsCourses/>
-			<Newsletter/>
+			<CardsCourses />
+			<Newsletter />
 		</>
 	);
 };

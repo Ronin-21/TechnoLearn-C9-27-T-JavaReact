@@ -5,7 +5,6 @@ import NotFound from '../pages/NotFound';
 import Register from '../pages/Register';
 import User from '../pages/User';
 
-
 export const router = createBrowserRouter([
 	{
 		path: '/',
@@ -27,7 +26,6 @@ export const router = createBrowserRouter([
 						path: '/user',
 						element: <User />,
 					},
-					
 				],
 			},
 		],
