@@ -5,11 +5,12 @@ import com.ncc9project.technolearn.Model.Usuario;
 import com.ncc9project.technolearn.Repository.LoginRepository;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoginService {
-    private final LoginRepository loginRepository;
+    @Autowired LoginRepository loginRepository;
 
     public LoginService(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
