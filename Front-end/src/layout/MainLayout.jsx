@@ -4,12 +4,12 @@ import NavBar from "../components/navBar/navBar";
 const MainLayout = () => {
   return (
     <>
-      {/*   <nav>Navbar</nav> */}
-      {/*  <main> */}
-      {/* <Outlet /> */}
+       <main>
       <NavBar />
-      {/*   </main> */}
-      {/*  <footer>Footer</footer> */}
+      <Outlet />
+      {/* <nav>Navbar</nav> */}
+        </main>
+       {/* <footer>Footer</footer> */}
     </>
   );
 };
