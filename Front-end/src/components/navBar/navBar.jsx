@@ -22,10 +22,11 @@ const Navbar = () => {
 				</button>
 			</div>
 			<div className='nav-links' ref={menuRef}>
-				<a href='/#'>#</a>
-				<a href='/#'>#</a>
-				<a href='/#'>#</a>
-				<a href='/#'>#</a>
+        <a href='/#'>inicio</a>
+				<a href='/#'>usuario</a>
+				<a href='/#'>carrito</a>
+				<a href='/#'>cursos</a>
+				<a href='/#'>contactos</a>
 			</div>
 		</nav>
 	);
