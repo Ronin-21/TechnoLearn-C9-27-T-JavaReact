@@ -1,6 +1,7 @@
 .search {
 	position: relative;
 	font-size: 23px;
+	border-radius: 300px;
 }
 
 .input {

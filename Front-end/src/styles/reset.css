@@ -14,40 +14,40 @@
 
 */
 /* Aquí definimos las Custom properties */
-:root {
+/* :root {
 	--negro: #090909;
 	/* Tipografía */
-	--tipo-principal: Helvetica, Arial, sans-serif;
-	--tipo-secundaria: Verdana;
-}
+	/* --tipo-principal: Helvetica, Arial, sans-serif;
+	--tipo-secundaria: Verdana; */
+
 
 /* Las adaptamos al modo oscuro */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
 	:root {
 		--negro: #610a0a;
 	}
-}
+} */
 /* Opcional */
 /* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
 /* Opcional */
 /* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
 	* {
 		-webkit-animation: none !important;
 		animation: none !important;
 		-webkit-transition: none !important;
 		transition: none !important;
 	}
-}
+} */
 /* Reseteamos los margin y paddings de todas las etiquetas */
-* {
+/* * {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	vertical-align: baseline;
-}
+} */
 
 /* Evitamos problemas con las imagenes */
 img,
@@ -67,27 +67,27 @@ figure {
 }
 
 /* Reseteamos los enlaces para funcionar como cajas... */
-a {
+/* a {
 	display: block;
 	text-decoration: none;
 	color: inherit;
 	font-size: inherit;
-}
+} */
 
 /* ... excepto los que se encuentran en párrafos */
-p a {
+/* p a {
 	display: inline;
 }
-
+ */
 /* Quitamos los puntos de los <li> */
-li {
+/* li {
 	list-style-type: none;
-}
+} */
 
 /* Configuramos anclas suaves */
-html {
+/* html {
 	scroll-behavior: smooth;
-}
+} */
 
 /* Desactivamos estilos por defecto de las principales etiquetas de texto */
 h1,
