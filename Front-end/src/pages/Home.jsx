@@ -1,7 +1,13 @@
 import React from 'react';
+import Slider from '../components/Slider/Slider';
+import { bannerImages } from '../utils/bannerImages';
 
 const Home = () => {
-	return <h1>Home</h1>;
+	return (
+		<>
+			<Slider sliderData={bannerImages} />
+		</>
+	);
 };
 
 export default Home;
