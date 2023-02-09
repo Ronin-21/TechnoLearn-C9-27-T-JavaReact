@@ -3,6 +3,8 @@ import  facebook from"../assets/facebook.png"
 import  instagram from"../assets/instagram.png"
 import  whatapp from  "../assets/whatsapp.png"
 import  youtube from"../assets/youtube.png"
+
+
 function Footer (){
  return(
     <footer className="flex justify-around bg-slate-400 py-2">
@@ -21,4 +23,4 @@ function Footer (){
     </footer>
  )
 }
-export {Footer}
+export default Footer;

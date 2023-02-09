@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/cardsCourses.css";
+import "../styles/CardsCourses.css";
 const CardsCourses = () => {
   return (
     <div className="card-course-container">
