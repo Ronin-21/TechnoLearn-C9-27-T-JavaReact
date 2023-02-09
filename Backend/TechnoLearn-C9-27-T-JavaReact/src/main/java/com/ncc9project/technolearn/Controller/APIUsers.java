@@ -2,6 +2,8 @@ package com.ncc9project.technolearn.Controller;
 
 import com.ncc9project.technolearn.Model.Usuario;
 import com.ncc9project.technolearn.Service.UsuarioService;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,5 +29,7 @@ public class APIUsers {
     public Usuario saveUser(@RequestBody Usuario usuario){
         return usuarioService.saveUser(usuario);
     }
+
+
 
 }
