@@ -14,11 +14,18 @@ public class APIUsers {
     @Autowired UsuarioService usuarioService;
 
     @GetMapping("/todos")
-    public Iterable<Usuario> getAllUser() {return usuarioService.getAlluser();}
+    public Iterable<Usuario> getAllUser() {
+        return usuarioService.getAlluser();
+    }
 
     @GetMapping("/buscar/{id}")
     public Optional<Usuario> getUserById(@PathVariable("id") long id) {
         return usuarioService.getUserById(id);
+    }
+
+    @PostMapping("/registro")
+    public Usuario saveUser(@RequestBody Usuario usuario){
+        return usuarioService.saveUser(usuario);
     }
 
 }

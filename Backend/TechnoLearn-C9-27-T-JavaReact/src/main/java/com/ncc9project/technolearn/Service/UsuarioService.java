@@ -20,4 +20,7 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
+    public Usuario saveUser(Usuario usuario){
+        return usuarioRepository.save(usuario);
+    }
 }
