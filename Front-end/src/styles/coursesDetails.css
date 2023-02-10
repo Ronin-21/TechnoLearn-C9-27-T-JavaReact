@@ -1,0 +1,421 @@
+@media (max-width: 480px) {
+  .courses-details-container {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-course {
+    width: 100%;
+    height: 200px;
+    background-color: gray;
+  }
+}
+
+@media (max-width: 480px) {
+  .description-courses {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .description-courses div {
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .boxes-icon {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .icon-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-box div {
+    width: 16px;
+    height: 16px;
+    background: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  .boxes-icon div:last-child {
+    width: 16px;
+    height: 16px;
+    background: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  .buy-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .buy-container p {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-buy-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-buy-container button {
+    width: 194px;
+    height: 39px;
+    padding: 10px 30px;
+    background: #000000;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-courses-container {
+    width: 100%;
+    height: auto;
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-program {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-program h3 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-details {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+  }
+}
+
+@media (max-width: 480px) {
+  .ask-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-ask {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-ask h3 {
+    width: 329px;
+    height: 63px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+  }
+}
+
+@media (max-width: 480px) {
+  .ask-details {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: gray;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-instructor-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-instructor {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-instructor h3 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+  }
+}
+
+@media (max-width: 480px) {
+  .img-instructor {
+    width: 150px;
+    height: 200px;
+    background: gray;
+  }
+}
+
+@media (max-width: 480px) {
+  .img-instructor img {
+    width: 75%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-instructor {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-instructor p {
+    padding: 5px 0px 5px 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rating-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-rating {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-rating h3 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+  }
+}
+
+@media (max-width: 480px) {
+  .score {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0px 10px 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-score {
+    width: 32px;
+    height: 32px;
+    background: gray;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-container {
+    width: 100%;
+    height: auto;
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-review {
+    width: 100%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+
+  }
+}
+
+@media (max-width: 480px) {
+  .title-review h3 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .reviews-text{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 10px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .review-details {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .circle-review{
+    width: 80px;
+    height: 40px;
+    background: #D9D9D9;
+    border-radius: 50%;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .boxes{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .boxes div {
+    width: 16px;
+    height: 16px;
+    background: gray;
+  }
+}
