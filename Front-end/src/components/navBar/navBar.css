@@ -13,7 +13,7 @@ nav {
 	z-index: 100;
 }
 
-.nav-links {
+.nav-menu {
 	position: absolute;
 	top: 80px;
 	right: -100%;
@@ -31,6 +31,11 @@ nav {
 	-moz-transition: all 0.5s ease;
 	-ms-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
+}
+
+.nav-links {
+	display: flex;
+	gap: 1em;
 }
 
 .menu-container {
@@ -52,11 +57,15 @@ nav {
 		display: block;
 	}
 
-	.show-menu {
+	.nav-links {
+		display: none;
+	}
+
+	.nav-menu.active {
 		right: 0;
 	}
 
-	.nav-links a {
+	.nav-menu a {
 		font-size: 1.5rem;
 	}
 }

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { BsFillLockFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ showModal, closeMenu }) => {
 	const {
 		register,
 		formState: { errors },
@@ -12,6 +12,11 @@ const Login = () => {
 
 	const onSubmit = (data) => {
 		console.log(data);
+	};
+
+	const handleModal = () => {
+		showModal();
+		closeMenu();
 	};
 
 	return (
@@ -88,7 +93,8 @@ const Login = () => {
 					</button>
 					<Link
 						to='/register'
-						className='group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+						className='group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+						onClick={handleModal}>
 						Registrarse
 					</Link>
 				</form>

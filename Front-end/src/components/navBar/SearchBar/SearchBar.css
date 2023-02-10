@@ -15,8 +15,9 @@
 
 .search-icon {
 	position: absolute;
-	right: 2px;
+	right: 0;
 	top: 0;
+	margin: 2px 5px 0 0;
 	height: 23px;
 	color: black;
 }
