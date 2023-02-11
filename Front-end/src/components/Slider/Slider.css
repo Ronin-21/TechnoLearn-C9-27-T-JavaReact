@@ -21,3 +21,30 @@
 .next {
 	right: 0;
 }
+
+.slider-marks-container {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	left: 0;
+	bottom: 1em;
+	display: flex;
+	gap: 1em;
+	justify-content: center;
+}
+
+.slider-mark {
+	width: 25px;
+	height: 25px;
+	background-color: transparent;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+}
+
+.slider-mark.active {
+	background-color: #fff;
+}
