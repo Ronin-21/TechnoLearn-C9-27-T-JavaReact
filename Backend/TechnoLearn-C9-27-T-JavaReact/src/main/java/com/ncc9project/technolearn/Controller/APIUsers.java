@@ -5,6 +5,8 @@ import com.ncc9project.technolearn.Service.UsuarioService;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -26,9 +28,15 @@ public class APIUsers {
     }
 
     @PostMapping("/registro")
-    public Usuario saveUser(@RequestBody Usuario usuario){
-        return usuarioService.saveUser(usuario);
+    public ResponseEntity<String> saveUser(@RequestBody Usuario usuario){
+        Usuario nuevoUsuario = usuarioService.saveUser(usuario);
+        if (nuevoUsuario != null) {
+            return ResponseEntity.ok("Registro exitoso");
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 
 
 
