@@ -5,3 +5,8 @@
 	font-size: 50px;
 	color: #ffffffbc;
 }
+
+.card-container {
+	height: 600px;
+	justify-content: space-between;
+}
