@@ -9,7 +9,12 @@ import java.util.Optional;
 
 @Service
 public class CursosService {
-    @Autowired CursosRepository cursosRepository;
+    private final CursosRepository cursosRepository;
+
+    @Autowired
+    public CursosService(CursosRepository cursosRepository){
+        this.cursosRepository = cursosRepository;
+    }
     public Iterable<Cursos> getAllCursos() {
         return cursosRepository.findAll();
     }

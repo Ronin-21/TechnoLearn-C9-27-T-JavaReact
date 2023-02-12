@@ -10,8 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoginService {
-    @Autowired LoginRepository loginRepository;
+    private final LoginRepository loginRepository;
 
+    @Autowired
     public LoginService(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
