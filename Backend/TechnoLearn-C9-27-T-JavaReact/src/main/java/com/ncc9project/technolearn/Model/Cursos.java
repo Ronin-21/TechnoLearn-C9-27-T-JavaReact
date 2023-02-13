@@ -13,9 +13,9 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Table(name = "cursos")
 public class
 Cursos {

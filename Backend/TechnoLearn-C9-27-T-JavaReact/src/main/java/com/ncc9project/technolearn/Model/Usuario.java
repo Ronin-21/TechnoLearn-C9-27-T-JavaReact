@@ -10,8 +10,8 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
+@ToString
 @Table(name = "usuario")
 public class Usuario {
 
@@ -35,9 +35,9 @@ public class Usuario {
         @Column(name = "suscripto")
         private int suscripto;
 
-        @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
         @JoinTable(name = "usuario_cursos",
-                joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario"),
-                inverseJoinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"))
+                joinColumns = @JoinColumn(name = "id_usuario"),
+                inverseJoinColumns = @JoinColumn(name = "id_curso"))
         private Set<Cursos> cursosUsuario = new HashSet<>();
 }

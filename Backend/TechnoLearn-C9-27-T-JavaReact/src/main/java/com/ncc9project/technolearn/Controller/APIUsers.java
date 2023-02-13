@@ -38,6 +38,12 @@ public class APIUsers {
         }
     }
 
+    @PutMapping("/agregar/{userId}/curso/{cursoId}")
+    public Usuario agregarCurso(@PathVariable("userId") Long userId,
+                                       @PathVariable("cursoId") Long cursoId){
+        return usuarioService.agregarCurso(userId, cursoId);
+    }
+
 
 
 
