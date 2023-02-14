@@ -8,7 +8,7 @@ nav {
 	height: 80px;
 	width: 100%;
 	padding: 0 2rem;
-	background-color: var(--mainColor);
+	background-color: var(--primaryColor);
 	color: #eee;
 	z-index: 100;
 }
@@ -24,7 +24,7 @@ nav {
 	align-items: center;
 	justify-content: center;
 	gap: 1em;
-	background-color: var(--mainColor);
+	background-color: var(--primaryColor);
 	overflow: hidden;
 	transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;

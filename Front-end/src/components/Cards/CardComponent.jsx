@@ -1,9 +1,20 @@
 import React from 'react';
-import imagen from './banner3.png';
 import { BsFillPlayCircleFill } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { useGetCursoByIDQuery } from '../../store/api/apiSlice';
+import { setCursoById } from '../../store/slices/cursosSlice';
 import './Card.css';
 
-const CardComponent = ({ nombreCurso, miniaturaCurso }) => {
+const CardComponent = ({ nombreCurso, miniaturaCurso, showModal, id = 1 }) => {
+	const { data: curso } = useGetCursoByIDQuery(id);
+
+	const dispatch = useDispatch();
+
+	const handleCardModal = () => {
+		dispatch(setCursoById(curso));
+		showModal();
+	};
+
 	return (
 		<div>
 			{/* <--Grid--> */}
@@ -21,7 +32,9 @@ const CardComponent = ({ nombreCurso, miniaturaCurso }) => {
 						</p>
 						<div className='columns-auto flex items-center justify-center gap-4  '>
 							<p className='text-slate-900 text-lg m-2 p-5'>350</p>
-							<button className='bg-blue-400 text-blue-700 p-2 rounded-xs h-10'>
+							<button
+								className='bg-blue-400 text-blue-700 p-2 rounded-xs h-10'
+								onClick={handleCardModal}>
 								Comprar
 							</button>
 						</div>

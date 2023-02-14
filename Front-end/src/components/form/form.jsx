@@ -1,11 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BsFillLockFill } from 'react-icons/bs';
-import axios from 'axios';
+import Modal from '../Modal/Modal';
+import { useModal } from '../../hook/useModal';
+import { useCreateUserMutation } from '../../store/api/apiSlice';
 
 const Form = () => {
-	const URL =
-		'https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api/registro';
+	const [registerModal, showRegisterModal] = useModal(false);
+	const [createUser] = useCreateUserMutation();
 
 	const {
 		register,
@@ -14,17 +16,9 @@ const Form = () => {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		axios
-			.post(URL, data)
-			.then((response) => {
-				console.log(response);
-				alert('Registro exitoso');
-				//mostrar modal
-				//redireccion;
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		createUser(data);
+		// console.log(response.status);
+		showRegisterModal();
 	};
 
 	return (
@@ -138,6 +132,10 @@ const Form = () => {
 					</button>
 				</form>
 			</div>
+			<Modal isActive={registerModal} showModal={showRegisterModal}>
+				<h5 className='modal-title'>Registro exitoso!</h5>
+				<p className='modal-data'>Disfruta de nuestros cursos</p>
+			</Modal>
 		</div>
 	);
 };

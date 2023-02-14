@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,8 +7,14 @@
 
 /* Aquí definimos las Custom properties */
 :root {
-	--mainColor: #29335c;
-	--tipo-principal: 'Titillium Web', sans-serif;
+	--primaryColor: #6734ff;
+	--secondaryColor: #ff0f00;
+	--tertiaryColor: #2c2c34;
+	--successColor: #98ed21;
+	--infoColor: #0ae0fc;
+	--warningColor: #ffe30f;
+	--dangerColor: #ff6416;
+	--fontPrimary: 'Roboto', sans-serif;
 }
 
 /* Reseteamos los margin y paddings de todas las etiquetas */
@@ -15,8 +22,9 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-	-webkit-box-sizing: border-box;
+	font-family: var(--fontPrimary);
 	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	vertical-align: baseline;
 }
 

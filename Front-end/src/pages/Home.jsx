@@ -1,24 +1,22 @@
 import React from 'react';
 import Slider from '../components/Slider/Slider';
 import { bannerImages } from '../utils/bannerImages';
+import { Newsletter } from '../components/Newsletter/Newsletter';
 import CardComponent from '../components/Cards/CardComponent';
-import { Newsletter } from '../components/Newsletter';
-import { useFetch } from '../hook/useFetch';
+import Modal from '../components/Modal/Modal';
+import { useGetCursosQuery } from '../store/api/apiSlice';
+import { useModal } from '../hook/useModal';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-	const { data, loading, error } = useFetch(
-		'https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api/cursos/list'
-	);
+	const [cardModal, showCardModal] = useModal();
 
-	// const { data: data2 } = useFetch(
-	// 	'https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api/cursos/2'
-	// );
+	const selectedCourse = useSelector((state) => state.cursos[0]);
 
-	const { data: data3 } = useFetch(
-		'https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api/todos'
-	);
+	const { data, isLoading, isError, error } = useGetCursosQuery();
 
-	console.log(data3);
+	if (isLoading) return <div>Loading...</div>;
+	else if (isError) return <div>{error.message}</div>;
 
 	return (
 		<>
@@ -29,18 +27,21 @@ const Home = () => {
 						return (
 							<CardComponent
 								key={e.id}
+								id={e.id}
 								nombreCurso={e.nombreCurso}
 								miniaturaCurso={e.miniaturaCurso}
+								showModal={showCardModal}
 							/>
 						);
 					})}
 				</div>
-				{/* <div>
+				{/* <Modal isActive={cardModal} showModal={showCardModal}>
 					<CardComponent
-						nombreCurso={data2.nombreCurso}
-						miniaturaCurso={data2.miniaturaCurso}
+						nombreCurso={selectedCourse.nombreCurso}
+						miniaturaCurso={selectedCourse.miniaturaCurso}
+						showModal={showCardModal}
 					/>
-				</div> */}
+				</Modal> */}
 			</div>
 			<Newsletter />
 		</>
