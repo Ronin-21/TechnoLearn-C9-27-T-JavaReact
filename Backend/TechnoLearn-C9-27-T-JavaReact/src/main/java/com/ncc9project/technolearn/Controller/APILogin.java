@@ -22,23 +22,22 @@ public class APILogin {
 
     @PostMapping
     public ResponseEntity<String> login(@RequestBody Map<String, String> payload) {
-        String usuario = payload.get("usuario");
+        String email = payload.get("email");
         String password = payload.get("password");
 
-
-        if (usuario == null || password == null) {
-            return ResponseEntity.badRequest().body("Usuario and password are required");
+        if (email == null || password == null) {
+            return ResponseEntity.badRequest().body("Correo electrónico y contraseña son requeridos");
         }
 
-        Usuario user = loginService.findByUsuario(usuario);
+        Usuario user = loginService.findByEmail(email);
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Usuario or password");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Correo electrónico o contraseña inválidos");
         }
 
         if (loginService.isValidPassword(password, user.getPassword())) {
-            return ResponseEntity.ok("Login successfull");
+            return ResponseEntity.ok("Inicio de sesión exitoso");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Usuario or password");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Correo electrónico o contraseña inválidos");
         }
 
     }
