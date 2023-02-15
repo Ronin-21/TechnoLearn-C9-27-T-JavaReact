@@ -1,7 +1,9 @@
 package com.ncc9project.technolearn.Model;
 
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,9 +37,14 @@ public class Usuario {
         @Column(name = "suscripto")
         private int suscripto;
 
-        @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+        @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
         @JoinTable(name = "usuario_cursos",
                 joinColumns = @JoinColumn(name = "id_usuario"),
                 inverseJoinColumns = @JoinColumn(name = "id_curso"))
         private Set<Cursos> cursosUsuario = new HashSet<>();
+
+        @Type(JsonType.class)
+        @Column(name = "userInfo", columnDefinition = "json")
+        private Set<UserInfoDTO> userInfo = new HashSet<>();
+
 }

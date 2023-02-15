@@ -1,5 +1,6 @@
 package com.ncc9project.technolearn.Controller;
 
+import com.ncc9project.technolearn.Model.UserInfoDTO;
 import com.ncc9project.technolearn.Model.Usuario;
 import com.ncc9project.technolearn.Service.UsuarioService;
 import de.mkammerer.argon2.Argon2;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @CrossOrigin
@@ -39,9 +41,16 @@ public class APIUsers {
     }
 
     @PutMapping("/agregar/{userId}/curso/{cursoId}")
-    public Usuario agregarCurso(@PathVariable("userId") Long userId,
-                                       @PathVariable("cursoId") Long cursoId){
+    public Usuario agregarCurso(@PathVariable("userId") long userId,
+                                       @PathVariable("cursoId") long cursoId){
         return usuarioService.agregarCurso(userId, cursoId);
+    }
+
+    @PutMapping("/{userId}/curso/{cursoId}/progreso/{progresoId}")
+    public Usuario agregarProgreso(@PathVariable("userId") long userId,
+                                   @PathVariable("cursoId") long cursoId,
+                                   @PathVariable("progresoId") long progresoId){
+        return usuarioService.agregarProgreso(userId, cursoId, progresoId);
     }
 
 

@@ -48,4 +48,6 @@ Cursos {
     @ManyToMany(mappedBy = "cursosUsuario")
     private Set<Usuario> usuarioSet = new HashSet<>();
 
+    @Column(name = "acceso")
+    private String acceso;
 }
