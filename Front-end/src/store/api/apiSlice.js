@@ -20,8 +20,15 @@ baseQuery: fetchBaseQuery({
                 method: "POST",
                 body: userData,
             })
+        }),
+        userLogin: builder.mutation({
+            query: (user)=>({
+                url: "/login",
+                method: "POST",
+                body: user,
+            })
         })
 })
 })
 
-export const {useGetCursosQuery, useGetUserQuery, useGetCursoByIDQuery, useCreateUserMutation} = apiSlice
+export const {useGetCursosQuery, useGetUsersQuery, useGetCursoByIDQuery, useCreateUserMutation, useUserLoginMutation} = apiSlice

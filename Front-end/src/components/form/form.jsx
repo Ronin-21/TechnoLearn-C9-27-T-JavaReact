@@ -7,7 +7,10 @@ import { useCreateUserMutation } from '../../store/api/apiSlice';
 
 const Form = () => {
 	const [registerModal, showRegisterModal] = useModal(false);
-	const [createUser] = useCreateUserMutation();
+	const [
+		createUser,
+		{ data: registro, isSuccess, isError, error },
+	] = useCreateUserMutation();
 
 	const {
 		register,
@@ -17,9 +20,9 @@ const Form = () => {
 
 	const onSubmit = (data) => {
 		createUser(data);
-		// console.log(response.status);
-		showRegisterModal();
 	};
+
+	// showRegisterModal();
 
 	return (
 		<div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>

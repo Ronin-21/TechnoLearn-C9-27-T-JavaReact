@@ -4,7 +4,7 @@ import { bannerImages } from '../utils/bannerImages';
 import { Newsletter } from '../components/Newsletter/Newsletter';
 import CardComponent from '../components/Cards/CardComponent';
 import Modal from '../components/Modal/Modal';
-import { useGetCursosQuery } from '../store/api/apiSlice';
+import { useGetCursosQuery, useGetUsersQuery } from '../store/api/apiSlice';
 import { useModal } from '../hook/useModal';
 import { useSelector } from 'react-redux';
 

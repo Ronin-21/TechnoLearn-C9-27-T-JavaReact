@@ -1,9 +1,17 @@
-import React from 'react';
+import { clearAllListeners } from '@reduxjs/toolkit';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsFillLockFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useUserLoginMutation } from '../../store/api/apiSlice';
+import Modal from '../Modal/Modal';
 
 const Login = ({ showModal, closeMenu }) => {
+	const [
+		userLogin,
+		{ data: user, isSuccess, isError, error },
+	] = useUserLoginMutation();
+
 	const {
 		register,
 		formState: { errors },
@@ -11,13 +19,27 @@ const Login = ({ showModal, closeMenu }) => {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		userLogin(data);
 	};
 
 	const handleModal = () => {
 		showModal();
 		closeMenu();
 	};
+
+	useEffect(() => {
+		if (isError) {
+			console.log(error.error);
+			// return (
+			// 	<div>
+			// 		{error.status} {JSON.stringify(error.data)}
+			// 	</div>
+			// );
+		} else if (isSuccess) {
+			console.log(user);
+			// return <Modal>{user}</Modal>;
+		}
+	}, [user]);
 
 	return (
 		<div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
