@@ -1,5 +1,6 @@
 package com.ncc9project.technolearn.Controller;
 
+import com.ncc9project.technolearn.Model.Mensaje;
 import com.ncc9project.technolearn.Model.Usuario;
 import com.ncc9project.technolearn.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +27,21 @@ public class APILogin {
         String password = payload.get("password");
 
         if (email == null || password == null) {
-            return ResponseEntity.badRequest().body("Correo electrónico y contraseña son requeridos");
+            return new ResponseEntity(new Mensaje("Correo electrónico y contraseña son requeridos")
+            ,HttpStatus.BAD_REQUEST);
         }
 
         Usuario user = loginService.findByEmail(email);
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Correo electrónico o contraseña inválidos");
+            return new ResponseEntity(new Mensaje("Correo electrónico o contraseña inválidos")
+            ,HttpStatus.UNAUTHORIZED);
         }
-
         if (loginService.isValidPassword(password, user.getPassword())) {
-            return ResponseEntity.ok("Inicio de sesión exitoso");
+            return new ResponseEntity(new Mensaje("Inicio de sesión exitoso")
+            ,HttpStatus.OK);
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Correo electrónico o contraseña inválidos");
+            return new ResponseEntity(new Mensaje("Correo electrónico o contraseña inválidos")
+            ,HttpStatus.UNAUTHORIZED);
         }
-
     }
 }
