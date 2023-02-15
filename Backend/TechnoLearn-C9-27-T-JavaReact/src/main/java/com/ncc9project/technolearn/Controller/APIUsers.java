@@ -47,9 +47,9 @@ public class APIUsers {
     }
 
     @PutMapping("/{userId}/curso/{cursoId}/progreso/{progresoId}")
-    public Usuario agregarProgreso(@PathVariable("userId") long userId,
-                                   @PathVariable("cursoId") long cursoId,
-                                   @PathVariable("progresoId") long progresoId){
+    public Set<UserInfoDTO> agregarProgreso(@PathVariable("userId") long userId,
+                                            @PathVariable("cursoId") long cursoId,
+                                            @PathVariable("progresoId") long progresoId){
         return usuarioService.agregarProgreso(userId, cursoId, progresoId);
     }
 
