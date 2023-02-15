@@ -60,9 +60,6 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findById(userId).get();
         cursosSet = usuario.getCursosUsuario();
         userInfoDTOS = usuario.getUserInfo();
-        if (userInfoDTOS.size() == 0){
-            userInfoDTOS.add(userInfoDTO);
-        }
         for(Cursos curso : cursosSet){
             if(curso.getId() == cursoId){
                 for(UserInfoDTO userinfo : userInfoDTOS){
@@ -81,5 +78,4 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
         return usuario.getUserInfo();
     }
-
 }
