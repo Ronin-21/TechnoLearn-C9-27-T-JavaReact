@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelect } from "react-redux";
 import { useModal } from '../../hook/useModal';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaUserAlt, FaShoppingCart } from 'react-icons/fa';
