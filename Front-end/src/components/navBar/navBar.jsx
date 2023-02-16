@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useSelect } from "react-redux";
 import { useModal } from '../../hook/useModal';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaUserAlt, FaShoppingCart } from 'react-icons/fa';
 import SearchBar from './SearchBar/SearchBar';
 import Modal from '../Modal/Modal';
-import Login from '../login/login';
+import Login from '../login/loginUser';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -27,21 +28,22 @@ const Navbar = () => {
 			</div>
 			<div className='nav-links'>
 				<div
-					className='flex items-center justify-center gap-2'
-					onClick={showLoginModal}>
+					className='flex items-center justify-center gap-2'>
 					<FaUserAlt />
+					<NavLink to='/login'>
 					<p>LogIn</p>
+					</NavLink>
 				</div>
 				<NavLink to='/'>Inicio</NavLink>
 				<NavLink to='/cursos'>Cursos</NavLink>
 				<NavLink to='/'>Contacto</NavLink>
 			</div>
 			<div className={menuOpen ? 'nav-menu active' : 'nav-menu'}>
-				<a
+				<NavLink to='/login'
 					className='flex align-center justify-center gap-2'
-					onClick={showLoginModal}>
+					>
 					Log In
-				</a>
+				</NavLink>
 				<NavLink to='/' onClick={closeMenu}>
 					Suscríbete
 				</NavLink>
