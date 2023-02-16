@@ -1,21 +1,37 @@
 import React from 'react';
 import '../styles/coursesDetails.css';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { useGetCursoByIDQuery } from '../store/api/apiSlice';
+import { useLocation } from 'react-router-dom';
 
 const CourseDetails = () => {
+	const location = useLocation();
+
+	const { data: curso, isLoading, isError, error } = useGetCursoByIDQuery(
+		location.pathname
+	);
+
+	if (isLoading) return <div>Loading...</div>;
+	else if (isError) return <div>{error.message}</div>;
+
 	return (
 		<div className='courses-details-container'>
 			<div className='info-top-course'>
 				<div className='video-course'>
-					<video src=''></video>
+					{/* <img src={curso.miniaturaCurso} alt='' /> */}
+					<iframe
+						maxWidth='600'
+						height='100%'
+						src={'https://www.youtube.com/embed/' + curso.id_video}
+						frameborder='0'
+						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+						allowfullscreen></iframe>
 				</div>
 				<div className='description-courses'>
 					<div>
-						<span>Curso Práctico Python: De Cero a programador profesional.</span>
+						<span>{curso.nombreCurso}</span>
 					</div>
-					<div>
-						Aprenderás Phyton y sus mejores módulos: Django, PipenV, Tkinter y más.
-					</div>
+					<div>{curso.descripcionCurso}</div>
 					<div>
 						<span>Creado por: Aldo Chávez</span>
 					</div>
@@ -69,7 +85,21 @@ const CourseDetails = () => {
 				<div className='title-program'>
 					<h3>PROGRAMA</h3>
 				</div>
-				<div className='program-details'>
+				{curso.urls.map((e) => {
+					return (
+						<div className='program-details'>
+							<p>{e.titulo_video}</p>
+							<iframe
+								maxWidth='500'
+								height='400'
+								src={'https://www.youtube.com/embed/' + e.id_video}
+								frameborder='0'
+								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+								allowfullscreen></iframe>
+						</div>
+					);
+				})}
+				{/* <div className='program-details'>
 					<div>Lorem ipsum dolor sit amet.</div>
 					<div>
 						<p>1</p>
@@ -98,19 +128,7 @@ const CourseDetails = () => {
 					<div>
 						<p>1</p>
 					</div>
-				</div>
-				<div className='program-details'>
-					<div>Lorem ipsum dolor sit amet.</div>
-					<div>
-						<p>1</p>
-					</div>
-				</div>
-				<div className='program-details'>
-					<div>Lorem ipsum dolor sit amet.</div>
-					<div>
-						<p>1</p>
-					</div>
-				</div>
+				</div> */}
 			</div>
 			<div className='ask-container'>
 				<div className='title-ask'>

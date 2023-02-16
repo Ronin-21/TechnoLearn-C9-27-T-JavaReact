@@ -33,7 +33,7 @@ const Navbar = () => {
 					<p>LogIn</p>
 				</div>
 				<NavLink to='/'>Inicio</NavLink>
-				<NavLink to='/'>Cursos</NavLink>
+				<NavLink to='/cursos'>Cursos</NavLink>
 				<NavLink to='/'>Contacto</NavLink>
 			</div>
 			<div className={menuOpen ? 'nav-menu active' : 'nav-menu'}>
@@ -48,7 +48,7 @@ const Navbar = () => {
 				<NavLink to='/' onClick={closeMenu}>
 					Inicio
 				</NavLink>
-				<NavLink to='/' onClick={closeMenu}>
+				<NavLink to='/cursos' onClick={closeMenu}>
 					Cursos
 				</NavLink>
 				<NavLink to='/' onClick={closeMenu}>

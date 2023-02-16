@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import ProfileUser from '../pages/ProfileUser';
 import Register from '../pages/Register';
-import User from '../pages/User';
+import Courses from '../pages/Courses';
 
 export const router = createBrowserRouter([
 	{
@@ -25,15 +25,15 @@ export const router = createBrowserRouter([
 						element: <Register />,
 					},
 					{
-						path: '/user',
-						element: <User />,
-					},
-					{
-						path: '/courses',
+						path: '/cursos/:id',
 						element: <CourseDetails />,
 					},
 					{
-						path: '/profile',
+						path: '/cursos',
+						element: <Courses />,
+					},
+					{
+						path: '/user',
 						element: <ProfileUser />,
 					},
 				],

@@ -12,7 +12,7 @@ baseQuery: fetchBaseQuery({
             query: ()=> "/todos"
         }),
         getCursoByID: builder.query({
-            query: (id)=> `/cursos/${id}`
+            query: (id)=> `${id}`
         }),
         createUser: builder.mutation({
             query: (userData)=>({
@@ -31,4 +31,4 @@ baseQuery: fetchBaseQuery({
 })
 })
 
-export const {useGetCursosQuery, useGetUsersQuery, useGetCursoByIDQuery, useCreateUserMutation, useUserLoginMutation} = apiSlice
+export const {useGetCursosQuery, useGetUsersQuery, useGetCursoByIDQuery,useLazyGetCursoByIDQuery, useCreateUserMutation, useUserLoginMutation} = apiSlice

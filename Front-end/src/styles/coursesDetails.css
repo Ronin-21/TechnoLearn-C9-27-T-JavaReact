@@ -261,11 +261,12 @@
 }
 
 .program-details {
-	width: 100%;
-	height: auto;
+	width: 80%;
+	height: 500px;
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+	flex-direction: column;
+	justify-content: space-evenly;
+	gap: 1em;
 	border-bottom: 1px solid black;
 	font-size: 24px;
 }

@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsFillPlayCircleFill } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
-import { useGetCursoByIDQuery } from '../../store/api/apiSlice';
-import { setCursoById } from '../../store/slices/cursosSlice';
+import { useNavigate } from 'react-router-dom';
 import './Card.css';
 
-const CardComponent = ({ nombreCurso, miniaturaCurso, showModal, id = 1 }) => {
-	const { data: curso } = useGetCursoByIDQuery(id);
+const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
+	const [cursoID, setCursoId] = useState(0);
+	const navigator = useNavigate();
 
-	const dispatch = useDispatch();
-
-	const handleCardModal = () => {
-		dispatch(setCursoById(curso));
-		showModal();
-	};
+	useEffect(() => {
+		if (cursoID !== 0) {
+			console.log(cursoID);
+			navigator(`/cursos/${id}`);
+		}
+	}, [cursoID]);
 
 	return (
 		<div>
@@ -31,11 +30,14 @@ const CardComponent = ({ nombreCurso, miniaturaCurso, showModal, id = 1 }) => {
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, beatae.
 						</p>
 						<div className='columns-auto flex items-center justify-center gap-4  '>
-							<p className='text-slate-900 text-lg m-2 p-5'>350</p>
+							<p className='text-slate-900 text-lg m-2 p-5'>$350</p>
+							<button className='bg-blue-400 text-blue-700 p-2 rounded-xs h-10'>
+								Suscríbete!
+							</button>
 							<button
 								className='bg-blue-400 text-blue-700 p-2 rounded-xs h-10'
-								onClick={handleCardModal}>
-								Comprar
+								onClick={() => setCursoId(id)}>
+								Ver mas
 							</button>
 						</div>
 					</div>
