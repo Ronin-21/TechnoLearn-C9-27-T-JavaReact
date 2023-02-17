@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelect } from "react-redux";
+//import { useSelect } from "react-redux";
 import { useModal } from '../../hook/useModal';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaUserAlt, FaShoppingCart } from 'react-icons/fa';
@@ -31,7 +31,7 @@ const Navbar = () => {
 					className='flex items-center justify-center gap-2'>
 					<FaUserAlt />
 					<NavLink to='/login'>
-					<p>LogIn</p>
+						<p>LogIn</p>
 					</NavLink>
 				</div>
 				<NavLink to='/'>Inicio</NavLink>
@@ -41,7 +41,7 @@ const Navbar = () => {
 			<div className={menuOpen ? 'nav-menu active' : 'nav-menu'}>
 				<NavLink to='/login'
 					className='flex align-center justify-center gap-2'
-					>
+				>
 					Log In
 				</NavLink>
 				<NavLink to='/' onClick={closeMenu}>

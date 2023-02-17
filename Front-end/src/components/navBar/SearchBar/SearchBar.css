@@ -1,5 +1,12 @@
 .search {
+	height: 30px;
+}
+
+.search div:first-child {
+	
+	display: flex;
 	position: relative;
+
 }
 
 .search-input {
@@ -14,10 +21,27 @@
 }
 
 .search-icon {
-	position: absolute;
-	right: 0;
+	position: relative;
+	right: 20px;
 	top: 0;
 	margin: 2px 5px 0 0;
 	height: 23px;
+	color: black;
+}
+
+.suggestion-container{
+	width: 200px;
+	height: 150px;
+	display: flex;
+	overflow-y: auto;
+}
+
+.suggestion{
+	width: auto;
+	height: auto;
+	border: 1px solid black;
+	padding: 3px;
+	background: white;
+	cursor: pointer;
 	color: black;
 }
