@@ -1,4 +1,4 @@
-package com.ncc9project.technolearn.Model;
+package com.ncc9project.technolearn.DTO;
 
 import lombok.*;
 
@@ -7,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 public class UserInfoDTO {
     private long idCurso;
     private long progreso;

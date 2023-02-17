@@ -1,7 +1,7 @@
 package com.ncc9project.technolearn.Service;
 
+import com.ncc9project.technolearn.DTO.*;
 import com.ncc9project.technolearn.Model.Cursos;
-import com.ncc9project.technolearn.Model.UserInfoDTO;
 import com.ncc9project.technolearn.Model.Usuario;
 import com.ncc9project.technolearn.Repository.CursosRepository;
 import com.ncc9project.technolearn.Repository.UsuarioRepository;
@@ -9,12 +9,12 @@ import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.modelmapper.ModelMapper;
 
-import javax.swing.text.html.Option;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -28,54 +28,79 @@ public class UsuarioService {
         this.cursosRepository = cursosRepository;
     }
 
-    public Iterable<Usuario> getAlluser() {
-        return usuarioRepository.findAll();
+    ModelMapper mapper = new ModelMapper();
+
+    public ListUsuarioDTO getAlluser() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        Set<UsuarioDTO> list = new HashSet<>();
+
+        usuarios.stream().map(usuario ->
+                list.add(mapper.map(usuario, UsuarioDTO.class)))
+                .collect(Collectors.toSet());
+
+        return new ListUsuarioDTO(list);
     }
 
-    public Optional<Usuario> getUserById(long id) {
-        return usuarioRepository.findById(id);
+    public UsuarioDTO getUserById(long id) {
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        return mapper.map(usuario, UsuarioDTO.class);
     }
 
-    public Usuario saveUser(Usuario usuario){
+    public UsuarioDTO saveUser(UsuarioDTO usuarioDTO){
+        Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
         String hash = argon2.hash(1, 1024, 1, usuario.getPassword());
         usuario.setPassword(hash);
-        return usuarioRepository.save(usuario);
+        usuarioRepository.save(usuario);
+        return mapper.map(usuario, UsuarioDTO.class);
     }
 
-    public Usuario agregarCurso(Long userId, Long cursoId) {
+    public UsuarioCursosDTO agregarCurso(UsuarioCursosDTO usuarioCursoDTO){
+        Set<Long> usuarioCursos = new HashSet<>();
         Set<Cursos> cursosSet = null;
-        Usuario usuario = usuarioRepository.findById(userId).get();
-        Cursos curso = cursosRepository.findById(cursoId).get();
+        Usuario usuario = usuarioRepository.findById(usuarioCursoDTO.getIdUsuario()).get();
+        Cursos curso = cursosRepository.findById(usuarioCursoDTO.getIdCurso()).get();
         cursosSet = usuario.getCursosUsuario();
         cursosSet.add(curso);
         usuario.setCursosUsuario(cursosSet);
-        return usuarioRepository.save(usuario);
+        usuarioRepository.save(usuario);
+        for (Cursos cursito : cursosSet){
+            usuarioCursos.add(cursito.getId());
+        }
+        usuarioCursoDTO.setIdCursos(usuarioCursos);
+        return mapper.map(usuarioCursoDTO, UsuarioCursosDTO.class);
     }
 
-    public Set<UserInfoDTO> agregarProgreso(Long userId, Long cursoId, Long progresoId) {
+    public ListUserInfoDTO agregarProgreso(UserInfoDTO userInfoDTO, long userId) {
         Set<Cursos> cursosSet = null;
         Set<UserInfoDTO> userInfoDTOS = new HashSet<>();
-        UserInfoDTO userInfoDTO = new UserInfoDTO();
+        UserInfoDTO userInfoDto = new UserInfoDTO();
         Usuario usuario = usuarioRepository.findById(userId).get();
         cursosSet = usuario.getCursosUsuario();
         userInfoDTOS = usuario.getUserInfo();
         for(Cursos curso : cursosSet){
-            if(curso.getId() == cursoId){
+            if(curso.getId() == userInfoDTO.getIdCurso()){
                 for(UserInfoDTO userinfo : userInfoDTOS){
-                    if(userinfo.getIdCurso() == cursoId){
-                        userinfo.setProgreso(progresoId);
+                    if(userinfo.getIdCurso() == userInfoDTO.getIdCurso()){
+                        userinfo.setProgreso(userInfoDTO.getProgreso());
                         break;
                     }
                 }
-                userInfoDTO.setProgreso(progresoId);
-                userInfoDTO.setIdCurso(cursoId);
-                userInfoDTOS.add(userInfoDTO);
+                userInfoDto.setProgreso(userInfoDTO.getProgreso());
+                userInfoDto.setIdCurso(userInfoDTO.getIdCurso());
+                userInfoDTOS.add(userInfoDto);
                 break;
             }
         }
         usuario.setUserInfo(userInfoDTOS);
         usuarioRepository.save(usuario);
-        return usuario.getUserInfo();
+
+        Set<UserInfoDTO> userInfo = usuario.getUserInfo();
+        Set<UserInfoDTO> userInfoSet = new HashSet<>();
+        userInfo.stream().map(userinfo ->
+                        userInfoSet.add(mapper.map(userinfo, UserInfoDTO.class)))
+                .collect(Collectors.toSet());
+
+        return new ListUserInfoDTO(userInfoSet);
     }
 }

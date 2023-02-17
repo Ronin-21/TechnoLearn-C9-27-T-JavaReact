@@ -22,15 +22,15 @@ public class APILogin {
 
     @PostMapping
     public ResponseEntity<String> login(@RequestBody Map<String, String> payload) {
-        String usuario = payload.get("usuario");
+        String email = payload.get("email");
         String password = payload.get("password");
 
 
-        if (usuario == null || password == null) {
+        if (email == null || password == null) {
             return ResponseEntity.badRequest().body("Usuario and password are required");
         }
 
-        Usuario user = loginService.findByUsuario(usuario);
+        Usuario user = loginService.findByUsuario(email);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Usuario or password");
         }

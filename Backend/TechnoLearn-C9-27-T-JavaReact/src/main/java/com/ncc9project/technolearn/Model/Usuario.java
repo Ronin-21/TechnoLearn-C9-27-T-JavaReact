@@ -1,11 +1,11 @@
 package com.ncc9project.technolearn.Model;
 
+import com.ncc9project.technolearn.DTO.UserInfoDTO;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,13 +29,10 @@ public class Usuario {
         @Column(name = "email")
         private String email;
 
-        @Column(name = "usuario")
-        private String usuario;
-
         @Column(name = "contraseña")
         private String password;
 
-        @Column(name = "suscripto")
+        @Column(name = "suscripto", columnDefinition ="integer default 0")
         private int suscripto;
 
         @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

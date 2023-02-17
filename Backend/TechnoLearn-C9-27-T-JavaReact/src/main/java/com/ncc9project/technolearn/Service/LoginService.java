@@ -17,8 +17,8 @@ public class LoginService {
         this.loginRepository = loginRepository;
     }
 
-    public Usuario findByUsuario(String usuario) {
-        return loginRepository.findByUsuario(usuario);
+    public Usuario findByUsuario(String email) {
+        return loginRepository.findByEmail(email);
     }
     Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
     public boolean isValidPassword(String password, String hashedPassword) {
