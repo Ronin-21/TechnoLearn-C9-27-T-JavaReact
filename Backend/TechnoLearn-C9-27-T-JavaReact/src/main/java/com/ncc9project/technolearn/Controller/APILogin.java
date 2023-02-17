@@ -36,9 +36,9 @@ public class APILogin {
         UsuarioDTO user = loginService.findByUsuario(email);
         if (user == null) {
             return new ResponseEntity(new MensajeDTO("Correo electrónico o contraseña inválidos")
+
             ,HttpStatus.UNAUTHORIZED);
         }
-
         if (loginService.isValidPassword(password, user.getPassword())) {
             return new ResponseEntity(new MensajeDTO("Inicio de sesión exitoso")
                     ,HttpStatus.OK);
