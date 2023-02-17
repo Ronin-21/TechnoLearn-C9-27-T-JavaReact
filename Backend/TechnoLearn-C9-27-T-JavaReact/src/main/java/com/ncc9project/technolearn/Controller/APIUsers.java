@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RequestMapping("/api")
 public class APIUsers {
 

@@ -1,5 +1,7 @@
 package com.ncc9project.technolearn.Controller;
 
+import com.ncc9project.technolearn.DTO.MensajeDTO;
+import com.ncc9project.technolearn.DTO.UsuarioDTO;
 import com.ncc9project.technolearn.Model.Usuario;
 import com.ncc9project.technolearn.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/login")
 public class APILogin {
     @Autowired LoginService loginService;
@@ -21,25 +23,28 @@ public class APILogin {
 
 
     @PostMapping
-    public ResponseEntity<String> login(@RequestBody Map<String, String> payload) {
+    public ResponseEntity<MensajeDTO> login(@RequestBody Map<String, String> payload) {
         String email = payload.get("email");
         String password = payload.get("password");
 
 
         if (email == null || password == null) {
-            return ResponseEntity.badRequest().body("Usuario and password are required");
+            return new ResponseEntity(new MensajeDTO("Correo electrónico y contraseña son requeridos")
+                    ,HttpStatus.BAD_REQUEST);
         }
 
-        Usuario user = loginService.findByUsuario(email);
+        UsuarioDTO user = loginService.findByUsuario(email);
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Usuario or password");
+            return new ResponseEntity(new MensajeDTO("Correo electrónico o contraseña inválidos")
+            ,HttpStatus.UNAUTHORIZED);
         }
 
         if (loginService.isValidPassword(password, user.getPassword())) {
-            return ResponseEntity.ok("Login successfull");
+            return new ResponseEntity(new MensajeDTO("Inicio de sesión exitoso")
+                    ,HttpStatus.OK);
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Usuario or password");
+            return new ResponseEntity(new MensajeDTO("Correo electrónico o contraseña inválidos")
+            ,HttpStatus.UNAUTHORIZED);
         }
-
     }
 }
