@@ -5,7 +5,7 @@ import { FaBars, FaTimes, FaUserAlt, FaShoppingCart } from 'react-icons/fa';
 import SearchBar from './SearchBar/SearchBar';
 import Modal from '../Modal/Modal';
 import Login from '../login/loginUser';
-import './Navbar.css';
+import './navBar.css';
 
 const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
