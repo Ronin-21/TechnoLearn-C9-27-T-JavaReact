@@ -8,9 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +23,7 @@ public class CursosService {
     ModelMapper mapper = new ModelMapper();
     public ListCursosDTO getAllCursos() {
         List<Cursos> cursos = cursosRepository.findAll();
-        Set<CursosDTO> list = new HashSet<>();
+        Set<CursosDTO> list = new TreeSet<>(Comparator.comparing(CursosDTO::getId));
 
         cursos.stream().map(curso ->
                 list.add(mapper.map(curso, CursosDTO.class)))

@@ -29,7 +29,5 @@ public class CursosDTO {
 
     private float precio;
 
-    private Set<Usuario> usuarioSet = new HashSet<>();
-
     private String acceso;
 }
