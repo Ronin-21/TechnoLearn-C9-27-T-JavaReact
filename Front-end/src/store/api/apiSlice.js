@@ -14,7 +14,7 @@ export const apiSlice = createApi({
       query: () => "/todos",
     }),
     getCursoByID: builder.query({
-      query: (id) => `${id}`,
+      query: (id) => `/cursos/${id}`,
     }),
     createUser: builder.mutation({
       query: (userData) => ({

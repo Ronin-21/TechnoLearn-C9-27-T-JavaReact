@@ -2,13 +2,13 @@ import React from 'react';
 import '../styles/coursesDetails.css';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useGetCursoByIDQuery } from '../store/api/apiSlice';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const CourseDetails = () => {
-	const location = useLocation();
+	const params = useParams();
 
 	const { data: curso, isLoading, isError, error } = useGetCursoByIDQuery(
-		location.pathname
+		params.id
 	);
 
 	if (isLoading) return <div>Loading...</div>;

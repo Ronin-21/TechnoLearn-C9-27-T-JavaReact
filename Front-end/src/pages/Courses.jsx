@@ -11,7 +11,7 @@ const Courses = () => {
 	return (
 		<div className='flex item-center justify-center min-h-screen container mx-auto my-10'>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-				{data.map((e, index) => {
+				{data.cursos.map((e, index) => {
 					return (
 						<CardComponent
 							key={e.id}

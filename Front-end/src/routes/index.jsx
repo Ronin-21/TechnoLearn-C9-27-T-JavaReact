@@ -26,11 +26,11 @@ export const router = createBrowserRouter([
 						element: <Register />,
 					},
 					{
-						path: '/cursos/:id',
+						path: '/courses/:id',
 						element: <CourseDetails />,
 					},
 					{
-						path: '/cursos',
+						path: '/courses',
 						element: <Courses />,
 					},
 					{
