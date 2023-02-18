@@ -1,20 +1,18 @@
-import { clearAllListeners } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
 import { useModal } from "../../hook/useModal";
 import { useForm } from "react-hook-form";
 import { BsFillLockFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../store/api/apiSlice";
-import { useAuth } from '../../hook/useAuth';
+import { useAuth } from "../../hook/useAuth";
 import Modal from "../Modal/Modal";
-import { data } from "autoprefixer";
+import { useSelector } from "react-redux";
 
 const Login = () => {
-  const { isLoggedIn, handleLogin } = useAuth();
-
   
-  const [login, { data: user, isSuccess, isError, error }] =
-    useLoginMutation();
+  const {isLoggedIn } = useSelector(state => state.auth.isLoggedIn)
+
+  const [login, { data: user, isSuccess, isError, error }] = useLoginMutation();
 
   const [loginModal1, showLoginModal1] = useModal(false);
 
@@ -26,25 +24,33 @@ const Login = () => {
 
   const navigator = useNavigate();
 
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     login(data);
-    showLoginModal1();
-    /*return navigator("/User"); */
-  };
-
-  /* const handleModal = () => {
-    
-    closeMenu();
-  }; */
-
-  useEffect(() => {
-   setTimeout(() =>{
-    if(isLoggedIn){
-        navigator("/User");
+    if(isLoggedIn) {
+      console.log(isLoggedIn);
+      showLoginModal1();
+      navigator("/user")
+    }else{
+      console.log(isLoggedIn);
+    alert("Login error")
     }
-  }, 2000)
-  return clearTimeout();
-  }, [isLoggedIn]);
+  };
+  
+ 
+
+
+ /*  useEffect(() => {
+    setTimeout(() => { */
+     /*  console.log(isLoggedIn); */
+  /*     if (isLoggedIn) {
+        handleLogin() */
+       /*  console.log("estoy aqui?")
+        sessionStorage.setItem('logueado', JSON.stringify(isLoggedIn)); */
+ /*        navigator("/User");
+      }
+    }, 2000);
+    return clearTimeout();
+  }, [isLoggedIn]); */
 
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

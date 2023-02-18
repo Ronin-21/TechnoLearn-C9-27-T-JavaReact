@@ -3,7 +3,6 @@ import {  logout } from '../store/slices/authSlice';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   const handleLogin = (username, password) => {
     dispatch(login({ username, password }));
@@ -14,8 +13,8 @@ export const useAuth = () => {
   };
 
   return {
-    isLoggedIn,
     handleLogin,
     handleLogout,
   };
 };
+
