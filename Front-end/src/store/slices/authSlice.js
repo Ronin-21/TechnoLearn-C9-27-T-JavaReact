@@ -10,7 +10,7 @@ export const authSlice = createSlice({
       },
     },
     extraReducers: builder => {
-      builder.addMatcher(apiSlice.endpoints.login.matchFulfilled, (state, { payload }) => {
+      builder.addMatcher(apiSlice.endpoints.login.matchFulfilled, (state) => {
         state.isLoggedIn = true;
       });
     },

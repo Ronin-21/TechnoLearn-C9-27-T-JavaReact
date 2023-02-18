@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { useModal } from '../../hook/useModal';
 import { Link, NavLink } from 'react-router-dom';
-import { FaBars, FaTimes, FaUserAlt } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/slices/authSlice';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import svgLogo from '../../assets/img/TECHLEARN.svg';
 import SearchBar from './SearchBar/SearchBar';
-import Modal from '../Modal/Modal';
-import Login from '../login/loginUser';
-import './Navbar.css';
 import Button from '../Button/Button';
+import './Navbar.css';
 
 const Navbar = () => {
+	// Manejo del menu
 	const [menuOpen, setMenuOpen] = useState(false);
-	const [loginModal, showLoginModal] = useModal(false);
-
 	const handleMenuOpen = () => setMenuOpen(!menuOpen);
 	const closeMenu = () => setMenuOpen(false);
+
+	// Manejo del state del usurario
+	const { isLoggedIn } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 
 	return (
 		<nav>
@@ -32,10 +34,15 @@ const Navbar = () => {
 				<NavLink to='/'>Planes</NavLink>
 				<NavLink to='/courses'>Cursos</NavLink>
 				<div className='flex items-center justify-center gap-2'>
-					{/* <FaUserAlt /> */}
-					<NavLink to='/login'>
-						<p>Log In</p>
-					</NavLink>
+					{!isLoggedIn ? (
+						<NavLink to='/login'>
+							<p>Log In</p>
+						</NavLink>
+					) : (
+						<NavLink to='/' onClick={() => dispatch(logout())}>
+							<p>Log Out</p>
+						</NavLink>
+					)}
 				</div>
 				<Button fontSize={'base'} padX={4} padY={2}>
 					<NavLink to='/'>Get Started</NavLink>
@@ -61,9 +68,6 @@ const Navbar = () => {
 					Get Started
 				</NavLink>
 			</div>
-			<Modal isActive={loginModal} showModal={showLoginModal}>
-				<Login showModal={showLoginModal} closeMenu={closeMenu} />
-			</Modal>
 		</nav>
 	);
 };
