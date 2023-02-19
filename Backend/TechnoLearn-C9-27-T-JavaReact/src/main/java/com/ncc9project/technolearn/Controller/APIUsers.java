@@ -50,5 +50,8 @@ public class APIUsers {
         return ResponseEntity.ok(usuarioService.agregarProgreso(userInfoDTO, userId));
     }
 
-
+    @PostMapping("/comprarSuscripcion")
+    public ResponseEntity<MensajeDTO> comprarSuscripcion(@RequestBody TarjetaDTO tarjetaDTO){
+        return ResponseEntity.ok(usuarioService.comprarSuscripcion(tarjetaDTO));
+    }
 }

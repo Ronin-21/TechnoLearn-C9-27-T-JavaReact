@@ -101,4 +101,39 @@ public class UsuarioService {
 
         return new ListUserInfoDTO(userInfoSet);
     }
+
+    public MensajeDTO comprarSuscripcion(TarjetaDTO tarjetaDTO){
+        if(validarTarjeta(tarjetaDTO.getNumeroTarjeta())){
+            return new MensajeDTO("Gracias por tu compra");
+        } else {
+            return new MensajeDTO("Tarjeta invalida");
+        }
+    }
+
+    private static boolean validarTarjeta(String numeroTarjeta){
+        int[] tarjetaInt = new int[numeroTarjeta.length()];
+
+        for (int i = 0; i < numeroTarjeta.length(); i++){
+            tarjetaInt[i] = Integer.parseInt(numeroTarjeta.substring(i, i + 1));
+        }
+
+        for (int i = tarjetaInt.length - 2; i >= 0; i = i - 2){
+            int tempValor = tarjetaInt[i];
+            tempValor = tempValor * 2;
+            if(tempValor > 9){
+                tempValor = tempValor % 10 + 1;
+            }
+            tarjetaInt[i] = tempValor;
+        }
+
+        int total = 0;
+        for (int i =  0; i < tarjetaInt.length; i++){
+            total += tarjetaInt[i];
+        }
+        if (total % 10 == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
