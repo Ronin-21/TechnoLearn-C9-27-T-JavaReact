@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,11 +21,16 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final CursosRepository cursosRepository;
 
+    private final EmailSenderService emailSenderService;
+
     @Autowired public UsuarioService(UsuarioRepository usuarioRepository,
-                                     CursosRepository cursosRepository){
+                                     CursosRepository cursosRepository,
+                                     EmailSenderService emailSenderService){
         this.usuarioRepository = usuarioRepository;
         this.cursosRepository = cursosRepository;
+        this.emailSenderService = emailSenderService;
     }
+
 
     ModelMapper mapper = new ModelMapper();
 
@@ -102,8 +108,21 @@ public class UsuarioService {
         return new ListUserInfoDTO(userInfoSet);
     }
 
-    public MensajeDTO comprarSuscripcion(TarjetaDTO tarjetaDTO){
-        if(validarTarjeta(tarjetaDTO.getNumeroTarjeta())){
+    public MensajeDTO comprarSuscripcion(TarjetaDTO tarjetaDTO, Long userId){
+        if(
+                validarTarjeta(tarjetaDTO.getNumeroTarjeta()) &&
+                validarVencimiento(tarjetaDTO.getFechaExpiracion())
+        ){
+            Usuario usuario = usuarioRepository.findById(userId).get();
+            String nombre = usuario.getNombre();
+            EmailDTO emailDTO = new EmailDTO();
+            emailDTO.setSubject("Compra de suscripcion anual TechnoLearn");
+            emailDTO.setBody(nombre + " gracias por elegirnos como tu plataforma educativa para " +
+                    "crecer profesionalmente espero que disfrutes los cursos");
+            emailDTO.setToEmail(usuario.getEmail());
+            emailSenderService.sendEmail(emailDTO);
+            usuario.setSuscripto(1);
+            usuarioRepository.save(usuario);
             return new MensajeDTO("Gracias por tu compra");
         } else {
             return new MensajeDTO("Tarjeta invalida");
@@ -135,5 +154,19 @@ public class UsuarioService {
         } else {
             return false;
         }
+    }
+
+    public static boolean validarVencimiento(String fechaVencimiento) {
+        if (!fechaVencimiento.matches("\\d{2}/\\d{2}")) {
+
+            return false;
+        }
+
+        String[] partes = fechaVencimiento.split("/");
+        int meses = Integer.parseInt(partes[0]);
+        int anio = Integer.parseInt(partes[1]) + 2000;
+        LocalDate vencimiento = LocalDate.of(anio, meses, 1).plusMonths(1).minusDays(1);
+
+        return vencimiento.isAfter(LocalDate.now());
     }
 }
