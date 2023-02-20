@@ -16,7 +16,7 @@ const Home = () => {
 			<Slider sliderData={bannerImages} />
 			<div className='flex item-center justify-center min-h-screen container mx-auto p-3'>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-					{data.slice(0, 6).map((e) => {
+					{data.cursos.slice(0, 6).map((e) => {
 						return (
 							<CardComponent
 								key={e.id}

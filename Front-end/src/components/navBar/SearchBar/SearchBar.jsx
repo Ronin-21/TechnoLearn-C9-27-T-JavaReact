@@ -3,11 +3,14 @@ import { FaSistrix } from 'react-icons/fa';
 import './SearchBar.css';
 import { useGetCursosQuery } from "../../../store/api/apiSlice";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { getFilteredCursos } from "../../../store/slices/cursosSlice";
 const SearchBar = () => {
 	const [select, setSelect] = useState('');
 	const [suggestions, setSuggestions] = useState([]);
 	const [courseId, setCourseId] = useState([]);
 	const { data } = useGetCursosQuery();
+	const dispatch = useDispatch();
 	const navigator = useNavigate();
 	
 	useEffect(() => {
@@ -25,11 +28,12 @@ const SearchBar = () => {
 			setSuggestions([]);
 			return;
 		  } else {
-			const newSuggestions = data.filter(curso => curso.nombreCurso.toLowerCase().includes(newselect.toLowerCase()));
+			const newSuggestions = data.cursos.filter(curso => curso.nombreCurso.toLowerCase().includes(newselect.toLowerCase()));
 			setSuggestions(newSuggestions);
-			console.log(newSuggestions);
 		  }
 	};
+
+	
 
 	const handleSuggestionClick = (suggestion) => {
 		setCourseId(suggestion);
@@ -37,11 +41,19 @@ const SearchBar = () => {
 		setSelect("");
 	};
 
+	const filterCourses = () =>{
+		dispatch(getFilteredCursos(suggestions));
+		//console.log(dispatch(getFilteredCursos(suggestions)));
+		setSuggestions([]);
+		setSelect("");
+		navigator(`/cursos/${courseId}`);
+	}
+	
 	return (
 		<div className='search'>
 			<div>
 				<input className='search-input' type='text' placeholder='Search' value={select} onChange={handleInputChange}></input>
-				<FaSistrix className='search-icon' />
+				<FaSistrix className='search-icon' onClick={() => filterCourses()} />
 			</div>
 			<div className='suggestion-container'>
 				{suggestions.length > 0 && (
