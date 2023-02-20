@@ -6,7 +6,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import svgLogo from '../../assets/img/TECHLEARN.svg';
 import SearchBar from './SearchBar/SearchBar';
 import Button from '../Button/Button';
-import './Navbar.css';
+import './navBar.css';
 
 const Navbar = () => {
 	// Manejo del menu
