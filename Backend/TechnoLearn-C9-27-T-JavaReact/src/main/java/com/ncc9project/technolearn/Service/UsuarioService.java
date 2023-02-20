@@ -118,7 +118,7 @@ public class UsuarioService {
             EmailDTO emailDTO = new EmailDTO();
             emailDTO.setSubject("Compra de suscripcion anual TechnoLearn");
             emailDTO.setBody(nombre + " gracias por elegirnos como tu plataforma educativa para " +
-                    "crecer profesionalmente espero que disfrutes los cursos");
+                    "crecer profesionalmente espero que disfrutes los cursos.");
             emailDTO.setToEmail(usuario.getEmail());
             emailSenderService.sendEmail(emailDTO);
             usuario.setSuscripto(1);

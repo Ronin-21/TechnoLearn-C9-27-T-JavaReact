@@ -59,5 +59,4 @@ public class APIUsers {
                                                          @PathVariable("userId")Long userId){
         return ResponseEntity.ok(usuarioService.comprarSuscripcion(tarjetaDTO, userId));
     }
-
 }
