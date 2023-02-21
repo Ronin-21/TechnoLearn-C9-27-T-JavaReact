@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,11 +21,16 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final CursosRepository cursosRepository;
 
+    private final EmailSenderService emailSenderService;
+
     @Autowired public UsuarioService(UsuarioRepository usuarioRepository,
-                                     CursosRepository cursosRepository){
+                                     CursosRepository cursosRepository,
+                                     EmailSenderService emailSenderService){
         this.usuarioRepository = usuarioRepository;
         this.cursosRepository = cursosRepository;
+        this.emailSenderService = emailSenderService;
     }
+
 
     ModelMapper mapper = new ModelMapper();
 
@@ -100,5 +106,67 @@ public class UsuarioService {
                 .collect(Collectors.toSet());
 
         return new ListUserInfoDTO(userInfoSet);
+    }
+
+    public MensajeDTO comprarSuscripcion(TarjetaDTO tarjetaDTO, Long userId){
+        if(
+                validarTarjeta(tarjetaDTO.getNumeroTarjeta()) &&
+                validarVencimiento(tarjetaDTO.getFechaExpiracion())
+        ){
+            Usuario usuario = usuarioRepository.findById(userId).get();
+            String nombre = usuario.getNombre();
+            EmailDTO emailDTO = new EmailDTO();
+            emailDTO.setSubject("Compra de suscripcion anual TechnoLearn");
+            emailDTO.setBody(nombre + " gracias por elegirnos como tu plataforma educativa para " +
+                    "crecer profesionalmente espero que disfrutes los cursos.");
+            emailDTO.setToEmail(usuario.getEmail());
+            emailSenderService.sendEmail(emailDTO);
+            usuario.setSuscripto(1);
+            usuarioRepository.save(usuario);
+            return new MensajeDTO("Gracias por tu compra");
+        } else {
+            return new MensajeDTO("Tarjeta invalida");
+        }
+    }
+
+    private static boolean validarTarjeta(String numeroTarjeta){
+        int[] tarjetaInt = new int[numeroTarjeta.length()];
+
+        for (int i = 0; i < numeroTarjeta.length(); i++){
+            tarjetaInt[i] = Integer.parseInt(numeroTarjeta.substring(i, i + 1));
+        }
+
+        for (int i = tarjetaInt.length - 2; i >= 0; i = i - 2){
+            int tempValor = tarjetaInt[i];
+            tempValor = tempValor * 2;
+            if(tempValor > 9){
+                tempValor = tempValor % 10 + 1;
+            }
+            tarjetaInt[i] = tempValor;
+        }
+
+        int total = 0;
+        for (int i =  0; i < tarjetaInt.length; i++){
+            total += tarjetaInt[i];
+        }
+        if (total % 10 == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean validarVencimiento(String fechaVencimiento) {
+        if (!fechaVencimiento.matches("\\d{2}/\\d{2}")) {
+
+            return false;
+        }
+
+        String[] partes = fechaVencimiento.split("/");
+        int meses = Integer.parseInt(partes[0]);
+        int anio = Integer.parseInt(partes[1]) + 2000;
+        LocalDate vencimiento = LocalDate.of(anio, meses, 1).plusMonths(1).minusDays(1);
+
+        return vencimiento.isAfter(LocalDate.now());
     }
 }

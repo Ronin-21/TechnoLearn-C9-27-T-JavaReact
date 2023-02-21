@@ -2,6 +2,7 @@ package com.ncc9project.technolearn.Controller;
 
 import com.ncc9project.technolearn.DTO.*;
 import com.ncc9project.technolearn.Model.Usuario;
+import com.ncc9project.technolearn.Service.EmailSenderService;
 import com.ncc9project.technolearn.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ public class APIUsers {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private EmailSenderService emailSenderService;
 
     @GetMapping("/todos")
     public ResponseEntity<ListUsuarioDTO> getAllUser() {
@@ -50,5 +54,9 @@ public class APIUsers {
         return ResponseEntity.ok(usuarioService.agregarProgreso(userInfoDTO, userId));
     }
 
-
+    @PostMapping("/comprarSuscripcion/{userId}")
+    public ResponseEntity<MensajeDTO> comprarSuscripcion(@RequestBody TarjetaDTO tarjetaDTO,
+                                                         @PathVariable("userId")Long userId){
+        return ResponseEntity.ok(usuarioService.comprarSuscripcion(tarjetaDTO, userId));
+    }
 }
