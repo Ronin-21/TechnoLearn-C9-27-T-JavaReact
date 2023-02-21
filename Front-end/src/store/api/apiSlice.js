@@ -30,6 +30,13 @@ export const apiSlice = createApi({
         body:  username ,
       }),
     }),
+    putCoursesUser: builder.mutation({
+      query: (id)=>({
+        url: "/agregarCurso",
+        method: "PUT",
+        body: id
+      })
+    })
   }),
 });
 
@@ -40,4 +47,5 @@ export const {
   useGetCursoByIDQuery,
   useCreateUserMutation,
   useLoginMutation,
+  usePutCoursesUserMutation
 } = apiSlice;

@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BsFillPlayCircleFill } from 'react-icons/bs';
-import { useNavigate, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import {
+	useGetUsersQuery,
+	usePutCoursesUserMutation,
+} from '../../store/api/apiSlice';
 import './Card.css';
 
 const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
-	// const [cursoID, setCursoId] = useState(0);
-	// const navigator = useNavigate();
+	//...........
+	const userEmail = useSelector((state) => state.auth.userEmail);
+	const { data } = useGetUsersQuery();
+	const usuarioDataId = data?.usuarios
+		.filter((e) => e.email === userEmail)
+		.map((e) => e.id)
+		.join();
+	// console.log(usuarioDataId);
+	// console.log(data);
 
-	// useEffect(() => {
-	// 	if (cursoID !== 0) {
-	// 		console.log(cursoID);
-	// 		navigator(`/cursos/${id}`);
-	// 	}
-	// }, [cursoID]);
+	const [putCoursesUser, { isError, error }] = usePutCoursesUserMutation();
+	const putCurso = { idUsuario: parseInt(usuarioDataId), idCurso: id };
 
 	return (
 		<div>
@@ -31,8 +39,11 @@ const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
 						</p>
 						<div className='columns-auto flex items-center justify-center gap-4  '>
 							<p className='text-slate-900 text-lg m-2 p-5'>$350</p>
-							<Link to='/' className='bg-blue-400 text-blue-700 p-2 rounded-xs h-10'>
-								Suscríbete!
+							<Link
+								to='/'
+								className='bg-blue-400 text-blue-700 p-2 rounded-xs h-10'
+								onClick={() => putCoursesUser(putCurso)}>
+								Agregar
 							</Link>
 							<Link
 								to={`/courses/${id}`}
