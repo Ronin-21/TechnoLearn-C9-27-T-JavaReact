@@ -5,6 +5,7 @@ import { useGetCursosQuery } from '../../../store/api/apiSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getFilteredCursos } from '../../../store/slices/cursosSlice';
+
 const SearchBar = () => {
 	const [select, setSelect] = useState('');
 	const [suggestions, setSuggestions] = useState([]);
@@ -12,13 +13,6 @@ const SearchBar = () => {
 	const { data } = useGetCursosQuery();
 	const dispatch = useDispatch();
 	const navigator = useNavigate();
-
-	useEffect(() => {
-		if (courseId !== 0) {
-			// console.log(courseId);
-			navigator(`/courses/${courseId}`);
-		}
-	}, [courseId]);
 
 	const handleInputChange = (event) => {
 		const newselect = event.target.value;
@@ -36,7 +30,8 @@ const SearchBar = () => {
 	};
 
 	const handleSuggestionClick = (suggestion) => {
-		setCourseId(suggestion);
+		// setCourseId(suggestion);
+		navigator(`/courses/${suggestion}`);
 		setSuggestions([]);
 		setSelect('');
 	};
@@ -48,6 +43,13 @@ const SearchBar = () => {
 		setSelect('');
 		navigator(`/courses/${courseId}`);
 	};
+
+	// useEffect(() => {
+	// 	if (courseId !== null) {
+	// 		console.log(courseId);
+	// 		navigator(`/courses/${courseId}`);
+	// 	}
+	// }, [courseId]);
 
 	return (
 		<div className='search'>

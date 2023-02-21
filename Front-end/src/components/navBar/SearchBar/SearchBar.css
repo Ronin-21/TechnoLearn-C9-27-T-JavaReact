@@ -21,10 +21,6 @@
 	-o-border-radius: 7px;
 }
 
-.search-input::placeholder {
-	padding-left: 2em;
-}
-
 .search-icon {
 	position: absolute;
 	left: 0.5em;

@@ -1,12 +1,29 @@
+.card-container {
+	height: 550px;
+	max-width: 390px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: var(--backgroundColor);
+	box-shadow: 2px 2px 15px 0px var(--tertiaryColor);
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
+}
+
+.card-img-container {
+	position: relative;
+	object-fit: cover;
+	padding: 2em;
+}
+
 .btn-play {
 	position: absolute;
 	top: 38%;
 	left: 43%;
 	font-size: 50px;
 	color: #ffffffbc;
-}
-
-.card-container {
-	height: 600px;
-	justify-content: space-between;
 }

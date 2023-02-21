@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import svgLogo from '../../assets/img/TECHLEARN.svg';
+import Logo from '../../assets/img/LogoDark.svg';
 import SearchBar from './SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './navBar.css';
@@ -21,7 +21,7 @@ const Navbar = () => {
 	return (
 		<nav>
 			<Link to='/' onClick={closeMenu}>
-				<img src={svgLogo} alt='' />
+				<img src={Logo} alt='' />
 			</Link>
 			<SearchBar />
 			<div className='menu-container'>
@@ -33,20 +33,22 @@ const Navbar = () => {
 				<NavLink to='/'>Inicio</NavLink>
 				<NavLink to='/'>Planes</NavLink>
 				<NavLink to='/courses'>Cursos</NavLink>
+				<NavLink to='/user'>Perfil</NavLink>
 				<div className='flex items-center justify-center gap-2'>
 					{!isLoggedIn ? (
-						<NavLink to='/login'>
-							<p>Log In</p>
-						</NavLink>
+						<Button fontSize={'base'} padX={4} padY={2}>
+							<NavLink to='/login'>
+								<p>Log In</p>
+							</NavLink>
+						</Button>
 					) : (
-						<NavLink to='/' onClick={() => dispatch(logout())}>
-							<p>Log Out</p>
-						</NavLink>
+						<Button fontSize={'base'} padX={4} padY={2} bg={'var(--dangerColor)'}>
+							<NavLink to='/' onClick={() => dispatch(logout())}>
+								<p>Log Out</p>
+							</NavLink>
+						</Button>
 					)}
 				</div>
-				<Button fontSize={'base'} padX={4} padY={2}>
-					<NavLink to='/'>Get Started</NavLink>
-				</Button>
 			</div>
 			<div className={menuOpen ? 'nav-menu active' : 'nav-menu'}>
 				<NavLink to='/' onClick={closeMenu}>
@@ -58,14 +60,14 @@ const Navbar = () => {
 				<NavLink to='/courses' onClick={closeMenu}>
 					Cursos
 				</NavLink>
+				<NavLink to='/user' onClick={closeMenu}>
+					Perfil
+				</NavLink>
 				<NavLink
 					to='/login'
 					className='flex align-center justify-center gap-2'
 					onClick={closeMenu}>
 					Log In
-				</NavLink>
-				<NavLink to='/' onClick={closeMenu}>
-					Get Started
 				</NavLink>
 			</div>
 		</nav>

@@ -1,0 +1,11 @@
+.course-container {
+	height: 1600px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cards-container {
+	max-width: 85%;
+	gap: 3em;
+}

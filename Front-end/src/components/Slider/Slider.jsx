@@ -37,7 +37,12 @@ const Slider = ({ sliderData }) => {
 						<h1 className='slider-title'>Desarrolla tu talento en Tech</h1>
 						<h3 className='slider-text'>Desarrollo - Software - Diseño</h3>
 					</div>
-					<Button fontSize={'4xl'} padX={5} padY={3}>
+					<Button
+						fontSize={'4xl'}
+						padX={5}
+						padY={3}
+						bg={'var(--secondaryColor)'}
+						color={'var(--primaryColor)'}>
 						<Link to='/'>Contrata Pro</Link>
 					</Button>
 				</div>

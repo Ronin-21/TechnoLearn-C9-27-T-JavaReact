@@ -1,5 +1,5 @@
-import banner1 from "../assets/img/banner1.jpg"
-import banner2 from "../assets/img/banner2.jpg"
+import banner1 from "../assets/img/banner1.png"
+import banner2 from "../assets/img/banner2.png"
 import banner3 from "../assets/img/banner3.png"
 
 

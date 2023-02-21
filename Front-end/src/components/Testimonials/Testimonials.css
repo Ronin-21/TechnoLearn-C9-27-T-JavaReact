@@ -1,5 +1,6 @@
 .testimonial-container {
 	position: relative;
+	background-color: #fff;
 	height: 600px;
 	display: flex;
 	flex-direction: column;
@@ -50,7 +51,7 @@
 	justify-content: center;
 	font-size: 32px;
 	color: var(--tertiaryColor);
-	background-color: var(--warningColor);
+	background-color: var(--secondaryColor);
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
@@ -68,7 +69,7 @@
 .slider-mark-test {
 	width: 25px;
 	height: 25px;
-	background-color: transparent;
+	background-color: var(--backgroundColor);
 	border: 2px solid var(--tertiaryColor);
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -78,5 +79,5 @@
 }
 
 .slider-mark-test.active {
-	background-color: var(--tertiaryColor);
+	background-color: var(--secondaryColor);
 }
