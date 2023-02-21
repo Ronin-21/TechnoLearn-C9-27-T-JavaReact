@@ -23,7 +23,7 @@ public class APILogin {
 
 
     @PostMapping
-    public ResponseEntity<MensajeDTO> login(@RequestBody Map<String, String> payload) {
+    public ResponseEntity login(@RequestBody Map<String, String> payload) {
         String email = payload.get("email");
         String password = payload.get("password");
 
@@ -40,7 +40,7 @@ public class APILogin {
             ,HttpStatus.UNAUTHORIZED);
         }
         if (loginService.isValidPassword(password, user.getPassword())) {
-            return new ResponseEntity(new MensajeDTO("Inicio de sesión exitoso")
+            return new ResponseEntity(loginService.findByUsuario(email)
                     ,HttpStatus.OK);
         } else {
             return new ResponseEntity(new MensajeDTO("Correo electrónico o contraseña inválidos")

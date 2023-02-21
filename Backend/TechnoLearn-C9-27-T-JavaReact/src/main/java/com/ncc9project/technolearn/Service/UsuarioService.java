@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,7 +30,7 @@ public class UsuarioService {
 
     public ListUsuarioDTO getAlluser() {
         List<Usuario> usuarios = usuarioRepository.findAll();
-        Set<UsuarioDTO> list = new HashSet<>();
+        Set<UsuarioDTO> list = new TreeSet<>(Comparator.comparing(UsuarioDTO::getId));
 
         usuarios.stream().map(usuario ->
                 list.add(mapper.map(usuario, UsuarioDTO.class)))
@@ -96,7 +94,7 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
 
         Set<UserInfoDTO> userInfo = usuario.getUserInfo();
-        Set<UserInfoDTO> userInfoSet = new HashSet<>();
+        Set<UserInfoDTO> userInfoSet = new TreeSet<>(Comparator.comparing(UserInfoDTO::getIdCurso));
         userInfo.stream().map(userinfo ->
                         userInfoSet.add(mapper.map(userinfo, UserInfoDTO.class)))
                 .collect(Collectors.toSet());
