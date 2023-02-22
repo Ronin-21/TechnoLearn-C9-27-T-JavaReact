@@ -1,6 +1,7 @@
 package com.ncc9project.technolearn.Service;
 
 import com.ncc9project.technolearn.DTO.*;
+import com.ncc9project.technolearn.Exceptions.GeneralException;
 import com.ncc9project.technolearn.Model.Cursos;
 import com.ncc9project.technolearn.Model.Usuario;
 import com.ncc9project.technolearn.Repository.CursosRepository;
@@ -8,6 +9,7 @@ import com.ncc9project.technolearn.Repository.UsuarioRepository;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
@@ -47,16 +49,26 @@ public class UsuarioService {
 
     public UsuarioDTO getUserById(long id) {
         Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        if(usuario != null){
         return mapper.map(usuario, UsuarioDTO.class);
+        }
+        else {
+            throw new GeneralException("No existe el usuario.", HttpStatus.BAD_REQUEST);
+        }
     }
 
     public UsuarioDTO saveUser(UsuarioDTO usuarioDTO){
         Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        String hash = argon2.hash(1, 1024, 1, usuario.getPassword());
-        usuario.setPassword(hash);
-        usuarioRepository.save(usuario);
-        return mapper.map(usuario, UsuarioDTO.class);
+        Optional<Usuario> usuarioExist = usuarioRepository.findByEmail(usuario.getEmail());
+        if (usuarioExist.isEmpty()){
+            Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+            String hash = argon2.hash(1, 1024, 1, usuario.getPassword());
+            usuario.setPassword(hash);
+            usuarioRepository.save(usuario);
+            return mapper.map(usuario, UsuarioDTO.class);
+        } else {
+            throw new GeneralException("El email ya esta registrado", HttpStatus.BAD_REQUEST);
+        }
     }
 
     public UsuarioCursosDTO agregarCurso(UsuarioCursosDTO usuarioCursoDTO){
