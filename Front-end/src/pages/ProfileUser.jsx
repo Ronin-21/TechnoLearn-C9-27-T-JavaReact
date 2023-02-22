@@ -4,11 +4,15 @@ import { useSelector } from 'react-redux';
 import '../styles/profileUser.css';
 
 const ProfileUser = () => {
-	const isLogged = useSelector((state) => state.auth.isLoggedIn);
+	// Trae datos del usuario desde el store
+	const datosUsuario = useSelector((state) => state.auth);
+	console.log(datosUsuario);
+
+	//Proteccion de la ruta si no esta logueado
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (!isLogged) {
+		if (!datosUsuario.isLoggedIn) {
 			return navigate('/login');
 		}
 	}, []);

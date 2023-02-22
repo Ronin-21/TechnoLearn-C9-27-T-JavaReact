@@ -14,7 +14,7 @@ const Login = () => {
 	const navigate = useNavigate();
 
 	// Query para peticion POST
-	const [login, { isSuccess, isError, error }] = useLoginMutation();
+	const [login, { data: user, isSuccess, isError, error }] = useLoginMutation();
 	// Modal de Logueo exitoso
 	const [loginModal, showLoginModal] = useModal(false);
 
@@ -30,19 +30,25 @@ const Login = () => {
 		login(data);
 	};
 
+	// Comprueba si esta logueado para no dejar entrar aqui
 	useEffect(() => {
 		if (isLogged) {
 			return navigate('/user');
 		}
 	}, []);
 
+	// Logica para cuando el logueo es exitoso
 	useEffect(() => {
 		if (isSuccess) {
+			localStorage.setItem(
+				'userInfo',
+				JSON.stringify({ isLoggedIn: true, ...user })
+			);
 			showLoginModal();
 		} else if (isError) {
 			return <div>{error.error}</div>;
 		}
-	}, [isSuccess]);
+	}, [isSuccess, isError]);
 
 	return (
 		<div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>

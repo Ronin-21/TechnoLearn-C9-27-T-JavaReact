@@ -1,12 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { apiSlice } from '../api/apiSlice';
 
+const emptyUserInfo = {
+  isLoggedIn: false,
+  cursosUsuario: [],
+  email: "",
+  id: null,
+  nombre: "",
+  password: "",
+  suscripto: null,
+  userInfo: []
+}
+
 export const authSlice = createSlice({
     name: 'auth',
-    initialState: { isLoggedIn: false },
+    initialState: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : emptyUserInfo,
     reducers: {
       logout: state => {
         state.isLoggedIn = false;
+        localStorage.removeItem('userInfo')
       },
     },
     extraReducers: builder => {
