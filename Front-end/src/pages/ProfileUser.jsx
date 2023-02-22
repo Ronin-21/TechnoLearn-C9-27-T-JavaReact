@@ -1,18 +1,26 @@
-import React from "react";
-import CardComponent from "../components/Cards/CardComponent";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loading from "../components/loading/loading";
 import { useGetUsersQuery } from "../store/api/apiSlice";
+import CardComponent from "../components/Cards/CardComponent";
 import "../styles/profileUser.css";
-
 
 const ProfileUser = () => {
   const userEmail = useSelector((state) => state.auth.userEmail);
   const { data, isError, error, isLoading } = useGetUsersQuery();
   const usuarioData = data?.usuarios.filter((e) => e.email === userEmail);
   const idPerfilUsuario = Math.floor(Math.random() * 100);
+  const isLogged = useSelector((state) => state.auth.isLoggedIn);
+  const navigate = useNavigate();
 
-console.log(usuarioData);
+  useEffect(() => {
+    if (!isLogged) {
+      return navigate("/login");
+    }
+  }, []);
+
+  console.log(usuarioData);
   if (isLoading) return <Loading />;
   else if (isError) return <div>{error.message}</div>;
 

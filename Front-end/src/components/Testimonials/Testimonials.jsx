@@ -16,13 +16,13 @@ export const Testimonials = ({ testimonialData }) => {
 			currentTestimonial === lenght - 1 ? 0 : currentTestimonial + 1
 		);
 
-	// useEffect(() => {
-	// 	const autoSlide = setInterval(() => {
-	// 		handleNextSlide();
-	// 	}, 3000);
+	useEffect(() => {
+		const autoSlide = setInterval(() => {
+			handleNextSlide();
+		}, 5000);
 
-	// 	return () => clearInterval(autoSlide);
-	// }, [currentTestimonial]);
+		return () => clearInterval(autoSlide);
+	}, [currentTestimonial]);
 
 	const handleSliderMark = (index) => setCurrentTestimonial(index);
 
@@ -36,15 +36,16 @@ export const Testimonials = ({ testimonialData }) => {
 				<div className='testimonial-img-container flex flex-col items-center'>
 					<img src={testimonialData[currentTestimonial].img} />
 					<div className='testimonial-img-content'>
-						<p className='text-3xl font-bold text-center'>Joel R.</p>
-						<p className='text-2xl'>Developer</p>
+						<p className='text-3xl font-bold text-center'>
+							{testimonialData[currentTestimonial].name}
+						</p>
+						<p className='text-2xl text-center'>
+							{testimonialData[currentTestimonial].profession}
+						</p>
 					</div>
 				</div>
 				<div className='testimonial-text-content'>
-					<p>
-						Con TeachLearn me mantengo siempre actualizado, aquí encuentro los mejores
-						cursos de React y JavaScript.
-					</p>
+					<p>{testimonialData[currentTestimonial].content}</p>
 				</div>
 				<div className='slider-btn-test next-btn' onClick={handleNextSlide}>
 					<FaAngleRight />

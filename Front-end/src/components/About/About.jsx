@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
+import Logo from '../../assets/img/LogoLight.svg';
 import './About.css';
 
 export const About = () => {
@@ -15,11 +16,18 @@ export const About = () => {
 						impulsar tu carrea en el mundo del desarrollo y del diseño UX-UI.
 					</span>
 				</p>
-				<Button fontSize={'4xl'} padX={5} padY={3}>
+				<Button
+					fontSize={'3xl'}
+					padX={4}
+					padY={2}
+					bg={'var(--secondaryColor)'}
+					color={'var(--primaryColor)'}>
 					<Link to='/'>Contrata Pro</Link>
 				</Button>
 			</div>
-			<div className='about-svg'></div>
+			<div className='about-svg'>
+				<img src={Logo} alt='logo' />
+			</div>
 		</section>
 	);
 };

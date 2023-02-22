@@ -1,9 +1,18 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ fontSize, padX, padY, children }) => {
+const Button = ({
+	fontSize,
+	padX,
+	padY,
+	bg = 'var(--primaryColor)',
+	color = '#fff',
+	children,
+}) => {
 	return (
-		<button className={`cta text-${fontSize} px-${padX} py-${padY} `}>
+		<button
+			style={{ backgroundColor: `${bg}`, color: `${color}` }}
+			className={`cta text-${fontSize} px-${padX} py-${padY} `}>
 			{children}
 		</button>
 	);

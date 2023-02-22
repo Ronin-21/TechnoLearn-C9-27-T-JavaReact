@@ -4,20 +4,21 @@
 	color: #fff;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 }
 
 .about-box {
-	width: 700px;
-	height: 450px;
+	width: 570px;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+	gap: 1em;
 }
 
 .about-svg {
-	width: 700px;
+	width: 480px;
 }
 
 .about-title {
@@ -27,6 +28,7 @@
 
 .about-text {
 	font-size: 32px;
+	margin-bottom: 1.5em;
 }
 
 .about-text-highlight {

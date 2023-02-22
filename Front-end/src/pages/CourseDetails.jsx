@@ -20,12 +20,11 @@ const CourseDetails = () => {
 				<div className='video-course'>
 					{/* <img src={curso.miniaturaCurso} alt='' /> */}
 					<iframe
-						maxWidth='600'
+						maxwidth='600'
 						height='100%'
 						src={'https://www.youtube.com/embed/' + curso.id_video}
-						frameborder='0'
 						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-						allowfullscreen></iframe>
+						allowFullScreen></iframe>
 				</div>
 				<div className='description-courses'>
 					<div>
@@ -85,17 +84,16 @@ const CourseDetails = () => {
 				<div className='title-program'>
 					<h3>PROGRAMA</h3>
 				</div>
-				{curso.urls.map((e) => {
+				{curso.urls.map((e, index) => {
 					return (
-						<div className='program-details'>
+						<div className='program-details' key={index}>
 							<p>{e.titulo_video}</p>
 							<iframe
-								maxWidth='500'
+								maxwidth='500'
 								height='400'
 								src={'https://www.youtube.com/embed/' + e.id_video}
-								frameborder='0'
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-								allowfullscreen></iframe>
+								allowFullScreen></iframe>
 						</div>
 					);
 				})}

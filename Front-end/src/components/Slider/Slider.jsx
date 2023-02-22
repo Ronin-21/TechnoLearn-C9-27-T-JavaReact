@@ -33,11 +33,16 @@ const Slider = ({ sliderData }) => {
 				<img src={sliderData[currentImage].img} />
 				<div className='slider-content'>
 					<div>
-						<h2 className='slider-subtitle'>Cursos online</h2>
-						<h1 className='slider-title'>Desarrolla tu talento en Tech</h1>
-						<h3 className='slider-text'>Desarrollo - Software - Diseño</h3>
+						<h2 className='slider-subtitle'>{sliderData[currentImage].pretitle}</h2>
+						<h1 className='slider-title'>{sliderData[currentImage].title}</h1>
+						<h3 className='slider-text'>{sliderData[currentImage].subtitle}</h3>
 					</div>
-					<Button fontSize={'4xl'} padX={5} padY={3}>
+					<Button
+						fontSize={'3xl'}
+						padX={4}
+						padY={2}
+						bg={'var(--secondaryColor)'}
+						color={'var(--primaryColor)'}>
 						<Link to='/'>Contrata Pro</Link>
 					</Button>
 				</div>
