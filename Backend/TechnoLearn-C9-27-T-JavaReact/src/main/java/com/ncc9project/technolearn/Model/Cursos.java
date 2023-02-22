@@ -50,4 +50,7 @@ Cursos {
 
     @Column(name = "acceso")
     private String acceso;
+
+    @Column(name = "instructor")
+    private String instructor;
 }

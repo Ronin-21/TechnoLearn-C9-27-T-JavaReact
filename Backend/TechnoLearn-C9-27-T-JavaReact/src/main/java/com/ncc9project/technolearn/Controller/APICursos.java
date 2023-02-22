@@ -2,9 +2,10 @@ package com.ncc9project.technolearn.Controller;
 
 import com.ncc9project.technolearn.DTO.CursosDTO;
 import com.ncc9project.technolearn.DTO.ListCursosDTO;
-import com.ncc9project.technolearn.Model.Cursos;
+import com.ncc9project.technolearn.Exceptions.GeneralException;
 import com.ncc9project.technolearn.Service.CursosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class APICursos {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CursosDTO> getCursoById(@PathVariable("id") long id) {
+    public ResponseEntity<CursosDTO> getCursoById(@PathVariable("id") Long id) {
         return  ResponseEntity.ok(cursosService.getCursoById(id));
     }
 }
