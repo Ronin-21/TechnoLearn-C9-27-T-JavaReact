@@ -1,8 +1,10 @@
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\DTO\UserInfoDTO.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\DTO\ListUsuarioDTO.java
+C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Service\NewsletterService.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Repository\CursosRepository.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Repository\UsuarioRepository.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\DTO\MensajeDTO.java
+C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Controller\APINewsletter.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Model\Mensaje.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\DTO\ListCursosDTO.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Service\LoginService.java
@@ -22,6 +24,7 @@ C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\TechnoLearnApplication.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\DTO\ListUserInfoDTO.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\DTO\TarjetaDTO.java
+C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\DTO\NewsletterDTO.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Repository\LoginRepository.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Model\Usuario.java
 C:\Desarrollo\no-country\Backend\TechnoLearn-C9-27-T-JavaReact\src\main\java\com\ncc9project\technolearn\Model\Cursos.java
