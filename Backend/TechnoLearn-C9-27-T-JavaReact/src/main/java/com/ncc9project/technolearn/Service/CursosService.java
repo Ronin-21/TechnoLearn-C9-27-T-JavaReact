@@ -2,10 +2,12 @@ package com.ncc9project.technolearn.Service;
 
 import com.ncc9project.technolearn.DTO.CursosDTO;
 import com.ncc9project.technolearn.DTO.ListCursosDTO;
+import com.ncc9project.technolearn.Exceptions.GeneralException;
 import com.ncc9project.technolearn.Model.Cursos;
 import com.ncc9project.technolearn.Repository.CursosRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -33,7 +35,11 @@ public class CursosService {
 
     public CursosDTO getCursoById(long id) {
         Cursos curso = cursosRepository.findById(id).orElse(null);
+        if (curso != null){
         return mapper.map(curso, CursosDTO.class);
+        }else {
+            throw new GeneralException("No existe el curso.", HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

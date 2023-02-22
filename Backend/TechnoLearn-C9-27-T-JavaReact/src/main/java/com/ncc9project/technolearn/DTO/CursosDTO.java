@@ -1,11 +1,9 @@
 package com.ncc9project.technolearn.DTO;
 
-import com.ncc9project.technolearn.Model.Usuario;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Getter
 @Setter
@@ -30,4 +28,6 @@ public class CursosDTO {
     private float precio;
 
     private String acceso;
+
+    private String instructor;
 }
