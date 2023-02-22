@@ -27,7 +27,7 @@ const Cart = () => {
           <div>Lorem, ipsum dolor.</div>
           <div>$632</div>
         </div>
-        <div className='price-resumen'> 
+        <div className='price-resumen'>
           <div>Lorem, ipsum dolor.</div>
           <div>-$180</div>
         </div>

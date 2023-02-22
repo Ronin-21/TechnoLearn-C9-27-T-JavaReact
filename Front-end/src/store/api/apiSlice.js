@@ -4,7 +4,7 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl:
-      "https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api",
+      "https://technolearnpruebarender.onrender.com/api",
   }),
   endpoints: (builder) => ({
     getCursos: builder.query({
