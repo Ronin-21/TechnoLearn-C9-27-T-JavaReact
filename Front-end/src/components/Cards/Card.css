@@ -1,11 +1,12 @@
 .card-container {
-	height: 550px;
+	height: 665px;
 	max-width: 390px;
+	padding: 1em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-evenly;
-	background-color: var(--backgroundColor);
+	justify-content: space-around;
+	background-color: #fff;
 	box-shadow: 2px 2px 15px 0px var(--tertiaryColor);
 	border-radius: 7px;
 	-webkit-border-radius: 7px;
@@ -16,8 +17,8 @@
 
 .card-img-container {
 	position: relative;
+	padding: 0 1em;
 	object-fit: cover;
-	padding: 2em;
 }
 
 .btn-play {
@@ -26,4 +27,56 @@
 	left: 43%;
 	font-size: 50px;
 	color: #ffffffbc;
+}
+
+.card-title {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.card-btn-container {
+	height: auto;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.card-btn-fav {
+	width: 130px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.card-btn-stars {
+	display: flex;
+	font-size: 1.7em;
+	gap: 0.3em;
+	align-self: flex-start;
+}
+
+.card-btn-heart {
+	font-size: 2.5em;
+	color: var(--dangerColor);
+	margin-bottom: 0.2em;
+}
+
+.card-btn-text {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-around;
+	gap: 1.5em;
+}
+
+.card-btn-text p {
+	width: 80px;
+	font-size: 24px;
+	text-align: end;
+	font-weight: 700;
+	border-bottom: 5px solid var(--successColor);
 }

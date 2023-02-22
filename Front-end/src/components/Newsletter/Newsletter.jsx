@@ -19,8 +19,9 @@ function Newsletter() {
 
 						<input type='email' placeholder='E-mail' className='' />
 
-						<Button fontSize={'3xl'} padX={5} padY={2} bg={'#000'}>
-							<button type='submit'>Enviar</button>
+						<Button fontSize={'3xl'} padX={4} padY={2} bg={'#000'}>
+							{/* <button type='submit'>Enviar</button> */}
+							Enviar
 						</Button>
 						<div className='newsletter-check'>
 							<input type='checkbox' name='terminos' />

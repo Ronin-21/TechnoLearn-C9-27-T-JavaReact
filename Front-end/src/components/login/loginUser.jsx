@@ -2,12 +2,17 @@ import React, { useEffect } from 'react';
 import { useModal } from '../../hook/useModal';
 import { useForm } from 'react-hook-form';
 import { BsFillLockFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../store/api/apiSlice';
 import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
+import { useSelector } from 'react-redux';
 
 const Login = () => {
+	// Protege la ruta y redirecciona
+	const isLogged = useSelector((state) => state.auth.isLoggedIn);
+	const navigate = useNavigate();
+
 	// Query para peticion POST
 	const [login, { isSuccess, isError, error }] = useLoginMutation();
 	// Modal de Logueo exitoso
@@ -24,6 +29,12 @@ const Login = () => {
 	const onSubmit = (data) => {
 		login(data);
 	};
+
+	useEffect(() => {
+		if (isLogged) {
+			return navigate('/user');
+		}
+	}, []);
 
 	useEffect(() => {
 		if (isSuccess) {

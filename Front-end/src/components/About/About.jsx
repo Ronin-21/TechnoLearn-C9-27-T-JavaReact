@@ -17,9 +17,9 @@ export const About = () => {
 					</span>
 				</p>
 				<Button
-					fontSize={'4xl'}
-					padX={5}
-					padY={3}
+					fontSize={'3xl'}
+					padX={4}
+					padY={2}
 					bg={'var(--secondaryColor)'}
 					color={'var(--primaryColor)'}>
 					<Link to='/'>Contrata Pro</Link>

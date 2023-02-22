@@ -13,31 +13,34 @@ const Courses = () => {
 	else if (isError) return <div>{error.message}</div>;
 	//console.log(data);
 	return (
-		<div className='flex item-center justify-center min-h-screen container mx-auto my-10'>
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-				{coursesShow.length === 0
-					? data.cursos.map((e, index) => {
-							return (
-								<CardComponent
-									key={e.id}
-									id={e.id}
-									nombreCurso={e.nombreCurso}
-									miniaturaCurso={e.miniaturaCurso}
-								/>
-							);
-					  })
-					: coursesShow.map((e, index) => {
-							return (
-								<CardComponent
-									key={e.id}
-									id={e.id}
-									nombreCurso={e.nombreCurso}
-									miniaturaCurso={e.miniaturaCurso}
-								/>
-							);
-					  })}
+		<>
+			<h4 className='courses-title text-center mt-10'>CURSOS</h4>
+			<div className='flex item-center justify-center min-h-screen container mx-auto my-10'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 cards-container'>
+					{coursesShow.length === 0
+						? data.cursos.map((e, index) => {
+								return (
+									<CardComponent
+										key={e.id}
+										id={e.id}
+										nombreCurso={e.nombreCurso}
+										miniaturaCurso={e.miniaturaCurso}
+									/>
+								);
+						  })
+						: coursesShow.map((e, index) => {
+								return (
+									<CardComponent
+										key={e.id}
+										id={e.id}
+										nombreCurso={e.nombreCurso}
+										miniaturaCurso={e.miniaturaCurso}
+									/>
+								);
+						  })}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
