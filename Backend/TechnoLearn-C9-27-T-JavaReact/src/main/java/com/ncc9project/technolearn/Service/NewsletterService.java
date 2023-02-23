@@ -19,8 +19,6 @@ public class NewsletterService {
     ModelMapper mapper = new ModelMapper();
 
     public MensajeDTO subscribeNewsletter(NewsletterDTO newsletterDTO){
-        System.out.println(newsletterDTO.getEmail());
-        System.out.println(newsletterDTO.getNombre());
         EmailDTO emailDTO = new EmailDTO();
         emailDTO.setSubject("Suscripcion al Newsletter de TechLearn");
         emailDTO.setBody(newsletterDTO.getNombre() + " Gracias por suscribirse a nuestro sistema de " +
