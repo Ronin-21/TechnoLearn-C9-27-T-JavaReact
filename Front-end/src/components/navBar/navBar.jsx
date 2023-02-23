@@ -33,7 +33,14 @@ const Navbar = () => {
 				<NavLink to='/'>Inicio</NavLink>
 				<NavLink to='/'>Planes</NavLink>
 				<NavLink to='/courses'>Cursos</NavLink>
-				<NavLink to='/user'>Perfil</NavLink>
+				<Button
+					fontSize={'base'}
+					padX={4}
+					padY={2}
+					bg={'var(--backgroundColor)'}
+					color={'var(--tertiaryColor)'}>
+					<NavLink to='/user'>Perfil</NavLink>
+				</Button>
 				<div className='flex items-center justify-center gap-2'>
 					{!isLoggedIn ? (
 						<Button fontSize={'base'} padX={4} padY={2}>
@@ -42,7 +49,7 @@ const Navbar = () => {
 							</NavLink>
 						</Button>
 					) : (
-						<Button fontSize={'base'} padX={4} padY={2} bg={'var(--dangerColor)'}>
+						<Button fontSize={'base'} padX={4} padY={2} bg={'#1A097A'}>
 							<NavLink to='/' onClick={() => dispatch(logout())}>
 								<p>Log Out</p>
 							</NavLink>

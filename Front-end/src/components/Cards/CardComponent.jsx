@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import './Card.css';
 
-const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
+const CardComponent = ({ nombreCurso, miniaturaCurso, id, acceso }) => {
 	return (
 		<div className='card-container'>
 			<div className='card-img-container'>
@@ -14,7 +14,7 @@ const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
 			</div>
 			<h5 className='card-title'>{nombreCurso}</h5>
 			<p className='card-text'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, beatae.
+				<span className='card-title'>Instructor:</span> Alan Cejas
 			</p>
 			<div className='card-btn-container'>
 				<div className='card-btn-fav'>
@@ -31,7 +31,7 @@ const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
 					</div>
 				</div>
 				<div className='card-btn-text'>
-					<p>CURSO FREE</p>
+					<p>CURSO {acceso}</p>
 					<Button fontSize={'2xl'} padX={4} padY={2}>
 						<Link to={`/courses/${id}`} className='flex items-center gap-3'>
 							Ir al curso <FaAngleRight />

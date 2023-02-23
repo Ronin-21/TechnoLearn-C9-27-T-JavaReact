@@ -35,7 +35,7 @@ const Login = () => {
 		if (isLogged) {
 			return navigate('/user');
 		}
-	}, []);
+	}, [isLogged]);
 
 	// Logica para cuando el logueo es exitoso
 	useEffect(() => {
@@ -46,7 +46,7 @@ const Login = () => {
 			);
 			showLoginModal();
 		} else if (isError) {
-			return <div>{error.error}</div>;
+			return <div>{error}</div>;
 		}
 	}, [isSuccess, isError]);
 

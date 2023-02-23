@@ -1,5 +1,5 @@
 .card-container {
-	height: 665px;
+	height: 600px;
 	max-width: 390px;
 	padding: 1em;
 	display: flex;
@@ -32,6 +32,11 @@
 .card-title {
 	font-size: 24px;
 	font-weight: 700;
+}
+
+.card-text {
+	font-size: 20px;
+	align-self: flex-start;
 }
 
 .card-btn-container {
