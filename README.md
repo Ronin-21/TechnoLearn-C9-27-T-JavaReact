@@ -22,10 +22,15 @@ El proyecto a desarrollar es una plataforma  e-learning que ofrece cursos de tec
  ### UX/UI: 
  Yuvia A. Pérez Glez.
  ### Front-End: 
+ 
  Matias Romero,  
+ 
  Abel Acuña, 
+ 
  Carlos Bohorquez.
  ### Back-End:
  Alan David Cejas, 
+ 
  Leandro Luna,
+ 
  Nicolás Lemos.
