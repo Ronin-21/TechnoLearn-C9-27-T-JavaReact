@@ -19,6 +19,13 @@ El proyecto a desarrollar es una plataforma  e-learning que ofrece cursos de tec
  
  ## Integrantes del equipo:
  
- ### UX/UI: Yuvia A. Pérez Glez.
- ### Front-End: Matias Romero,  Abel Acuña, Carlos Bohorquez.
- ### Back-End: Nicolás Lemos, Alan David Cejas, Leandro Luna.
+ ### UX/UI: 
+ Yuvia A. Pérez Glez.
+ ### Front-End: 
+ Matias Romero,  
+ Abel Acuña, 
+ Carlos Bohorquez.
+ ### Back-End:
+ Alan David Cejas, 
+ Leandro Luna,
+ Nicolás Lemos.
