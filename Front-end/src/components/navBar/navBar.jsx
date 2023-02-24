@@ -31,7 +31,7 @@ const Navbar = () => {
 			</div>
 			<div className='nav-links'>
 				<NavLink to='/'>Inicio</NavLink>
-				<NavLink to='/'>Planes</NavLink>
+				<NavLink to='/planes'>Planes</NavLink>
 				<NavLink to='/courses'>Cursos</NavLink>
 				<Button
 					fontSize={'base'}
