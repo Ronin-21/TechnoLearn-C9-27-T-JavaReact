@@ -38,9 +38,7 @@ const Slider = ({ sliderData }) => {
 						<h3 className='slider-text'>{sliderData[currentImage].subtitle}</h3>
 					</div>
 					<Button
-						fontSize={'3xl'}
-						padX={4}
-						padY={2}
+						fontSize={'32px'}
 						bg={'var(--secondaryColor)'}
 						color={'var(--primaryColor)'}>
 						<Link to='/'>Contrata Pro</Link>

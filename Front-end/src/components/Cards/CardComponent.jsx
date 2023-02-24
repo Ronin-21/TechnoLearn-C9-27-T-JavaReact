@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BsFillPlayCircleFill, BsHeart } from 'react-icons/bs';
 import { FaStar, FaRegStar, FaAngleRight } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { usePutCursosUserMutation } from '../../store/api/apiSlice';
 import Button from '../Button/Button';
 import './Card.css';
 
 const CardComponent = ({ nombreCurso, miniaturaCurso, id, acceso }) => {
+	const [
+		putCursosUser,
+		{ isError, error, isSuccess },
+	] = usePutCursosUserMutation();
+	const idUsuario = useSelector((state) => state.auth.id);
+
+	const handlePutCursos = () => {
+		putCursosUser({ idUsuario, idCurso: id });
+	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			console.log('Exito al agregar curso');
+		} else if (isError) {
+			console.log(error);
+		}
+	}, [isSuccess, isError]);
+
 	return (
 		<div className='card-container'>
 			<div className='card-img-container'>
@@ -25,14 +45,16 @@ const CardComponent = ({ nombreCurso, miniaturaCurso, id, acceso }) => {
 						<FaStar />
 						<FaRegStar />
 					</div>
-					<div className='flex flex-col items-center text-center font-bold'>
+					<div
+						className='flex flex-col items-center text-center font-bold cursor-pointer'
+						onClick={handlePutCursos}>
 						<BsHeart className='card-btn-heart' />
 						<p>Agregar a tu lista de favoritos</p>
 					</div>
 				</div>
 				<div className='card-btn-text'>
 					<p>CURSO {acceso}</p>
-					<Button fontSize={'2xl'} padX={4} padY={2}>
+					<Button fontSize={'24px'}>
 						<Link to={`/courses/${id}`} className='flex items-center gap-3'>
 							Ir al curso <FaAngleRight />
 						</Link>

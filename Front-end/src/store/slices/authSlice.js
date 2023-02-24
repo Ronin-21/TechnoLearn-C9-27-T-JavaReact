@@ -17,16 +17,22 @@ export const authSlice = createSlice({
     initialState: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : emptyUserInfo,
     reducers: {
       logout: state => {
-        state.isLoggedIn = false;
-        localStorage.removeItem('userInfo')
+        state = emptyUserInfo        
+        localStorage.removeItem('userInfo');
+        return state
+      },
+      logIn: state => {
+        const newInfo = JSON.parse(localStorage.getItem('userInfo'));
+        state = newInfo   
+        return state
       },
     },
-    extraReducers: builder => {
-      builder.addMatcher(apiSlice.endpoints.login.matchFulfilled, (state) => {
-        state.isLoggedIn = true;
-      });
-    },
+    // extraReducers: builder => {
+    //   builder.addMatcher(apiSlice.endpoints.login.matchFulfilled, (state) => {
+    //     state.isLoggedIn = true;
+    //   });
+    // },
   });
   
-  export const { logout } = authSlice.actions;
+  export const { logout,logIn } = authSlice.actions;
   export default authSlice.reducer;

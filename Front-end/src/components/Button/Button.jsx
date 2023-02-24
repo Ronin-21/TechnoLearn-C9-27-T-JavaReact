@@ -3,16 +3,20 @@ import './Button.css';
 
 const Button = ({
 	fontSize,
-	padX,
-	padY,
 	bg = 'var(--primaryColor)',
 	color = '#fff',
+	type,
 	children,
 }) => {
 	return (
 		<button
-			style={{ backgroundColor: `${bg}`, color: `${color}` }}
-			className={`cta text-${fontSize} px-${padX} py-${padY} `}>
+			type={type}
+			style={{
+				backgroundColor: `${bg}`,
+				color: `${color}`,
+				fontSize: `${fontSize}`,
+			}}
+			className='cta'>
 			{children}
 		</button>
 	);

@@ -11,11 +11,14 @@ export const apiSlice = createApi({
     getCursos: builder.query({
       query: () => "/cursos/list",
     }),
+    getCursoByID: builder.query({
+      query: (id) => `/cursos/${id}`,
+    }),
     getUsers: builder.query({
       query: () => "/todos",
     }),
-    getCursoByID: builder.query({
-      query: (id) => `/cursos/${id}`,
+    getUserByID: builder.query({
+      query: (id) => `/buscar/${id}`,
     }),
     createUser: builder.mutation({
       query: (userData) => ({
@@ -31,14 +34,31 @@ export const apiSlice = createApi({
         body:  username ,
       }),
     }),
+    putCursosUser: builder.mutation({
+      query: (ids) => ({
+        url: "/agregarCurso",
+        method: "PUT",
+        body:  ids ,
+      }),
+    }),
+    sendNewsletter: builder.mutation({
+      query: (body) => ({
+        url: "/newsletter",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
 
 export const {
   useGetCursosQuery,
-  useGetUsersQuery,
   useGetCursoByIDQuery,
+  useGetUsersQuery,
+  useGetUserByIDQuery,
   useCreateUserMutation,
   useLoginMutation,
+  usePutCursosUserMutation,
+  useSendNewsletterMutation,
 } = apiSlice;

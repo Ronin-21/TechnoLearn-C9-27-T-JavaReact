@@ -9,7 +9,7 @@ import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<Provider api={apiSlice} store={store}>
+		<Provider store={store}>
 			<RouterProvider router={router} />
 		</Provider>
 	</React.StrictMode>

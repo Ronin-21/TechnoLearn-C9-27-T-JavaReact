@@ -1,21 +1,16 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useGetUserByIDQuery } from '../store/api/apiSlice';
+import CardComponent from '../components/Cards/CardComponent';
 import '../styles/profileUser.css';
+import { useSelector } from 'react-redux';
 
 const ProfileUser = () => {
 	// Trae datos del usuario desde el store
 	const datosUsuario = useSelector((state) => state.auth);
-	console.log(datosUsuario);
-
-	//Proteccion de la ruta si no esta logueado
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		if (!datosUsuario.isLoggedIn) {
-			return navigate('/login');
-		}
-	}, []);
+	// Trae datos Actualizados del usuario desde la API
+	const { data } = useGetUserByIDQuery(datosUsuario.id, {
+		refetchOnMountOrArgChange: true,
+	});
 
 	return (
 		<div className='profile-container'>
@@ -37,99 +32,18 @@ const ProfileUser = () => {
 				<div className='title-your-courses'>
 					<h3>Tus cursos</h3>
 				</div>
-				<div className='list-courses'>
-					<div className='your-courses'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='progress-course'>
-							<progress max='100' value='50'></progress>
-							<button>Ir al curso</button>
-						</div>
-					</div>
-					<div className='your-courses'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='progress-course'>
-							<progress max='100' value='50'></progress>
-							<button>Ir al curso</button>
-						</div>
-					</div>
-					<div className='your-courses'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='progress-course'>
-							<progress max='100' value='50'></progress>
-							<button>Ir al curso</button>
-						</div>
-					</div>
-					<div className='your-courses'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='progress-course'>
-							<progress max='100' value='50'></progress>
-							<button>Ir al curso</button>
-						</div>
-					</div>
-					<div className='your-courses'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='progress-course'>
-							<progress max='100' value='50'></progress>
-							<button>Ir al curso</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className='wish-list-container'>
-				<div className='title-wish-list'>
-					<h3>Tus lista de deseos</h3>
-				</div>
-				<div className='list-courses'>
-					<div className='wish-list'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='buy-course'>
-							<button>Comprar curso</button>
-						</div>
-					</div>
-					<div className='wish-list'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='buy-course'>
-							<button>Comprar curso</button>
-						</div>
-					</div>
-					<div className='wish-list'>
-						<div className='details-courses'>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-							<p>Lorem ipsum dolor sit.</p>
-						</div>
-						<div className='buy-course'>
-							<button>Comprar curso</button>
-						</div>
-					</div>
+				<div className='flex flex-wrap items-center justify-center gap-10'>
+					{data?.cursosUsuario.map((e) => {
+						return (
+							<CardComponent
+								key={e.id}
+								id={e.id}
+								acceso={e.acceso}
+								nombreCurso={e.nombreCurso}
+								miniaturaCurso={e.miniaturaCurso}
+							/>
+						);
+					})}
 				</div>
 			</div>
 		</div>

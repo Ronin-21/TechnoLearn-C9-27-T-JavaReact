@@ -7,6 +7,7 @@ import NotFound from '../pages/NotFound';
 import ProfileUser from '../pages/ProfileUser';
 import Register from '../pages/Register';
 import Courses from '../pages/Courses';
+import { ProtectedRoute } from '../components/ProtectedRoute/ProtectedRoute';
 
 export const router = createBrowserRouter([
 	{
@@ -35,7 +36,11 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: '/user',
-						element: <ProfileUser />,
+						element: (
+							<ProtectedRoute redirectTo={'/login'} isAllowed={false}>
+								<ProfileUser />
+							</ProtectedRoute>
+						),
 					},
 					{
 						path: '/login',
