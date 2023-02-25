@@ -17,6 +17,9 @@ export const apiSlice = createApi({
     getCursoByID: builder.query({
       query: (id) => `/cursos/${id}`,
     }),
+    getUserByID: builder.query({
+      query: (id) => `/buscar/${id}`,
+    }),
     createUser: builder.mutation({
       query: (userData) => ({
         url: "/registro",
@@ -45,6 +48,7 @@ export const apiSlice = createApi({
 export const {
   useGetCursosQuery,
   useGetUsersQuery,
+  useGetUserByIDQuery,
   useGetCursoByIDQuery,
   useCreateUserMutation,
   useLoginMutation,

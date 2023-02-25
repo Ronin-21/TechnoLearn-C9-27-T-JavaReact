@@ -5,25 +5,30 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import {
-  useGetUsersQuery,
   usePutCoursesUserMutation,
 } from "../../store/api/apiSlice";
 import "./Card.css";
 
-const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
-  //...........
+const CardComponent = ({
+  nombreCurso,
+  miniaturaCurso,
+  id
+}) => {
+  //...........Ingreso email en login y trae en este estado...................//
   const userEmail = useSelector((state) => state.auth.userEmail);
-  const { data } = useGetUsersQuery();
-  const usuarioDataId = data?.usuarios
-    .filter((e) => e.email === userEmail)
-    .map((e) => e.id)
-    .join();
+  //...........se supone que deberia hacer traerme el id de usuario............//
+  const userId = useSelector((state) => state.auth.id);
+  /* console.log(datosUsuarioFromCard); */
 
-  // console.log(data);
+  /* constante que contiene el id de los cursosUsuario */
 
-  const [putCoursesUser, { isError, error }] = usePutCoursesUserMutation();
-  const putCurso = { idUsuario: parseInt(usuarioDataId), idCurso: id };
+  /*  console.log(usuarioDataId);
+  console.log(cursosUsuarioId); */
 
+  const [putCoursesUser, { isError, error, isSuccess }] =
+    usePutCoursesUserMutation();
+  const cursoAgregar = { idUsuario: userId, idCurso: id };
+  /* console.log(cursoAgregar) */
   return (
     <div className="card-container">
       <div className="card-img-container">
@@ -55,6 +60,16 @@ const CardComponent = ({ nombreCurso, miniaturaCurso, id }) => {
               Ir al curso <FaAngleRight />
             </Link>
           </Button>
+          <button
+            fontSize={"2xl"}
+            padX={4}
+            padY={2}
+            onClick={() => putCoursesUser(cursoAgregar)}
+          >
+            <Link to={`/`} className="flex items-center gap-3">
+              Agregar <FaAngleRight />
+            </Link>
+          </button>
         </div>
       </div>
     </div>
