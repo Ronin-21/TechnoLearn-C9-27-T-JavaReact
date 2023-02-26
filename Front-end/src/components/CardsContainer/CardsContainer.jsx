@@ -25,6 +25,7 @@ export const CardsContainer = () => {
 								key={e.id}
 								id={e.id}
 								acceso={e.acceso}
+								instructor={e.instructor}
 								nombreCurso={e.nombreCurso}
 								miniaturaCurso={e.miniaturaCurso}
 							/>

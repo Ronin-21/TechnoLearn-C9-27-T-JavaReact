@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { FaWindowClose } from 'react-icons/fa';
+import { FaWindowClose, FaTimes } from 'react-icons/fa';
 import './Modal.css';
 
 function Modal({ children, isActive, showModal }) {
@@ -8,7 +8,7 @@ function Modal({ children, isActive, showModal }) {
 	return ReactDOM.createPortal(
 		<div className={`overlay ${!isActive && 'hidden'}`} onClick={showModal}>
 			<div className='modal' onClick={handleModalPropagation}>
-				<FaWindowClose className='modal-close' onClick={showModal} />
+				<FaTimes className='modal-close' onClick={showModal} />
 				{children}
 			</div>
 		</div>,

@@ -7,11 +7,8 @@ import NotFound from '../pages/NotFound';
 import ProfileUser from '../pages/ProfileUser';
 import Register from '../pages/Register';
 import Courses from '../pages/Courses';
-<<<<<<< HEAD
-import { ProtectedRoute } from '../components/ProtectedRoute/ProtectedRoute';
-=======
 import PagePlanes from '../pages/PagePlanes';
->>>>>>> origin/pagePlanes
+import { ProtectedRoute } from '../components/ProtectedRoute/ProtectedRoute';
 
 export const router = createBrowserRouter([
 	{
@@ -38,7 +35,7 @@ export const router = createBrowserRouter([
 						path: '/courses',
 						element: <Courses />,
 					},
-					
+
 					{
 						path: '/user',
 						element: (

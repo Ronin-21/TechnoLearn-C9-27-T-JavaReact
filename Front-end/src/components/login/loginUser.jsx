@@ -37,7 +37,6 @@ const Login = () => {
 			reset();
 		} else {
 			login(data);
-			showLoginModalSuccess();
 			reset();
 		}
 	};
@@ -50,8 +49,9 @@ const Login = () => {
 				JSON.stringify({ isLoggedIn: true, ...user })
 			);
 			dispatch(logIn());
+			showLoginModalSuccess();
 		} else if (isError) {
-			return <div>{error}</div>;
+			showLoginModalError();
 		}
 	}, [isSuccess, isError]);
 
@@ -129,15 +129,21 @@ const Login = () => {
 			</form>
 			<Modal isActive={loginModalError} showModal={showLoginModalError}>
 				<h5 className='modal-title'>Inicio de Sesión Fallido!</h5>
-				<p className='modal-data'>Su usuario ya se encuentra logueado</p>
-				<Button fontSize={'base'}>
-					<Link to='/user'>Ir a mi Perfil</Link>
-				</Button>
+				<p className='modal-data'>
+					{isError ? `${error.data.mensaje}` : 'Su usuario ya se encuentra logueado'}
+				</p>
+				{isError ? (
+					''
+				) : (
+					<Button fontSize={'32px'}>
+						<Link to='/user'>Ir a mi Perfil</Link>
+					</Button>
+				)}
 			</Modal>
 			<Modal isActive={loginModalSuccess} showModal={showLoginModalSuccess}>
 				<h5 className='modal-title'>Inicio de Sesión exitoso!</h5>
 				<p className='modal-data'>Disfruta de nuestros cursos</p>
-				<Button fontSize={'18px'}>
+				<Button fontSize={'32px'}>
 					<Link to='/user'>Ir a mi Perfil</Link>
 				</Button>
 			</Modal>

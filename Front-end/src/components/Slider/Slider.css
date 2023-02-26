@@ -5,7 +5,7 @@
 .slider-img-container img {
 	object-fit: cover;
 	object-position: top;
-	max-height: 800px;
+	max-height: 850px;
 }
 
 .slider-btn {

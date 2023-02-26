@@ -7,7 +7,13 @@ import { usePutCursosUserMutation } from '../../store/api/apiSlice';
 import Button from '../Button/Button';
 import './Card.css';
 
-const CardComponent = ({ nombreCurso, miniaturaCurso, id, acceso }) => {
+const CardComponent = ({
+	nombreCurso,
+	miniaturaCurso,
+	id,
+	acceso,
+	instructor,
+}) => {
 	const [
 		putCursosUser,
 		{ isError, error, isSuccess },
@@ -34,7 +40,8 @@ const CardComponent = ({ nombreCurso, miniaturaCurso, id, acceso }) => {
 			</div>
 			<h5 className='card-title'>{nombreCurso}</h5>
 			<p className='card-text'>
-				<span className='card-title'>Instructor:</span> Alan Cejas
+				<span className='font-bold text-2xl'>Instructor: </span>
+				{instructor}
 			</p>
 			<div className='card-btn-container'>
 				<div className='card-btn-fav'>
