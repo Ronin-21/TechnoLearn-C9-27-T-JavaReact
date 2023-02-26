@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { FaWindowClose, FaTimes } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 import './Modal.css';
 
 function Modal({ children, isActive, showModal }) {

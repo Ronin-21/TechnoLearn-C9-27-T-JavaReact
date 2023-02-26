@@ -1,13 +1,13 @@
-import React from 'react';
 import { useGetCursosQuery } from '../../store/api/apiSlice';
 import CardComponent from '../Cards/CardComponent';
+import Loading from '../loading/Loading';
 import './CardsContainer.css';
 
 export const CardsContainer = () => {
 	const { data, isLoading, isError, error } = useGetCursosQuery();
 
-	if (isLoading) return <div>Loading...</div>;
-	else if (isError) return <div>{error.message}</div>;
+	// Loader
+	if (isLoading) return <Loading />;
 
 	return (
 		<section className='course-section'>

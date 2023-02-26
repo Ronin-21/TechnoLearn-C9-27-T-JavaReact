@@ -1,4 +1,3 @@
-import React, { useRef, useState } from 'react';
 import { BsHeart } from 'react-icons/bs';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import {
@@ -8,9 +7,10 @@ import {
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Button from '../components/Button/Button';
+import Dropdown from '../components/Dropdown/Dropdown';
+import Loading from '../components/loading/Loading';
 import imgBanner from '../assets/img/users.png';
 import '../styles/coursesDetails.css';
-import Dropdown from '../components/Dropdown/Dropdown';
 
 const CourseDetails = () => {
 	// Trae el ID desde la url
@@ -26,7 +26,7 @@ const CourseDetails = () => {
 	};
 
 	// Loader
-	if (isLoading) return <div>Loading...</div>;
+	if (isLoading) return <Loading />;
 
 	return (
 		<div className='curso-container'>

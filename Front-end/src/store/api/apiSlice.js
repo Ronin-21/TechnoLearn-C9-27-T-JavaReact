@@ -20,6 +20,9 @@ export const apiSlice = createApi({
     getUserByID: builder.query({
       query: (id) => `/buscar/${id}`,
     }),
+    getUserByID: builder.query({
+      query: (id) => `/buscar/${id}`,
+    }),
     createUser: builder.mutation({
       query: (userData) => ({
         url: "/registro",

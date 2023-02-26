@@ -25,6 +25,7 @@ const Login = () => {
 	// Hook useForm
 	const {
 		register,
+		resetField,
 		formState: { errors },
 		handleSubmit,
 		reset,

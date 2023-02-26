@@ -26,6 +26,15 @@ export const authSlice = createSlice({
         state = newInfo   
         return state
       },
+      setEmail: (state, action) => {
+        state.userEmail = action.payload
+      },
+      isPremium: state => {
+        state.suscripto = 1
+      },
+      setUserId: (state, action) => {
+        state.userId = action.payload
+      }
     },
     // extraReducers: builder => {
     //   builder.addMatcher(apiSlice.endpoints.login.matchFulfilled, (state) => {

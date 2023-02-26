@@ -1,17 +1,17 @@
-import React from 'react';
-import CardComponent from '../components/Cards/CardComponent';
 import { useGetCursosQuery } from '../store/api/apiSlice';
 import { useSelector } from 'react-redux';
 import { getFilteredCursos } from '../store/slices/cursosSlice';
+import CardComponent from '../components/Cards/CardComponent';
+import Loading from '../components/loading/Loading';
+
 const Courses = () => {
 	const { data, isLoading, isError, error } = useGetCursosQuery();
 	const filteredCursos = useSelector(getFilteredCursos);
 	const coursesShow = filteredCursos.payload.cursos.filteredCursos;
-	// console.log(coursesShow);
 
-	if (isLoading) return <div>Loading...</div>;
-	else if (isError) return <div>{error.message}</div>;
-	//console.log(data);
+	// Loader
+	if (isLoading) return <Loading />;
+
 	return (
 		<>
 			<h4 className='courses-title text-center mt-10'>CURSOS</h4>
