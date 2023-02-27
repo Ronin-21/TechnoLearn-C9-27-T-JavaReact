@@ -7,6 +7,7 @@ import Logo from '../../assets/img/LogoDark.svg';
 import SearchBar from './SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './navBar.css';
+import { getFilteredCursos } from '../../store/slices/cursosSlice';
 
 const Navbar = () => {
 	// Manejo del menu
@@ -32,13 +33,10 @@ const Navbar = () => {
 			<div className='nav-links'>
 				<NavLink to='/'>Inicio</NavLink>
 				<NavLink to='/planes'>Planes</NavLink>
-				<NavLink to='/courses'>Cursos</NavLink>
-				<Button
-					fontSize={'base'}
-					padX={4}
-					padY={2}
-					bg={'var(--backgroundColor)'}
-					color={'var(--tertiaryColor)'}>
+				<NavLink to='/courses' onClick={dispatch(getFilteredCursos([]))}>
+					Cursos
+				</NavLink>
+				<Button bg={'var(--backgroundColor)'} color={'var(--tertiaryColor)'}>
 					<NavLink to='/user'>Perfil</NavLink>
 				</Button>
 				<div className='flex items-center justify-center gap-2'>

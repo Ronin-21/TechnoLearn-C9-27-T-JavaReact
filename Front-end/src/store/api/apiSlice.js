@@ -20,9 +20,6 @@ export const apiSlice = createApi({
     getUserByID: builder.query({
       query: (id) => `/buscar/${id}`,
     }),
-    getUserByID: builder.query({
-      query: (id) => `/buscar/${id}`,
-    }),
     createUser: builder.mutation({
       query: (userData) => ({
         url: "/registro",
@@ -51,6 +48,13 @@ export const apiSlice = createApi({
         body,
       }),
     }),
+    buySuscription: builder.mutation({
+      query: (body,userId) => ({
+        url: `/comprarSuscripcion/${userId}`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -64,4 +68,5 @@ export const {
   useLoginMutation,
   usePutCursosUserMutation,
   useSendNewsletterMutation,
+  useBuySuscriptionMutation
 } = apiSlice;

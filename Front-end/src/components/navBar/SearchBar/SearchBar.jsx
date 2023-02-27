@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaSistrix } from 'react-icons/fa';
-import './SearchBar.css';
-import { useGetCursosQuery } from '../../../store/api/apiSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useGetCursosQuery } from '../../../store/api/apiSlice';
 import { getFilteredCursos } from '../../../store/slices/cursosSlice';
+import './SearchBar.css';
 
 const SearchBar = () => {
 	const [select, setSelect] = useState('');
@@ -30,7 +30,6 @@ const SearchBar = () => {
 	};
 
 	const handleSuggestionClick = (suggestion) => {
-		// setCourseId(suggestion);
 		navigator(`/courses/${suggestion}`);
 		setSuggestions([]);
 		setSelect('');
@@ -38,18 +37,10 @@ const SearchBar = () => {
 
 	const filterCourses = () => {
 		dispatch(getFilteredCursos(suggestions));
-		//console.log(dispatch(getFilteredCursos(suggestions)));
 		setSuggestions([]);
 		setSelect('');
 		navigator(`/courses/${courseId}`);
 	};
-
-	// useEffect(() => {
-	// 	if (courseId !== null) {
-	// 		console.log(courseId);
-	// 		navigator(`/courses/${courseId}`);
-	// 	}
-	// }, [courseId]);
 
 	return (
 		<div className='search'>

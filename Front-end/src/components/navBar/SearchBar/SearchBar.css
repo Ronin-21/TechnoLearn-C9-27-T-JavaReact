@@ -28,6 +28,7 @@
 	height: 40px;
 	width: 1.5em;
 	color: var(--tertiaryColor);
+	cursor: pointer;
 }
 
 .suggestion-container {
