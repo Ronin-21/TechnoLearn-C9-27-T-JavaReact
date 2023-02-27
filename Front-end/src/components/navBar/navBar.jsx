@@ -8,6 +8,8 @@ import SearchBar from './SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './navBar.css';
 import { getFilteredCursos } from '../../store/slices/cursosSlice';
+import Modal from '../Modal/Modal';
+import Login from '../login/loginUser';
 
 const Navbar = () => {
 	// Manejo del menu
