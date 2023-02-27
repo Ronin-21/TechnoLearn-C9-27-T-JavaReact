@@ -14,13 +14,6 @@ export const apiSlice = createApi({
     getUsers: builder.query({
       query: () => "/todos",
     }),
-     buySuscription: builder.mutation({
-      query: (data, userId) => ({
-      url:`/comprarSuscripcion/${userId}`,
-      method: "POST",
-      body: data,
-      }),
-    }),
     getCursoByID: builder.query({
       query: (id) => `/cursos/${id}`,
     }),
@@ -37,6 +30,13 @@ export const apiSlice = createApi({
         method: "POST",
         body: username,
       }),
+    }),
+    buySuscription: builder.mutation({
+     query: ({id, data}) => ({
+     url:`/comprarSuscripcion/${id}`,
+     method: "POST",
+     body: data,
+     }),
     }),
   }),
 });
