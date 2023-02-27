@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl:
       // "https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api",
-      "https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api"
+      "https://technolearn-c9-27-t-javareact-preproduction.up.railway.app/api",
   }),
   endpoints: (builder) => ({
     getCursos: builder.query({
@@ -31,7 +31,7 @@ export const apiSlice = createApi({
       query: (username) => ({
         url: "/login",
         method: "POST",
-        body:  username ,
+        body: username,
       }),
     }),
     putCursosUser: builder.mutation({
@@ -49,15 +49,14 @@ export const apiSlice = createApi({
       }),
     }),
     buySuscription: builder.mutation({
-      query: (body,userId) => ({
-        url: `/comprarSuscripcion/${userId}`,
-        method: "POST",
-        body,
+      query: ({id, data}) => ({
+      url:`/comprarSuscripcion/${id}`,
+      method: "POST",
+      body: data,
       }),
-    }),
+     }),
   }),
 });
-
 
 export const {
   useGetCursosQuery,

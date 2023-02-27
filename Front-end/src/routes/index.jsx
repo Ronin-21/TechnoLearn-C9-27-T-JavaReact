@@ -8,6 +8,7 @@ import ProfileUser from '../pages/ProfileUser';
 import Register from '../pages/Register';
 import Courses from '../pages/Courses';
 import PagePlanes from '../pages/PagePlanes';
+import PaymentMethod from '../pages/PaymentMethod';
 import { ProtectedRoute } from '../components/ProtectedRoute/ProtectedRoute';
 
 export const router = createBrowserRouter([
@@ -51,6 +52,14 @@ export const router = createBrowserRouter([
 					{
 						path: '/planes',
 						element: <PagePlanes />,
+					},
+					{
+						path: '/payment',
+						element: (
+							<ProtectedRoute redirectTo={'/login'} isAllowed={false}>
+								<PaymentMethod />
+							</ProtectedRoute>
+						),
 					},
 				],
 			},

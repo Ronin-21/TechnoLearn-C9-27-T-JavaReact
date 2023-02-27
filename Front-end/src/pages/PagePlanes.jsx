@@ -43,7 +43,7 @@ const PagePlanes = () => {
 						</div>
 						<div className='button-container'>
 							<Button fontSize={'32px'} bg={'#79747E'}>
-								<Link to='/'>Inicia gratis</Link>
+								<Link to='/courses'>Inicia gratis</Link>
 							</Button>
 						</div>
 					</div>
@@ -86,7 +86,7 @@ const PagePlanes = () => {
 								fontSize={'32px'}
 								bg={'var(--secondaryColor)'}
 								color={'var(--tertiaryColor)'}>
-								<Link to='/'>Comprar</Link>
+								<Link to='/payment'>Comprar</Link>
 							</Button>
 						</div>
 					</div>

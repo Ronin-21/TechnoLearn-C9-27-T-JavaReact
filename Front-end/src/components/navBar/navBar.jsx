@@ -59,7 +59,7 @@ const Navbar = () => {
 				<NavLink to='/' onClick={closeMenu}>
 					Inicio
 				</NavLink>
-				<NavLink to='/' onClick={closeMenu}>
+				<NavLink to='/planes' onClick={closeMenu}>
 					Planes
 				</NavLink>
 				<NavLink to='/courses' onClick={closeMenu}>

@@ -6,9 +6,9 @@ import '../styles/profileUser.css';
 
 const ProfileUser = () => {
 	// Trae datos del usuario desde el store
-	const datosUsuario = useSelector((state) => state.auth);
+	const userID = useSelector((state) => state.auth.id);
 	// Trae datos Actualizados del usuario desde la API
-	const { data, isLoading } = useGetUserByIDQuery(datosUsuario.id, {
+	const { data, isLoading } = useGetUserByIDQuery(userID, {
 		refetchOnMountOrArgChange: true,
 	});
 
@@ -21,7 +21,7 @@ const ProfileUser = () => {
 		<div>
 			<div className='profile-container'>
 				<h2 className='profile-title'>BIENVENIDO</h2>
-				<p className='profile-username'>{datosUsuario.nombre}</p>
+				<p className='profile-username'>{data.nombre}</p>
 
 				<div className='profile-avatar'>
 					<img
@@ -31,7 +31,7 @@ const ProfileUser = () => {
 					/>
 					<div className='profile-avatar-info'>
 						<span>EMAIL:</span>
-						<p>{datosUsuario.email}</p>
+						<p>{data.email}</p>
 					</div>
 				</div>
 			</div>

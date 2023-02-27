@@ -20,7 +20,7 @@ export const About = () => {
 					fontSize={'32px'}
 					bg={'var(--secondaryColor)'}
 					color={'var(--primaryColor)'}>
-					<Link to='/'>Contrata Pro</Link>
+					<Link to='/planes'>Contrata Pro</Link>
 				</Button>
 			</div>
 			<div className='about-svg'>
