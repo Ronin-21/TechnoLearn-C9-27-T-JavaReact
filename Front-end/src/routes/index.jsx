@@ -7,6 +7,7 @@ import NotFound from '../pages/NotFound';
 import ProfileUser from '../pages/ProfileUser';
 import Register from '../pages/Register';
 import Courses from '../pages/Courses';
+import PaymentMethod from '../pages/PaymentMethod';
 
 export const router = createBrowserRouter([
 	{
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
 					{
 						path: '/login',
 						element: <LoginUser />,
+					},
+					{
+						path: '/paymentMethod',
+						element: <PaymentMethod />,
 					},
 				],
 			},
