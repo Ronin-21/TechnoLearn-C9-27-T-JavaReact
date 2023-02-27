@@ -1,257 +1,164 @@
-import React from 'react';
+import { BsHeart } from 'react-icons/bs';
+import { FaStar, FaRegStar } from 'react-icons/fa';
+import {
+	useGetCursoByIDQuery,
+	usePutCursosUserMutation,
+} from '../store/api/apiSlice';
+import { useParams, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Button from '../components/Button/Button';
+import Dropdown from '../components/Dropdown/Dropdown';
+import Loading from '../components/loading/Loading';
+import imgBanner from '../assets/img/users.png';
 import '../styles/coursesDetails.css';
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { useGetCursoByIDQuery } from '../store/api/apiSlice';
-import { useLocation } from 'react-router-dom';
 
 const CourseDetails = () => {
-	const location = useLocation();
+	// Trae el ID desde la url
+	const params = useParams();
+	const { data: curso, isLoading } = useGetCursoByIDQuery(params.id);
 
-	const { data: curso, isLoading, isError, error } = useGetCursoByIDQuery(
-		location.pathname
-	);
+	// Agrega el curso al perfil del usuario
+	const [putCursosUser] = usePutCursosUserMutation();
+	const idUsuario = useSelector((state) => state.auth.id);
 
-	if (isLoading) return <div>Loading...</div>;
-	else if (isError) return <div>{error.message}</div>;
+	const handlePutCursos = () => {
+		putCursosUser({ idUsuario, idCurso: curso.id });
+	};
+
+	// Loader
+	if (isLoading) return <Loading />;
 
 	return (
-		<div className='courses-details-container'>
-			<div className='info-top-course'>
-				<div className='video-course'>
-					{/* <img src={curso.miniaturaCurso} alt='' /> */}
+		<div className='curso-container'>
+			<div className='curso-detalle'>
+				<div className='curso-detalle-video'>
+					<div
+						className='flex flex-row-reverse items-center font-bold cursor-pointer gap-3'
+						onClick={handlePutCursos}>
+						<BsHeart className='curso-btn-heart' />
+						<p>Agregar a tu lista de favoritos</p>
+					</div>
 					<iframe
-						maxWidth='600'
-						height='100%'
+						width='100%'
+						height='370px'
 						src={'https://www.youtube.com/embed/' + curso.id_video}
-						frameborder='0'
 						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-						allowfullscreen></iframe>
+						allowFullScreen></iframe>
+					<div className='curso-btn-stars'>
+						<FaStar />
+						<FaStar />
+						<FaStar />
+						<FaStar />
+						<FaRegStar />
+					</div>
 				</div>
-				<div className='description-courses'>
-					<div>
-						<span>{curso.nombreCurso}</span>
-					</div>
-					<div>{curso.descripcionCurso}</div>
-					<div>
-						<span>Creado por: Aldo Chávez</span>
-					</div>
-					<div className='boxes-icon'>
-						<div className='icon-box'>
-							<div>
-								<i>
-									<FaStar />
-								</i>
-							</div>
-							<div>
-								<i>
-									<FaStar />
-								</i>
-							</div>
-							<div>
-								<i>
-									<FaStar />
-								</i>
-							</div>
-							<div>
-								<i>
-									<FaStar />
-								</i>
-							</div>
-							<div>
-								<i>
-									<FaStarHalfAlt />
-								</i>
-							</div>
-						</div>
-					</div>
-					<div>
+				<div className='curso-detalle-info'>
+					<h4 className='curso-detalle-title'>{curso.nombreCurso}</h4>
+					<p className='curso-detalle-content'>{curso.descripcionCurso}</p>
+					<p className='curso-detalle-instructor'>
+						<span>Instructor: </span>
+						{curso.instructor}
+					</p>
+					<div className='flex flex-col'>
 						<p>
-							{' '}
-							Tiempo de duración: 58 hrs Fecha de actualización: 3 de febrero de 2023
-						</p>
-					</div>
-					<div className='buy-container'>
-						<div>
-							<p>A solo</p>
-							<p>$350</p>
-						</div>
-						<div className='btn-buy-container'>
-							<button>Comprar el curso</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className='program-courses-container'>
-				<div className='title-program'>
-					<h3>PROGRAMA</h3>
-				</div>
-				{curso.urls.map((e) => {
-					return (
-						<div className='program-details'>
-							<p>{e.titulo_video}</p>
-							<iframe
-								maxWidth='500'
-								height='400'
-								src={'https://www.youtube.com/embed/' + e.id_video}
-								frameborder='0'
-								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-								allowfullscreen></iframe>
-						</div>
-					);
-				})}
-				{/* <div className='program-details'>
-					<div>Lorem ipsum dolor sit amet.</div>
-					<div>
-						<p>1</p>
-					</div>
-				</div>
-				<div className='program-details'>
-					<div>Lorem ipsum dolor sit amet.</div>
-					<div>
-						<p>1</p>
-					</div>
-				</div>
-				<div className='program-details'>
-					<div>Lorem ipsum dolor sit amet.</div>
-					<div>
-						<p>1</p>
-					</div>
-				</div>
-				<div className='program-details'>
-					<div>Lorem ipsum dolor sit amet.</div>
-					<div>
-						<p>1</p>
-					</div>
-				</div>
-				<div className='program-details'>
-					<div>Lorem ipsum dolor sit amet.</div>
-					<div>
-						<p>1</p>
-					</div>
-				</div> */}
-			</div>
-			<div className='ask-container'>
-				<div className='title-ask'>
-					<h3>¿PARA QUIÉN ES EL CURSO?</h3>
-				</div>
-				<div className='ask-details'>
-					<div className='circle'></div>
-					<div>Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
-				</div>
-				<div className='ask-details'>
-					<div className='circle'></div>
-					<div>Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
-				</div>
-				<div className='ask-details'>
-					<div className='circle'></div>
-					<div>Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
-				</div>
-			</div>
-			<div className='info-instructor-container'>
-				<div className='title-instructor'>
-					<h3>INSTRUCTOR</h3>
-				</div>
-				<div className='img-details-instructor-container'>
-					<div className='img-instructor'>
-						<img src='' alt='img-photo' />
-					</div>
-					<div className='details-instructor'>
-						<p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga!</p>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae.
+							<span>Duración: </span>48 hs
 						</p>
 						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae.
+							<span>Lenguaje: </span>Español
+						</p>
+						<p>
+							<span>Certificado: </span>Digital
+						</p>
+						<p>
+							<span>Nivel: </span>Principiante
+						</p>
+						<p>
+							<span>Fecha del actualizacion: </span>21 de Febrero de 2023
 						</p>
 					</div>
+					<Button
+						fontSize={'32px'}
+						bg={'var(--secondaryColor)'}
+						color={'var(--tertiaryColor)'}>
+						<Link to={'/planes'}>Contrata Pro</Link>
+					</Button>
 				</div>
 			</div>
-			<div className='rating-container'>
-				<div className='title-rating'>
-					<h3>RATING DEL CURSO</h3>
+			<div className='curso-programa'>
+				<div className='curso-programa-title'>
+					<h4>PROGRAMA</h4>
 				</div>
-				<div className='score-container'>
-					<div className='score'>
-						<div>4.7</div>
-						<div className='icon-score'></div>
-					</div>
-					<p>55 estudiantes</p>
+				<div className='curso-programa-dropdown'>
+					{curso.urls.map((e, index) => {
+						return (
+							<Dropdown
+								key={index}
+								titulo={e.titulo_video}
+								miniatura={e.miniatura_video}
+								descripcion={e.descripcion_video}
+							/>
+						);
+					})}
 				</div>
 			</div>
-			<div className='reviews-container'>
-				<div className='title-review'>
-					<h3>RESEÑAS</h3>
+			<div className='curso-banner'>
+				<div className='curso-banner-content'>
+					<h4 className='curso-banner-title'>¿PARA QUIÉN ES EL CURSO?</h4>
+					<p className='curso-banner-text'>
+						El curso esta diseñado para las personas que quieran empezar a aprender
+						JavaScript y busquen formalizar una carrera en el mundo dev.
+					</p>
+					<Button
+						fontSize={'32px'}
+						bg={'var(--secondaryColor)'}
+						color={'var(--tertiaryColor)'}>
+						<Link to={'/planes'}>Contrata Pro</Link>
+					</Button>
 				</div>
-				<div className='reviews-text'>
-					<div className='review-details'>
-						<div className='circle-review'></div>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, at.
-							Placeat, esse vero? Laborum, ea.
-						</p>
-					</div>
-					<div className='boxes'>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-					</div>
+				<div>
+					<img src={imgBanner} alt='users' />
 				</div>
-				<div className='reviews-text'>
-					<div className='review-details'>
-						<div className='circle-review'></div>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, at.
-							Placeat, esse vero? Laborum, ea.
-						</p>
+			</div>
+			<div className='curso-reseñas'>
+				<h4 className='curso-reseñas-title'>RESEÑAS</h4>
+				<div className='curso-reseñas-content'>
+					<div className='curso-reseñas-user'>
+						<div className='flex items-center gap-10'>
+							<div className='curso-reseñas-img'>
+								<span>MJ</span>
+							</div>
+							<div className='flex flex-col gap-5'>
+								<span>Marisol Juárez</span>
+								<p>Es un curso muy bien explicado a detalles</p>
+							</div>
+						</div>
+						<div className='curso-reseñas-stars'>
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaRegStar />
+						</div>
 					</div>
-					<div className='boxes'>
-						<div>
-							<i>
-								<FaStar />
-							</i>
+					<div className='curso-reseñas-user'>
+						<div className='flex items-center gap-10'>
+							<div className='curso-reseñas-img'>
+								<span>MH</span>
+							</div>
+							<div className='flex flex-col gap-5'>
+								<span>Mauricio Hernández</span>
+								<p>
+									Buena elección, recomendable para comenzar a programar en este
+									lenguaje.
+								</p>
+							</div>
 						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
-						</div>
-						<div>
-							<i>
-								<FaStar />
-							</i>
+						<div className='curso-reseñas-stars'>
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaRegStar />
 						</div>
 					</div>
 				</div>

@@ -7,6 +7,9 @@ import NotFound from '../pages/NotFound';
 import ProfileUser from '../pages/ProfileUser';
 import Register from '../pages/Register';
 import Courses from '../pages/Courses';
+import PagePlanes from '../pages/PagePlanes';
+import PaymentMethod from '../pages/PaymentMethod';
+import { ProtectedRoute } from '../components/ProtectedRoute/ProtectedRoute';
 
 export const router = createBrowserRouter([
 	{
@@ -26,20 +29,37 @@ export const router = createBrowserRouter([
 						element: <Register />,
 					},
 					{
-						path: '/cursos/:id',
+						path: '/courses/:id',
 						element: <CourseDetails />,
 					},
 					{
-						path: '/cursos',
+						path: '/courses',
 						element: <Courses />,
 					},
+
 					{
 						path: '/user',
-						element: <ProfileUser />,
+						element: (
+							<ProtectedRoute redirectTo={'/login'} isAllowed={false}>
+								<ProfileUser />
+							</ProtectedRoute>
+						),
 					},
 					{
 						path: '/login',
 						element: <LoginUser />,
+					},
+					{
+						path: '/planes',
+						element: <PagePlanes />,
+					},
+					{
+						path: '/payment',
+						element: (
+							<ProtectedRoute redirectTo={'/login'} isAllowed={false}>
+								<PaymentMethod />
+							</ProtectedRoute>
+						),
 					},
 				],
 			},

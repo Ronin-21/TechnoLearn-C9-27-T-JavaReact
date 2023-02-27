@@ -1,0 +1,19 @@
+.footer {
+	height: 81px;
+	padding: 0 2em;
+	background-color: var(--tertiaryColor);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #b1adca;
+}
+
+.footer img {
+	max-width: 240px;
+}
+
+.footer-redes {
+	display: flex;
+	gap: 0.5em;
+	font-size: 2em;
+}

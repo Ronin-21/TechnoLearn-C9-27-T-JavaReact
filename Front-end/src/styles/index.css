@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,12 +8,13 @@
 /* Aquí definimos las Custom properties */
 :root {
 	--primaryColor: #6734ff;
-	--secondaryColor: #ff0f00;
+	--secondaryColor: #f9db47;
 	--tertiaryColor: #2c2c34;
 	--successColor: #98ed21;
 	--infoColor: #0ae0fc;
-	--warningColor: #ffe30f;
+	--warningColor: #eaea38;
 	--dangerColor: #ff6416;
+	--backgroundColor: #ededf4;
 	--fontPrimary: 'Roboto', sans-serif;
 }
 
@@ -41,6 +42,7 @@ html {
 	width: 100%;
 	font-size: 100%;
 	font-family: var(--tipo-principal);
+	background-color: var(--backgroundColor);
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 }

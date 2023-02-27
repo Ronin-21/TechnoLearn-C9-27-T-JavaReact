@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
-import { useModal } from '../../hook/useModal';
 import { Link, NavLink } from 'react-router-dom';
-import { FaBars, FaTimes, FaUserAlt, FaShoppingCart } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/slices/authSlice';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import Logo from '../../assets/img/LogoDark.svg';
 import SearchBar from './SearchBar/SearchBar';
+import Button from '../Button/Button';
+import './navBar.css';
+import { getFilteredCursos } from '../../store/slices/cursosSlice';
 import Modal from '../Modal/Modal';
 import Login from '../login/loginUser';
-import './navBar.css';
 
 const Navbar = () => {
+	// Manejo del menu
 	const [menuOpen, setMenuOpen] = useState(false);
-	const [loginModal, showLoginModal] = useModal(false);
-
 	const handleMenuOpen = () => setMenuOpen(!menuOpen);
 	const closeMenu = () => setMenuOpen(false);
+
+	// Manejo del state del usurario
+	const { isLoggedIn } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 
 	return (
 		<nav>
 			<Link to='/' onClick={closeMenu}>
-				<h1>LOGO</h1>
+				<img src={Logo} alt='' />
 			</Link>
 			<SearchBar />
 			<div className='menu-container'>
@@ -26,39 +33,50 @@ const Navbar = () => {
 				</button>
 			</div>
 			<div className='nav-links'>
-				<div
-					className='flex items-center justify-center gap-2'>
-					<FaUserAlt />
-					<NavLink to='/login'>
-					<p>LogIn</p>
-					</NavLink>
-				</div>
 				<NavLink to='/'>Inicio</NavLink>
-				<NavLink to='/cursos'>Cursos</NavLink>
-				<NavLink to='/'>Contacto</NavLink>
+				<NavLink to='/planes'>Planes</NavLink>
+				<NavLink to='/courses' onClick={dispatch(getFilteredCursos([]))}>
+					Cursos
+				</NavLink>
+				<Button bg={'var(--backgroundColor)'} color={'var(--tertiaryColor)'}>
+					<NavLink to='/user'>Perfil</NavLink>
+				</Button>
+				<div className='flex items-center justify-center gap-2'>
+					{!isLoggedIn ? (
+						<Button fontSize={'base'} padX={4} padY={2}>
+							<NavLink to='/login'>
+								<p>Log In</p>
+							</NavLink>
+						</Button>
+					) : (
+						<Button fontSize={'base'} padX={4} padY={2} bg={'#1A097A'}>
+							<NavLink to='/' onClick={() => dispatch(logout())}>
+								<p>Log Out</p>
+							</NavLink>
+						</Button>
+					)}
+				</div>
 			</div>
 			<div className={menuOpen ? 'nav-menu active' : 'nav-menu'}>
-				<NavLink to='/login'
-					className='flex align-center justify-center gap-2'
-					>
-					Log In
-				</NavLink>
-				<NavLink to='/' onClick={closeMenu}>
-					Suscríbete
-				</NavLink>
 				<NavLink to='/' onClick={closeMenu}>
 					Inicio
 				</NavLink>
-				<NavLink to='/cursos' onClick={closeMenu}>
+				<NavLink to='/planes' onClick={closeMenu}>
+					Planes
+				</NavLink>
+				<NavLink to='/courses' onClick={closeMenu}>
 					Cursos
 				</NavLink>
-				<NavLink to='/' onClick={closeMenu}>
-					Contacto
+				<NavLink to='/user' onClick={closeMenu}>
+					Perfil
+				</NavLink>
+				<NavLink
+					to='/login'
+					className='flex align-center justify-center gap-2'
+					onClick={closeMenu}>
+					Log In
 				</NavLink>
 			</div>
-			<Modal isActive={loginModal} showModal={showLoginModal}>
-				<Login showModal={showLoginModal} closeMenu={closeMenu} />
-			</Modal>
 		</nav>
 	);
 };

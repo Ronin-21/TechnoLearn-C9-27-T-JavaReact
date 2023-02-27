@@ -1,38 +1,87 @@
-import React from "react";
-function Newsletter(){
-  return( 
-    <>
-      <section className="py-16 bg-orange-20 flex grow justify-around">
-        <div className="w-96 mx-4">
-          <h1 className="text-center font-bold text-4xl mb-8">NEWSLETTER</h1>
-          <form >
-             
-            <input 
-            type="text" 
-            name="nombre"
-            placeholder="Escribe tu nombre" 
-            className="ring-1 ring-gray-300 w-full rounded-md outline-none focus:ring-2 focus:ring-blue-300 px-4  py-2 mb-3"
-            />
-             
-            <input
-            type="email"
-            placeholder="E-mail"
-            className="ring-1 ring-gray-300 w-full rounded-md outline-none focus:ring-2 focus:ring-blue-300 px-4  py-2 mb-1"
-            />
-            <div className="flex justify-between mt-3">
-             <div className="pt-3">
-              <input 
-            type="checkbox"
-            name="terminos" />
-            <label htmlFor="terminos">Aceptar términos</label>
-            </div>
-            <button className="bg-indigo-500 text-white px-5 py-3 rounded-lg text-sm ">Enviar</button>
-            </div>
-          </form>
-        </div>
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useField } from '../../hook/useField';
+import { useModal } from '../../hook/useModal';
+import { useSendNewsletterMutation } from '../../store/api/apiSlice';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
+import './Newsletter.css';
 
-      </section>
-    </>
-  )     
+function Newsletter() {
+	// Hook para manejar el Modal
+	const [newsletterModal, showNewsletterModal] = useModal(false);
+
+	//Hook para manejar los input y el form
+	const username = useField({ type: 'text' });
+	const email = useField({ type: 'email' });
+	const checkbox = useField({
+		type: 'checkbox',
+	});
+	const [sendNewsletter] = useSendNewsletterMutation();
+
+	const handleSendNewsletter = (e) => {
+		e.preventDefault();
+		const newsletterData = { nombre: username.value, email: email.value };
+		sendNewsletter(newsletterData);
+		username.clearValues();
+		email.clearValues();
+		checkbox.clearValues();
+		showNewsletterModal();
+	};
+
+	return (
+		<>
+			<section className='newsletter-container'>
+				<div className='newsletter-content'>
+					<h4 className='newsletter-title'>NEWSLETTER</h4>
+					<p className='newsletter-text'>Recibe nuestras noticias</p>
+					<form
+						method='POST'
+						className='newsletter-form'
+						onSubmit={handleSendNewsletter}>
+						<input
+							type={username.type}
+							onChange={username.onChange}
+							value={username.value}
+							name='nombre'
+							placeholder='Escribe tu nombre'
+							required={true}
+							maxLength={20}
+						/>
+
+						<input
+							type={email.type}
+							onChange={email.onChange}
+							value={email.value}
+							placeholder='E-mail'
+							required={true}
+						/>
+
+						<Button type={'submit'} fontSize={'32px'} bg={'#000'}>
+							Enviar
+						</Button>
+						<div className='newsletter-check'>
+							<input
+								type={checkbox.type}
+								checked={checkbox.value}
+								onChange={checkbox.onChange}
+								name='terminos'
+								id='terminos'
+								required={true}
+							/>
+							<label htmlFor='terminos'>Aceptar políticas de privacidad</label>
+						</div>
+					</form>
+				</div>
+				<Modal isActive={newsletterModal} showModal={showNewsletterModal}>
+					<h5 className='modal-title'>GRACIAS</h5>
+					<p className='modal-data'>Por suscribirte a nuestro newsletter</p>
+					<Button fontSize={'18px'}>
+						<Link to='/courses'>Ir a los cursos</Link>
+					</Button>
+				</Modal>
+			</section>
+		</>
+	);
 }
-export {Newsletter}
+export { Newsletter };
