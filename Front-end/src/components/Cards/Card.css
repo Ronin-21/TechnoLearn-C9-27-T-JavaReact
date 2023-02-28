@@ -1,3 +1,43 @@
+.card-container {
+	height: 600px;
+	max-width: 390px;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #fff;
+	box-shadow: 2px 2px 15px 0px var(--tertiaryColor);
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
+}
+
+.card-containerProfile {
+	height: 500px;
+	max-width: 390px;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #ededf4;
+	box-shadow: 2px 2px 15px 0px var(--tertiaryColor);
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
+}
+
+.card-img-container {
+	position: relative;
+	padding: 0 1em;
+	object-fit: cover;
+}
+
 .btn-play {
 	position: absolute;
 	top: 38%;
@@ -6,7 +46,83 @@
 	color: #ffffffbc;
 }
 
-.card-container {
-	height: 600px;
+.card-title {
+	font-size: 24px;
+	font-weight: 700;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	border-bottom: 2px solid #d9d9d9;
+}
+
+.card-text {
+	width: 100%;
+	font-size: 20px;
+	align-self: flex-start;
+	border-bottom: 2px solid #d9d9d9;
+}
+
+.card-btn-container {
+	height: auto;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.card-btn-fav {
+	width: 130px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: space-between;
+}
+
+.card-btn-stars {
+	display: flex;
+	font-size: 1.7em;
+	gap: 0.3em;
+	align-self: flex-start;
+}
+
+.card-btn-heart {
+	font-size: 2.5em;
+	color: var(--dangerColor);
+	margin-bottom: 0.2em;
+}
+
+.card-btn-text {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-around;
+	gap: 1.5em;
+}
+
+.card-btn-text p {
+	width: 80px;
+	font-size: 24px;
+	text-align: end;
+	font-weight: 700;
+	border-bottom: 5px solid var(--successColor);
+}
+
+.btn-Card {
+	align-self: flex-end;
+	display: flex;
+	align-items: center;
+	gap: 0.3em;
+	padding: 8px 22px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #ffffff;
+	background-color: var(--primaryColor);
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
 }

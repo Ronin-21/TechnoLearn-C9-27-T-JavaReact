@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FaAngleRight } from 'react-icons/fa';
-import { FaAngleLeft } from 'react-icons/fa';
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 import './Slider.css';
 
 const Slider = ({ sliderData }) => {
 	const [currentImage, setCurrentImage] = useState(0);
-	const lenght = Object.keys(sliderData).length;
+	const lenght = sliderData.length;
 
 	const handlePrevSlide = () =>
 		setCurrentImage(currentImage === 0 ? lenght - 1 : currentImage - 1);
@@ -29,10 +30,20 @@ const Slider = ({ sliderData }) => {
 				<FaAngleLeft />
 			</div>
 			<div className='slider-img-container'>
-				<img
-					src={sliderData[currentImage].img}
-					alt={sliderData[currentImage].alt}
-				/>
+				<img src={sliderData[currentImage].img} />
+				<div className='slider-content'>
+					<div>
+						<h2 className='slider-subtitle'>{sliderData[currentImage].pretitle}</h2>
+						<h1 className='slider-title'>{sliderData[currentImage].title}</h1>
+						<h3 className='slider-text'>{sliderData[currentImage].subtitle}</h3>
+					</div>
+					<Button
+						fontSize={'32px'}
+						bg={'var(--secondaryColor)'}
+						color={'var(--primaryColor)'}>
+						<Link to='/planes'>Contrata Pro</Link>
+					</Button>
+				</div>
 			</div>
 			<div className='slider-marks-container'>
 				{sliderData.map((item, index) => {

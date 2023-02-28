@@ -1,18 +1,21 @@
 import React from 'react';
+import Logo from '../../assets/img/LogoLight.svg';
+import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa';
+import './Footer.css';
 
 function Footer() {
 	return (
-		<footer className='flex justify-around bg-slate-400 py-2'>
+		<footer className='footer'>
 			<div>
-				<p>&copy;Techno-learn</p>
-				<p>technolearn@gmail.com</p>
+				<p>Políticas de Privacidad</p>
+				<p>Derechos Reservados</p>
 			</div>
-			<h1>logo</h1>
-			<div className='flex justify-around w-30 py-3'>
-				<img src='' className='w-7 h-7 ' />
-				<img src='' className='w-7 h-7' />
-				<img src='' className='w-7 h-7' />
-				<img src='' className='w-7 h-7' />
+			<img src={Logo} alt='' />
+			<div className='footer-redes'>
+				<FaTiktok />
+				<FaTwitter />
+				<FaInstagram />
+				<FaFacebookF />
 			</div>
 		</footer>
 	);

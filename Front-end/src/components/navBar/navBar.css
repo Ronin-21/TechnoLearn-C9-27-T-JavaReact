@@ -3,14 +3,25 @@ nav {
 	top: 0;
 	left: 0;
 	display: flex;
+	background-color: #fff;
 	align-items: center;
 	justify-content: space-between;
+	box-shadow: 2px 2px 15px 0 var(--tertiaryColor);
 	height: 80px;
 	width: 100%;
 	padding: 0 2rem;
-	background-color: var(--primaryColor);
-	color: #eee;
+	font-weight: 700;
 	z-index: 100;
+}
+
+@media (max-width: 480px) {
+    .number-details {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+       
+    }
+    
 }
 
 .nav-menu {
@@ -35,6 +46,7 @@ nav {
 
 .nav-links {
 	display: flex;
+	align-items: center;
 	gap: 1em;
 }
 
@@ -67,5 +79,6 @@ nav {
 
 	.nav-menu a {
 		font-size: 1.5rem;
+		color: #fff;
 	}
 }

@@ -1,14 +1,14 @@
 import {configureStore, } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/dist/query/react"
 import { apiSlice } from "./api/apiSlice"
-import { cursosSlice } from "./slices/cursosSlice"
-import { authSlice } from "./slices/authSlice";
+import  cursosSlice from "./slices/cursosSlice"
+import  authSlice from "./slices/authSlice";
 
 export const store = configureStore({
     reducer: {
-        cursos: cursosSlice.reducer,
+        cursos: cursosSlice,
         
-        auth: authSlice.reducer,
+        auth: authSlice,
     
         [apiSlice.reducerPath]: apiSlice.reducer,
     },

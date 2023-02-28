@@ -1,123 +1,60 @@
-import React from "react";
-import "../styles/profileUser.css";
+import { useGetUserByIDQuery } from '../store/api/apiSlice';
+import { useSelector } from 'react-redux';
+import Loading from '../components/loading/Loading';
+import CardComponentProfile from '../components/Cards/CardComponentProfile';
+import '../styles/profileUser.css';
+
 const ProfileUser = () => {
-    return (
-        <div className="profile-container">
-            <div className="title-welcome">
-                <h2>BIENVENIDO</h2>
-            </div>
-            <div className="deatils-profile">
-                <div className="profile-center">
-                    <div className="img-profile-container">
-                        <img src="" alt="" />
-                    </div>
-                    <div className="profile-details">
-                        <p>Lorem, ipsum dolor.</p>
-                        <p>Lorem, ipsum dolor.</p>
-                    </div>
-                </div>
-            </div>
-            <div className="your-courses-container">
-                <div className="title-your-courses">
-                    <h3>Tus cursos</h3>
-                </div>
-                <div className="list-courses">
-                    <div className="your-courses">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="progress-course">
-                            <progress max="100" value="50"></progress>
-                            <button>Ir al curso</button>
-                        </div>
-                    </div>
-                    <div className="your-courses">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="progress-course">
-                            <progress max="100" value="50"></progress>
-                            <button>Ir al curso</button>
-                        </div>
-                    </div>
-                    <div className="your-courses">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="progress-course">
-                            <progress max="100" value="50"></progress>
-                            <button>Ir al curso</button>
-                        </div>
-                    </div>
-                    <div className="your-courses">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="progress-course">
-                            <progress max="100" value="50"></progress>
-                            <button>Ir al curso</button>
-                        </div>
-                    </div>
-                    <div className="your-courses">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="progress-course">
-                            <progress max="100" value="50"></progress>
-                            <button>Ir al curso</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="wish-list-container">
-                <div className="title-wish-list">
-                    <h3>Tus lista de deseos</h3>
-                </div>
-                <div className="list-courses">
-                    <div className="wish-list">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="buy-course">
-                            <button>Comprar curso</button>
-                        </div>
-                    </div>
-                    <div className="wish-list">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="buy-course">
-                            <button>Comprar curso</button>
-                        </div>
-                    </div>
-                    <div className="wish-list">
-                        <div className="details-courses">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <div className="buy-course">
-                            <button>Comprar curso</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+	// Trae datos del usuario desde el store
+	const userID = useSelector((state) => state.auth.id);
+	// Trae datos Actualizados del usuario desde la API
+	const { data, isLoading } = useGetUserByIDQuery(userID, {
+		refetchOnMountOrArgChange: true,
+	});
+
+	const idUserAvatar = Math.floor(Math.random() * 100);
+
+	// Loader
+	if (isLoading) return <Loading />;
+
+	return (
+		<div>
+			<div className='profile-container'>
+				<h2 className='profile-title'>BIENVENIDO</h2>
+				<p className='profile-username'>{data.nombre}</p>
+
+				<div className='profile-avatar'>
+					<img
+						className='profile-avatar-img'
+						src={`https://randomuser.me/api/portraits/men/${idUserAvatar}.jpg`}
+						alt='foto de perfil'
+					/>
+					<div className='profile-avatar-info'>
+						<span>EMAIL:</span>
+						<p>{data.email}</p>
+					</div>
+				</div>
+			</div>
+			<div className='profile-courses-container'>
+				<h4 className='profile-courses-title'>Cursos que estas tomando</h4>
+
+				<div className='profile-courses-list'>
+					{data?.cursosUsuario.map((e) => {
+						return (
+							<CardComponentProfile
+								key={e.id}
+								id={e.id}
+								data={data}
+								instructor={e.instructor}
+								nombreCurso={e.nombreCurso}
+								miniaturaCurso={e.miniaturaCurso}
+							/>
+						);
+					})}
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default ProfileUser;
