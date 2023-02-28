@@ -137,7 +137,9 @@ public class UsuarioService {
             usuarioRepository.save(usuario);
             return new MensajeDTO("Gracias por tu compra");
         } else {
-            return new MensajeDTO("Tarjeta invalida");
+            throw new GeneralException("Tarjeta invalida, compruebe los datos ingresados " +
+                    "e intentelo nuevamente"
+                    , HttpStatus.UNAUTHORIZED);
         }
     }
 
