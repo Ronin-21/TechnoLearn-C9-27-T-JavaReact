@@ -35,7 +35,7 @@ const Navbar = () => {
 			<div className='nav-links'>
 				<NavLink to='/'>Inicio</NavLink>
 				<NavLink to='/planes'>Planes</NavLink>
-				<NavLink to='/courses' onClick={dispatch(getFilteredCursos([]))}>
+				<NavLink to='/courses' onClick={() => dispatch(getFilteredCursos([]))}>
 					Cursos
 				</NavLink>
 				<Button bg={'var(--backgroundColor)'} color={'var(--tertiaryColor)'}>

@@ -21,8 +21,6 @@ export const CardsContainer = () => {
 		setRandomCourses(randomCourses);
 	};
 
-	console.log(randomCourses);
-
 	if (isLoading) return <div>Loading...</div>;
 	else if (isError) return <div>{error.message}</div>;
 
