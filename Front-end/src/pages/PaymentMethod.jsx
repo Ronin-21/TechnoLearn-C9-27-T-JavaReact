@@ -198,7 +198,7 @@ const PaymentMethod = () => {
 				<h5 className='modal-title'>BIENVENIDO</h5>
 				<p className='modal-data'>Accede a tus cursos ilimitadamente</p>
 				<Button fontSize={'32px'}>
-					<Link to='/coursos'>Ir a los cursos</Link>
+					<Link to='/courses'>Ir a los cursos</Link>
 				</Button>
 				<Button fontSize={'32px'} color={'var(--tertiaryColor)'} bg={'#fff'}>
 					<Link to='/user'>Ir a mi Perfil</Link>

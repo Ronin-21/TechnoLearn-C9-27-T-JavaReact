@@ -20,9 +20,7 @@ export const CardsContainer = () => {
 		}
 		setRandomCourses(randomCourses);
 	};
-
-	console.log(randomCourses);
-
+/* console.log(randomCourses); */
 	if (isLoading) return <div>Loading...</div>;
 	else if (isError) return <div>{error.message}</div>;
 
@@ -45,9 +43,10 @@ export const CardsContainer = () => {
 										acceso={e.acceso}
 										nombreCurso={e.nombreCurso}
 										miniaturaCurso={e.miniaturaCurso}
+										
 									/>
 								);
-						  })
+						})
 						: data.cursos.slice(0, 6).map((e) => {
 								return (
 									<CardComponent
@@ -56,9 +55,10 @@ export const CardsContainer = () => {
 										acceso={e.acceso}
 										nombreCurso={e.nombreCurso}
 										miniaturaCurso={e.miniaturaCurso}
+										suscripto={e.suscripto}
 									/>
 								);
-						  })}
+						})}
 				</div>
 			</div>
 		</section>
