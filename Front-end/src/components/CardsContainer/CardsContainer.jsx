@@ -43,7 +43,6 @@ export const CardsContainer = () => {
 										acceso={e.acceso}
 										nombreCurso={e.nombreCurso}
 										miniaturaCurso={e.miniaturaCurso}
-										
 									/>
 								);
 						})
@@ -55,7 +54,6 @@ export const CardsContainer = () => {
 										acceso={e.acceso}
 										nombreCurso={e.nombreCurso}
 										miniaturaCurso={e.miniaturaCurso}
-										suscripto={e.suscripto}
 									/>
 								);
 						})}
