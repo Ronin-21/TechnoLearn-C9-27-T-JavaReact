@@ -38,12 +38,6 @@ const ComponentViewCourses = ({ data, idCard, isActive }) => {
 				width='1300px'
 				height='700px'
 			/>
-			{/* <div className='slider-video-container'>
-				<iframe
-					src={`https://www.youtube.com/embed/${videosList[currentVideo]}`}
-					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-					allowFullScreen></iframe>
-			</div> */}
 			<div className='btn-video right' onClick={handleNextSlide}>
 				<FaAngleRight />
 			</div>

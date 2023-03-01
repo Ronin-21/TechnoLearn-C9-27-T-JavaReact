@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { FaAngleRight } from 'react-icons/fa';
 import { useModal } from '../../hook/useModal';
@@ -16,10 +16,7 @@ const CardComponentProfile = ({
 	const [profileModal, showprofileModal] = useModal(true);
 	const [viewId, setViewId] = useState(null);
 
-	/* cardComponent es donde aparece el modal, seteado con el
-id de cada card esto lo que hace es solamente identificar
-en otro componente los key de un grupo de videos y no todos */
-	const handleClicks = () => {
+	const handlePlay = () => {
 		showprofileModal();
 		setViewId(id);
 	};
@@ -35,7 +32,7 @@ en otro componente los key de un grupo de videos y no todos */
 				<span className='font-bold text-2xl'>Instructor: </span>
 				{instructor}
 			</p>
-			<button className='btn-Card' onClick={handleClicks}>
+			<button className='btn-Card' onClick={handlePlay}>
 				Reproducir <FaAngleRight />
 			</button>
 			<Modal isActive={profileModal} showModal={showprofileModal}>

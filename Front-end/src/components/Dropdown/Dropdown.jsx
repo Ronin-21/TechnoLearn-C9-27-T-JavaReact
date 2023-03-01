@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { RiArrowDownSFill } from 'react-icons/ri';
+import './Dropdown.css';
 
 const Dropdown = ({ index, titulo, miniatura, descripcion }) => {
 	const [openDropdown, setOpenDropdown] = useState(false);

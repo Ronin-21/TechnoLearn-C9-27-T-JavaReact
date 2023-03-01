@@ -1,4 +1,3 @@
-import React from 'react';
 import { GoCheck } from 'react-icons/go';
 import certificateSvg from '../../assets/img/Certificado.svg';
 import './CertificateBanner.css';

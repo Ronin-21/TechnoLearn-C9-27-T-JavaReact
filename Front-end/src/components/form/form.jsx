@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCreateUserMutation } from '../../store/api/apiSlice';
 import { useModal } from '../../hook/useModal';
@@ -51,7 +51,7 @@ const Form = () => {
 				action='#'
 				method='POST'
 				onSubmit={handleSubmit(onSubmit)}>
-				<div>
+				<div className='flex flex-col items-center'>
 					<input
 						placeholder='Nombre'
 						type='text'
@@ -69,7 +69,7 @@ const Form = () => {
 						</p>
 					)}
 				</div>
-				<div>
+				<div className='flex flex-col items-center'>
 					<label className='sr-only'></label>
 					<input
 						placeholder='Email'
@@ -90,7 +90,7 @@ const Form = () => {
 						</p>
 					)}
 				</div>
-				<div>
+				<div className='flex flex-col items-center'>
 					<input
 						placeholder='Contraseña'
 						type='password'
@@ -116,7 +116,7 @@ const Form = () => {
 						</p>
 					)}
 				</div>
-				<div>
+				<div className='flex flex-col items-center'>
 					<input
 						placeholder='Confirmar contraseña'
 						type='password'

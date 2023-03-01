@@ -2,12 +2,16 @@ import { useEffect } from 'react';
 import { FaLock } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { useBuySuscriptionMutation } from '../store/api/apiSlice';
+import { Link } from 'react-router-dom';
+import {
+	useBuySuscriptionMutation,
+	useGetUserByIDQuery,
+} from '../store/api/apiSlice';
 import { useModal } from '../hook/useModal';
 import InputMask from 'react-input-mask';
 import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
-import { Link } from 'react-router-dom';
+import Loading from '../components/loading/Loading';
 import mastercard from '../assets/img/mastercard-logo.png';
 import visa from '../assets/img/visa-logo.png';
 import american from '../assets/img/american-logo.png';
@@ -25,11 +29,35 @@ const PaymentMethod = () => {
 		reset,
 	} = useForm();
 
+	// Trae el ID del usuario desde el store
 	const userID = useSelector((state) => state.auth.id);
+
+	// Query para traer datos del usuario desde la API
+	const { data: user } = useGetUserByIDQuery(userID);
+
+	// Query que ejecuta el POST a la API
 	const [
 		buySuscription,
-		{ isError, isSuccess, error },
+		{ isError, isSuccess, error, isLoading },
 	] = useBuySuscriptionMutation();
+
+	// Logica de compra de suscripcion
+	const submit = (data) => {
+		if (!user.suscripto) {
+			const paymentData = {
+				nombreTitular: data.nombreTitular,
+				numeroTarjeta: data.numeroTarjeta,
+				fechaExpiracion: data.fechaExpiracion,
+				cvc: parseInt(data.cvc),
+			};
+			buySuscription({ id: userID, data: paymentData });
+			reset();
+		} else {
+			showPaymentModalError();
+			console.log(user.suscripto);
+			reset();
+		}
+	};
 
 	// Logica para cuando el envio es exitoso
 	useEffect(() => {
@@ -37,20 +65,12 @@ const PaymentMethod = () => {
 			reset();
 			showPaymentModalSuccess();
 		} else if (isError) {
-			console.log(error.data.message);
 			showPaymentModalError();
 		}
 	}, [isSuccess, isError]);
 
-	const submit = (data) => {
-		const paymentData = {
-			nombreTitular: data.nombreTitular,
-			numeroTarjeta: data.numeroTarjeta,
-			fechaExpiracion: data.fechaExpiracion,
-			cvc: parseInt(data.cvc),
-		};
-		buySuscription({ id: userID, data: paymentData });
-	};
+	// Loader
+	if (isLoading) return <Loading />;
 
 	return (
 		<form className='payment-container' onSubmit={handleSubmit(submit)}>
@@ -197,8 +217,10 @@ const PaymentMethod = () => {
 				</div>
 			</div>
 			<Modal isActive={paymentModalError} showModal={showPaymentModalError}>
-				<h5 className='modal-title'>Ocurrio un erro!</h5>
-				<p className='modal-data'>{error?.data.message}</p>
+				<h5 className='modal-title'>Ocurrio un error!</h5>
+				<p className='modal-data'>
+					{error?.data.message ?? 'Usted ya posee una suscripción activa'}
+				</p>
 			</Modal>
 			<Modal isActive={paymentModalSuccess} showModal={showPaymentModalSuccess}>
 				<h5 className='modal-title'>BIENVENIDO</h5>

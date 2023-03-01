@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLoginMutation } from '../../store/api/apiSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -25,7 +25,6 @@ const Login = () => {
 	// Hook useForm
 	const {
 		register,
-		resetField,
 		formState: { errors },
 		handleSubmit,
 		reset,

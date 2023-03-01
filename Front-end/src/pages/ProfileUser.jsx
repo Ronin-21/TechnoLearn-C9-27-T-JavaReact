@@ -30,10 +30,6 @@ const ProfileUser = () => {
 						src={`https://randomuser.me/api/portraits/men/${idUserAvatar}.jpg`}
 						alt='foto de perfil'
 					/>
-					{/* <div className='profile-avatar-info'>
-						<span>EMAIL:</span>
-						<p>{data.email}</p>
-					</div> */}
 				</div>
 				<p className='profile-username'>{data.nombre}</p>
 			</div>

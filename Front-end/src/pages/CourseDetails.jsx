@@ -1,12 +1,16 @@
-import { BsHeart } from 'react-icons/bs';
+import { useEffect } from 'react';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import {
 	useGetCursoByIDQuery,
+	useGetUserByIDQuery,
 	usePutCursosUserMutation,
 } from '../store/api/apiSlice';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useModal } from '../hook/useModal';
 import ReactPlayer from 'react-player/youtube';
+import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
 import Dropdown from '../components/Dropdown/Dropdown';
 import Loading from '../components/loading/Loading';
@@ -14,17 +18,47 @@ import imgBanner from '../assets/img/users.png';
 import '../styles/coursesDetails.css';
 
 const CourseDetails = () => {
-	// Trae el ID desde la url
+	// Logica para los Modales
+	const [modalAgregarSuccess, showModalAgregarSuccess] = useModal();
+	const [modalLoginOnly, showModalLoginOnly] = useModal();
+	const [modalCursoRepetido, showModalCursoRepetido] = useModal();
+	const [modalUserPro, showModalUserPro] = useModal();
+
+	// Trae el ID desde la API
 	const params = useParams();
 	const { data: curso, isLoading } = useGetCursoByIDQuery(params.id);
 
 	// Agrega el curso al perfil del usuario
-	const [putCursosUser] = usePutCursosUserMutation();
-	const idUsuario = useSelector((state) => state.auth.id);
+	const [putCursosUser, { isSuccess }] = usePutCursosUserMutation();
+	const usuarioStore = useSelector((state) => state.auth);
 
+	// Query para traer datos del usuario desde la API
+	const { data: user } = useGetUserByIDQuery(usuarioStore.id, {
+		refetchOnMountOrArgChange: true,
+	});
+
+	// Logica para comparar estado del corazon de favoritos
+	let isActiveCourse = user?.cursosUsuario.some((e) => e.id === curso?.id);
+
+	// Condicionales y manejador del boton agregar a favoritos
 	const handlePutCursos = () => {
-		putCursosUser({ idUsuario, idCurso: curso.id });
+		if (!usuarioStore.isLoggedIn) {
+			showModalLoginOnly();
+		} else if (isActiveCourse) {
+			showModalCursoRepetido();
+		} else if (curso.acceso === 'PRO' && user?.suscripto === 0) {
+			showModalUserPro();
+		} else if (curso.acceso || user?.suscripto === 1) {
+			putCursosUser({ idUsuario: usuarioStore.id, idCurso: curso.id });
+		}
 	};
+
+	// Manda un modal de exito
+	useEffect(() => {
+		if (isSuccess) {
+			showModalAgregarSuccess();
+		}
+	}, [isSuccess]);
 
 	// Loader
 	if (isLoading) return <Loading />;
@@ -36,7 +70,11 @@ const CourseDetails = () => {
 					<div
 						className='flex flex-row-reverse items-center font-bold cursor-pointer gap-3'
 						onClick={handlePutCursos}>
-						<BsHeart className='curso-btn-heart' />
+						{isActiveCourse ? (
+							<BsHeartFill className='curso-btn-heart' />
+						) : (
+							<BsHeart className='curso-btn-heart' />
+						)}
 						<p>Agregar a tu lista de favoritos</p>
 					</div>
 					<ReactPlayer
@@ -44,12 +82,6 @@ const CourseDetails = () => {
 						width='100%'
 						height='370px'
 					/>
-					{/* <iframe
-						width='100%'
-						height='370px'
-						src={'https://www.youtube.com/embed/' + curso.id_video}
-						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-						allowFullScreen></iframe> */}
 					<div className='curso-btn-stars'>
 						<FaStar />
 						<FaStar />
@@ -169,6 +201,26 @@ const CourseDetails = () => {
 					</div>
 				</div>
 			</div>
+			<Modal isActive={modalLoginOnly} showModal={showModalLoginOnly}>
+				<h1 className='modal-title'>Aún no has iniciado sesion?</h1>
+				<p className='modal-data'>
+					Por favor inicia sesion o regístrate para disfrutar de nuestros cursos
+				</p>
+			</Modal>
+			<Modal isActive={modalUserPro} showModal={showModalUserPro}>
+				<h1 className='modal-title'>Contenido de suscripción Pro</h1>
+				<p className='modal-data'>
+					Necesitas estar suscripto para poder agregar este curso
+				</p>
+			</Modal>
+			<Modal isActive={modalAgregarSuccess} showModal={showModalAgregarSuccess}>
+				<h1 className='modal-title'>Se agrego el curso con éxito!</h1>
+				<p className='modal-data'>Disfruta del contenido del curso en tu perfil</p>
+			</Modal>
+			<Modal isActive={modalCursoRepetido} showModal={showModalCursoRepetido}>
+				<h1 className='modal-title'>Contenido ya disponible</h1>
+				<p className='modal-data'>Ya posees este curso agregado a tu perfil</p>
+			</Modal>
 		</div>
 	);
 };

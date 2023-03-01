@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useGetCursosQuery } from '../../store/api/apiSlice';
 import CardComponent from '../Cards/CardComponent';
+import Loading from '../loading/Loading';
 import './CardsContainer.css';
 
 export const CardsContainer = () => {
-	const { data, isLoading, isError, error } = useGetCursosQuery();
+	const { data, isLoading } = useGetCursosQuery();
 	const [statesViews, setStatesViews] = useState('');
 	const [randomCourses, setRandomCourses] = useState([]);
 	const [selectButtons, setSelectButtons] = useState(false);
@@ -27,8 +28,7 @@ export const CardsContainer = () => {
 		setRandomCourses(randomCourses);
 	};
 
-	if (isLoading) return <div>Loading...</div>;
-	else if (isError) return <div>{error.message}</div>;
+	if (isLoading) return <Loading />;
 
 	return (
 		<section className='course-section'>

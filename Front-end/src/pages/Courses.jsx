@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { getFilteredCursos } from '../store/slices/cursosSlice';
 import CardComponent from '../components/Cards/CardComponent';
+import CoursesContainer from '../components/CoursesContainer/CoursesContainer';
 import cursosBg from '../assets/img/cursosBackground.png';
 import cursosSvg from '../assets/img/cursosSvg.png';
 import logo from '../assets/img/LogoLightV2.svg';
 import '../styles/Courses.css';
-import CoursesContainer from '../components/CoursesContainer/CoursesContainer';
 
 const Courses = () => {
 	const filteredCursos = useSelector(getFilteredCursos);

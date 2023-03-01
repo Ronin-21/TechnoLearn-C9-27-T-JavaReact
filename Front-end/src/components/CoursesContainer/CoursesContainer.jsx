@@ -11,7 +11,7 @@ const CoursesContainer = () => {
 		<div className='courses-body-container'>
 			<h4 className='courses-body-title'>CURSOS GRATIS</h4>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 cards-container'>
-				{data.cursos
+				{data?.cursos
 					.filter((e) => e.acceso === 'FREE')
 					.map((e) => {
 						return (
