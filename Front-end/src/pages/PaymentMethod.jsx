@@ -37,6 +37,7 @@ const PaymentMethod = () => {
 			reset();
 			showPaymentModalSuccess();
 		} else if (isError) {
+			console.log(error.data.message);
 			showPaymentModalError();
 		}
 	}, [isSuccess, isError]);
@@ -175,7 +176,12 @@ const PaymentMethod = () => {
 							</p>
 						</div>
 						<div className='button-container button-payment'>
-							<button type='submit'>Completar Compra</button>
+							<Button
+								fontSize={'32px'}
+								bg={'var(--secondaryColor)'}
+								color={'var(--tertiaryColor)'}>
+								<Link to='/courses'>Completar Compra</Link>
+							</Button>
 						</div>
 						<div className='extra-info'>
 							<div className='icon-container'>
@@ -192,13 +198,13 @@ const PaymentMethod = () => {
 			</div>
 			<Modal isActive={paymentModalError} showModal={showPaymentModalError}>
 				<h5 className='modal-title'>Ocurrio un erro!</h5>
-				<p className='modal-data'>{error?.data.mensaje}</p>
+				<p className='modal-data'>{error?.data.message}</p>
 			</Modal>
 			<Modal isActive={paymentModalSuccess} showModal={showPaymentModalSuccess}>
 				<h5 className='modal-title'>BIENVENIDO</h5>
 				<p className='modal-data'>Accede a tus cursos ilimitadamente</p>
 				<Button fontSize={'32px'}>
-					<Link to='/coursos'>Ir a los cursos</Link>
+					<Link to='/courses'>Ir a los cursos</Link>
 				</Button>
 				<Button fontSize={'32px'} color={'var(--tertiaryColor)'} bg={'#fff'}>
 					<Link to='/user'>Ir a mi Perfil</Link>

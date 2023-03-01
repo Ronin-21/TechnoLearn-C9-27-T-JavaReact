@@ -17,6 +17,10 @@
 	gap: 1em;
 }
 
+.about-box button:hover {
+	background-color: #dab204 !important;
+}
+
 .about-svg {
 	width: 480px;
 }

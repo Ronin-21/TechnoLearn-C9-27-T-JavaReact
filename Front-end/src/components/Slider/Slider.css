@@ -8,6 +8,10 @@
 	max-height: 850px;
 }
 
+.slider-content button:hover {
+	background-color: #dab204 !important;
+}
+
 .slider-btn {
 	position: absolute;
 	top: 50%;

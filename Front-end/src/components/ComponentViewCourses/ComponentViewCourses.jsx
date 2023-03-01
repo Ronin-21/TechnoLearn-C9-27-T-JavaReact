@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
+import ReactPlayer from 'react-player/youtube';
 import './ComponentViewCourses.css';
 
-const ComponentViewCourses = ({ data, idCard }) => {
+const ComponentViewCourses = ({ data, idCard, isActive }) => {
 	// Logica para el slider
 	/* seccion donde permite setear que video ver recorrer un array a travez
 	de un boton tipo flecha */
@@ -31,12 +32,18 @@ const ComponentViewCourses = ({ data, idCard }) => {
 			<div className='btn-video left' onClick={handlePrevSlide}>
 				<FaAngleLeft />
 			</div>
-			<div className='slider-video-container'>
+			<ReactPlayer
+				url={`https://www.youtube.com/embed/${videosList[currentVideo]}`}
+				playing={isActive}
+				width='1300px'
+				height='700px'
+			/>
+			{/* <div className='slider-video-container'>
 				<iframe
 					src={`https://www.youtube.com/embed/${videosList[currentVideo]}`}
 					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
 					allowFullScreen></iframe>
-			</div>
+			</div> */}
 			<div className='btn-video right' onClick={handleNextSlide}>
 				<FaAngleRight />
 			</div>

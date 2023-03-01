@@ -131,21 +131,23 @@ const Login = () => {
 			<Modal isActive={loginModalError} showModal={showLoginModalError}>
 				<h5 className='modal-title'>Inicio de Sesión Fallido!</h5>
 				<p className='modal-data'>
-					{isError ? `${error.data.mensaje}` : 'Su usuario ya se encuentra logueado'}
+					{isError
+						? `${error?.data.mensaje ?? 'Correo inválido'}`
+						: 'Su usuario ya se encuentra logueado'}
 				</p>
 				{isError ? (
 					''
 				) : (
 					<Button fontSize={'32px'}>
-						<Link to='/user'>Ir a mi Perfil</Link>
+						<Link to='/user'>Ir a mi perfil</Link>
 					</Button>
 				)}
 			</Modal>
 			<Modal isActive={loginModalSuccess} showModal={showLoginModalSuccess}>
-				<h5 className='modal-title'>Inicio de Sesión exitoso!</h5>
+				<h5 className='modal-title'>Inicio de sesión exitoso!</h5>
 				<p className='modal-data'>Disfruta de nuestros cursos</p>
 				<Button fontSize={'32px'}>
-					<Link to='/user'>Ir a mi Perfil</Link>
+					<Link to='/user'>Ir a mi perfil</Link>
 				</Button>
 			</Modal>
 		</div>

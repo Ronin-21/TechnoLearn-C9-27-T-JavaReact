@@ -48,7 +48,7 @@ const SearchBar = () => {
 				<input
 					className='search-input'
 					type='text'
-					placeholder='Search'
+					placeholder='Busca tu curso'
 					value={select}
 					onChange={handleInputChange}></input>
 				<FaSistrix className='search-icon' onClick={() => filterCourses()} />

@@ -7,6 +7,10 @@
 	justify-content: center;
 }
 
+.register-container button:hover {
+	background-color: #1a097a !important;
+}
+
 .register-title {
 	font-size: 56px;
 	font-weight: 700;

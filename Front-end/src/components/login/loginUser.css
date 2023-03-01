@@ -7,6 +7,10 @@
 	justify-content: center;
 }
 
+.login-container button:hover {
+	background-color: #1a097a !important;
+}
+
 .login-title {
 	font-size: 56px;
 	font-weight: 700;

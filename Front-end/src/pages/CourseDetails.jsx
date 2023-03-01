@@ -6,6 +6,7 @@ import {
 } from '../store/api/apiSlice';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ReactPlayer from 'react-player/youtube';
 import Button from '../components/Button/Button';
 import Dropdown from '../components/Dropdown/Dropdown';
 import Loading from '../components/loading/Loading';
@@ -38,12 +39,17 @@ const CourseDetails = () => {
 						<BsHeart className='curso-btn-heart' />
 						<p>Agregar a tu lista de favoritos</p>
 					</div>
-					<iframe
+					<ReactPlayer
+						url={'https://www.youtube.com/embed/' + curso.id_video}
+						width='100%'
+						height='370px'
+					/>
+					{/* <iframe
 						width='100%'
 						height='370px'
 						src={'https://www.youtube.com/embed/' + curso.id_video}
 						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-						allowFullScreen></iframe>
+						allowFullScreen></iframe> */}
 					<div className='curso-btn-stars'>
 						<FaStar />
 						<FaStar />

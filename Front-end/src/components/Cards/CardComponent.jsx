@@ -63,7 +63,7 @@ const CardComponent = ({
 					<p>CURSO {acceso}</p>
 					<Button fontSize={'24px'}>
 						<Link to={`/courses/${id}`} className='flex items-center gap-3'>
-							Ir al curso <FaAngleRight />
+							Ver más <FaAngleRight />
 						</Link>
 					</Button>
 				</div>

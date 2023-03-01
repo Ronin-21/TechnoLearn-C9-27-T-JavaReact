@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux';
 import { getFilteredCursos } from '../store/slices/cursosSlice';
 import CardComponent from '../components/Cards/CardComponent';
-import CoursesFree from '../components/CoursesContainer/CoursesFree';
-import CoursesPro from '../components/CoursesContainer/CoursesPro';
 import cursosBg from '../assets/img/cursosBackground.png';
 import cursosSvg from '../assets/img/cursosSvg.png';
 import logo from '../assets/img/LogoLightV2.svg';
 import '../styles/Courses.css';
+import CoursesContainer from '../components/CoursesContainer/CoursesContainer';
 
 const Courses = () => {
 	const filteredCursos = useSelector(getFilteredCursos);
@@ -23,10 +22,7 @@ const Courses = () => {
 			</div>
 			<div className='courses-body'>
 				{coursesShow.length === 0 ? (
-					<div className='courses-body-container'>
-						<CoursesFree />
-						<CoursesPro />
-					</div>
+					<CoursesContainer />
 				) : (
 					<div className='flex flex-col gap-10'>
 						<h4 className='courses-body-title'>CURSOS FILTRADOS</h4>

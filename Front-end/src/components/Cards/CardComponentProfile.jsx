@@ -36,10 +36,10 @@ en otro componente los key de un grupo de videos y no todos */
 				{instructor}
 			</p>
 			<button className='btn-Card' onClick={handleClicks}>
-				Ver curso <FaAngleRight />
+				Reproducir <FaAngleRight />
 			</button>
 			<Modal isActive={profileModal} showModal={showprofileModal}>
-				<ComponentViewCourses data={data} idCard={viewId} />
+				<ComponentViewCourses data={data} idCard={viewId} isActive={profileModal} />
 			</Modal>
 		</div>
 	);

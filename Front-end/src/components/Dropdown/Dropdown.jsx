@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RiArrowDownSFill } from 'react-icons/ri';
 
 const Dropdown = ({ index, titulo, miniatura, descripcion }) => {
 	const [openDropdown, setOpenDropdown] = useState(false);
@@ -8,7 +9,10 @@ const Dropdown = ({ index, titulo, miniatura, descripcion }) => {
 
 	return (
 		<div className='dropdown-item' key={index} onClick={handleDropdown}>
-			<p className='dropdown-item-title'>{titulo}</p>
+			<div className='flex items-center'>
+				<RiArrowDownSFill />
+				<p className='dropdown-item-title'>{titulo}</p>
+			</div>
 			<div
 				className={
 					openDropdown ? 'dropdown-item-info active' : 'dropdown-item-info'

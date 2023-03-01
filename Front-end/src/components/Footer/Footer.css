@@ -16,4 +16,9 @@
 	display: flex;
 	gap: 0.5em;
 	font-size: 2em;
+	cursor: pointer;
+}
+
+.footer-redes svg:hover {
+	color: var(--primaryColor);
 }
