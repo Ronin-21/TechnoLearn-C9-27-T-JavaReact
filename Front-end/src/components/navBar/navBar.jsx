@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { getFilteredCursos } from '../../store/slices/cursosSlice';
 import { logout } from '../../store/slices/authSlice';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Logo from '../../assets/img/LogoDark.svg';
 import SearchBar from './SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './navBar.css';
-import { getFilteredCursos } from '../../store/slices/cursosSlice';
-import Modal from '../Modal/Modal';
-import Login from '../login/loginUser';
 
 const Navbar = () => {
 	// Manejo del menu

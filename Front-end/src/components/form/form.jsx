@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCreateUserMutation } from '../../store/api/apiSlice';
 import { useModal } from '../../hook/useModal';
@@ -10,7 +10,8 @@ import './form.css';
 
 const Form = () => {
 	// Modal de Registro
-	const [registerModal, showRegisterModal] = useModal(false);
+	const [registerModalSuccess, showRegisterModalSuccess] = useModal(false);
+	const [registerModalError, showRegisterModalError] = useModal(false);
 	const checkbox = useField({
 		type: 'checkbox',
 	});
@@ -28,8 +29,16 @@ const Form = () => {
 		createUser(data);
 		reset();
 		checkbox.clearValues();
-		showRegisterModal();
 	};
+
+	// Logica para cuando el registro es exitoso
+	useEffect(() => {
+		if (isSuccess) {
+			showRegisterModalSuccess();
+		} else if (isError) {
+			showRegisterModalError();
+		}
+	}, [isSuccess, isError]);
 
 	return (
 		<div className='register-container'>
@@ -42,7 +51,7 @@ const Form = () => {
 				action='#'
 				method='POST'
 				onSubmit={handleSubmit(onSubmit)}>
-				<div>
+				<div className='flex flex-col items-center'>
 					<input
 						placeholder='Nombre'
 						type='text'
@@ -60,7 +69,7 @@ const Form = () => {
 						</p>
 					)}
 				</div>
-				<div>
+				<div className='flex flex-col items-center'>
 					<label className='sr-only'></label>
 					<input
 						placeholder='Email'
@@ -81,7 +90,7 @@ const Form = () => {
 						</p>
 					)}
 				</div>
-				<div>
+				<div className='flex flex-col items-center'>
 					<input
 						placeholder='Contraseña'
 						type='password'
@@ -107,7 +116,7 @@ const Form = () => {
 						</p>
 					)}
 				</div>
-				<div>
+				<div className='flex flex-col items-center'>
 					<input
 						placeholder='Confirmar contraseña'
 						type='password'
@@ -139,12 +148,16 @@ const Form = () => {
 					<label htmlFor='terminos'>Aceptar políticas de privacidad</label>
 				</div>
 			</form>
-			<Modal isActive={registerModal} showModal={showRegisterModal}>
+			<Modal isActive={registerModalSuccess} showModal={showRegisterModalSuccess}>
 				<h3 className='modal-title'>Registro exitoso!</h3>
 				<p className='modal-data'>Disfruta de nuestros cursos</p>
-				<Button fontSize={'18px'}>
+				<Button fontSize={'32px'}>
 					<Link to='/courses'>Ver todos los cursos</Link>
 				</Button>
+			</Modal>
+			<Modal isActive={registerModalError} showModal={showRegisterModalError}>
+				<h3 className='modal-title'>Registro fallido!</h3>
+				<p className='modal-data'>{error?.data.message}</p>
 			</Modal>
 		</div>
 	);

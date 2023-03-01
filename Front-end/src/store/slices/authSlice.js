@@ -17,13 +17,13 @@ export const authSlice = createSlice({
     initialState: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : emptyUserInfo,
     reducers: {
       logout: state => {
-        state = emptyUserInfo        
+        state = emptyUserInfo
         localStorage.removeItem('userInfo');
         return state
       },
       logIn: state => {
         const newInfo = JSON.parse(localStorage.getItem('userInfo'));
-        state = newInfo   
+        state = newInfo
         return state
       },
       setEmail: (state, action) => {

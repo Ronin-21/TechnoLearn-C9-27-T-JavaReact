@@ -177,21 +177,9 @@
 	padding-top: 140px;
 }
 
-/* .button-container button {
-    width: 233px;
-    height: 70px;
-    background: #79747E;
-    border: 1px solid #6734FF;
-    color: #FFFFFF;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 38px;
-} */
-
-/* .button-container button:hover {
-	background-color: #5d5b5e;
-} */
+.button-container button:hover {
+	background-color: var(--primaryColor) !important;
+}
 
 .pro-plan {
 	width: 357px;
@@ -215,21 +203,9 @@
 	padding-top: 70px;
 }
 
-/* .button-buy-container button {
-	width: 233px;
-	height: 70px;
-	background: #f9db47;
-	border: 1px solid #6734ff;
-	color: #000000;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 32px;
-	line-height: 38px;
-} */
-
-/* .button-buy-container button:hover {
-	background: #c5b45e;
-} */
+.button-buy-container button:hover {
+	background-color: #dab204 !important;
+}
 
 .bot-background-dark {
 	width: 100%;

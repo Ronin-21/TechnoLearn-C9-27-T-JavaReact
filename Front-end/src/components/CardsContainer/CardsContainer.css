@@ -31,3 +31,7 @@
 	display: flex;
 	gap: 2em;
 }
+
+.courses-tags button.active {
+	text-decoration: underline var(--secondaryColor);
+}

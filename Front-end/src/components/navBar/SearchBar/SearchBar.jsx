@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaSistrix } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -48,7 +48,7 @@ const SearchBar = () => {
 				<input
 					className='search-input'
 					type='text'
-					placeholder='Search'
+					placeholder='Busca tu curso'
 					value={select}
 					onChange={handleInputChange}></input>
 				<FaSistrix className='search-icon' onClick={() => filterCourses()} />

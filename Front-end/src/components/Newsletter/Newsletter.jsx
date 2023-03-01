@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useField } from '../../hook/useField';
 import { useModal } from '../../hook/useModal';
@@ -76,7 +75,7 @@ function Newsletter() {
 				<Modal isActive={newsletterModal} showModal={showNewsletterModal}>
 					<h5 className='modal-title'>GRACIAS</h5>
 					<p className='modal-data'>Por suscribirte a nuestro newsletter</p>
-					<Button fontSize={'18px'}>
+					<Button fontSize={'32px'}>
 						<Link to='/courses'>Ir a los cursos</Link>
 					</Button>
 				</Modal>

@@ -1,4 +1,5 @@
 .profile-container {
+	position: relative;
 	min-height: 700px;
 	display: flex;
 	flex-direction: column;
@@ -6,9 +7,16 @@
 	justify-content: center;
 }
 
+.profile-background {
+	position: absolute;
+	height: 100%;
+	top: 0;
+}
+
 .profile-title {
 	font-size: 56px;
 	font-weight: 700;
+	z-index: 1;
 }
 
 .profile-username {
@@ -16,6 +24,7 @@
 	font-weight: 700;
 	margin-bottom: 1em;
 	color: var(--primaryColor);
+	z-index: 1;
 }
 
 .profile-avatar {
@@ -25,7 +34,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 1em;
-	border: 2px dotted gray;
+	z-index: 1;
 	border-radius: 7px;
 	-webkit-border-radius: 7px;
 	-moz-border-radius: 7px;
@@ -34,12 +43,17 @@
 }
 
 .profile-avatar-img {
-	width: 150px;
+	width: 200px;
+	box-shadow: 2px 2px 15px 0px var(--tertiaryColor);
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
 	-o-border-radius: 50%;
+}
+
+.profile-avatar-img:hover {
+	box-shadow: 2px 2px 15px 0px var(--primaryColor);
 }
 
 .profile-avatar-info {
@@ -75,6 +89,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 	gap: 3em;
 }

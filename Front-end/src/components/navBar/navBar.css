@@ -14,16 +14,6 @@ nav {
 	z-index: 100;
 }
 
-@media (max-width: 480px) {
-    .number-details {
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-       
-    }
-    
-}
-
 .nav-menu {
 	position: absolute;
 	top: 80px;
@@ -48,6 +38,38 @@ nav {
 	display: flex;
 	align-items: center;
 	gap: 1em;
+}
+
+.nav-links a,
+.nav-links button {
+	transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+	color: var(--primaryColor);
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+}
+
+.nav-links a.active {
+	color: var(--primaryColor);
+	border-bottom: 2px solid var(--primaryColor);
+}
+
+.nav-links button a:hover {
+	color: inherit;
+}
+
+.nav-links button a.active {
+	color: inherit;
 }
 
 .menu-container {

@@ -13,6 +13,10 @@
 	gap: 0.5em;
 }
 
+.newsletter-content button:hover {
+	background-color: var(--primaryColor) !important;
+}
+
 .newsletter-title {
 	font-size: 56px;
 	font-weight: 700;
