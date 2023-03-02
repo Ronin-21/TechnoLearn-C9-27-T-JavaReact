@@ -34,12 +34,12 @@ public class APIUsers {
     }
 
     @PostMapping("/registro")
-    public ResponseEntity<String> saveUser(@RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<MensajeDTO> saveUser(@RequestBody UsuarioDTO usuarioDTO){
         UsuarioDTO nuevoUsuario = usuarioService.saveUser(usuarioDTO);
         if (nuevoUsuario != null) {
-            return ResponseEntity.ok("Registro exitoso");
+            return new ResponseEntity<>(new MensajeDTO("Registro exitoso"),HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new MensajeDTO("Hubo un error inesperado"),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
