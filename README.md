@@ -110,8 +110,9 @@ El proyecto a desarrollar es una plataforma  e-learning que ofrece cursos de tec
   </span>
 </div>
 
- ## TODO 
- foto del deploy
+<p align="center">
+  <img src="./assets/screen-deploy.png" alt="Screenshot del deploy de technolearn">
+</p>
  
- link del deploy
+ ### **Puedes ver la Demostración del proyecto [Aqui]( https://techno-learn-c9-27-t-java-react-technolearn.vercel.app/).**
 

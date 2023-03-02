@@ -52,3 +52,9 @@
 .hidden {
 	display: none;
 }
+
+@media (max-width: 768px) {
+	.modal {
+		min-width: 100%;
+	}
+}
