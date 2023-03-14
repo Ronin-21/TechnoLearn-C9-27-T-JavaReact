@@ -1,0 +1,18 @@
+.notfound-container {
+	min-height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2em;
+}
+
+.text {
+	font-size: 24px;
+	font-weight: 500;
+	color: #79747e;
+}
+.text a {
+	color: var(--primaryColor);
+}

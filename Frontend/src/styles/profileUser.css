@@ -1,0 +1,94 @@
+.profile-container {
+	position: relative;
+	min-height: 700px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.profile-background {
+	position: absolute;
+	height: 100%;
+	top: 0;
+}
+
+.profile-title {
+	font-size: 56px;
+	font-weight: 700;
+	z-index: 1;
+}
+
+.profile-username {
+	font-size: 40px;
+	font-weight: 700;
+	margin-bottom: 1em;
+	color: var(--primaryColor);
+	z-index: 1;
+}
+
+.profile-avatar {
+	width: 305px;
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1em;
+	z-index: 1;
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
+}
+
+.profile-avatar-img {
+	width: 200px;
+	box-shadow: 2px 2px 15px 0px var(--tertiaryColor);
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+}
+
+.profile-avatar-img:hover {
+	box-shadow: 2px 2px 15px 0px var(--primaryColor);
+}
+
+.profile-avatar-info {
+	font-size: 18px;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.profile-avatar-info span {
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+.profile-courses-container {
+	padding: 10em 0;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5em;
+}
+
+.profile-courses-title {
+	font-size: 56px;
+	font-weight: 700;
+	margin-left: 1.5em;
+	align-self: flex-start;
+}
+
+.profile-courses-list {
+	max-width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 3em;
+}

@@ -1,0 +1,33 @@
+.footer {
+	height: 81px;
+	padding: 0 2em;
+	background-color: var(--tertiaryColor);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #b1adca;
+}
+
+.footer img {
+	max-width: 240px;
+}
+
+.footer-redes {
+	display: flex;
+	gap: 0.5em;
+	font-size: 2em;
+	cursor: pointer;
+}
+
+.footer-redes svg:hover {
+	color: var(--primaryColor);
+}
+
+@media only screen and (max-width: 390px) {
+	.footer {
+		height: auto;
+		flex-direction: column;
+		gap: 1em;
+		padding: 2em 0;
+	}
+}
