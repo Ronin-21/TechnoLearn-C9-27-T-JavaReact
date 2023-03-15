@@ -94,16 +94,17 @@
 @media only screen and (max-width: 390px) {
 	.slider-container {
 		max-width: 360px;
-		height: 250px;
-		background-color: aqua;
+		height: 350px;
 	}
 	.slider-img-container img {
-		height: 250px;
+		height: 350px;
 		object-position: right;
 	}
 	.slider-content {
 		max-width: 360px;
-		gap: 0;
+	}
+	.slider-content button {
+		font-size: 24px !important;
 	}
 	.slider-title {
 		font-size: 26px;

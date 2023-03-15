@@ -44,3 +44,23 @@
 	height: 300px;
 	opacity: 1;
 }
+
+@media (max-width: 480px) {
+	.curso-programa-dropdown {
+		width: 360px;
+		padding: 2em 0;
+	}
+	.dropdown-item-info.active {
+		height: 400px;
+		flex-direction: column;
+		gap: 1em;
+	}
+	.dropdown-item-title {
+		font-size: 20px;
+		padding: 0.5em;
+		flex-shrink: 5;
+	}
+	.dropdown-item svg {
+		font-size: 3em;
+	}
+}

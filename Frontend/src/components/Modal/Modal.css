@@ -57,4 +57,17 @@
 	.modal {
 		min-width: 100%;
 	}
+	.modal-title {
+		font-size: 32px;
+	}
+	.modal-data {
+		max-width: 300px;
+		font-size: 24px;
+	}
+	.modal-close {
+		font-size: 2.2em;
+	}
+	.modal button {
+		font-size: 22px !important;
+	}
 }

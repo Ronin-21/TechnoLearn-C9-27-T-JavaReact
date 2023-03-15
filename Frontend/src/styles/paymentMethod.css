@@ -22,8 +22,14 @@
 }
 
 @media (max-width: 480px) {
+	.payment-container {
+		padding: 3em 0;
+	}
+	.title {
+		padding-top: 0;
+	}
 	.title h2 {
-		font-size: 54px;
+		font-size: 42px;
 	}
 }
 
@@ -43,7 +49,7 @@
 		flex-wrap: nowrap;
 		flex-direction: column;
 		gap: 30px;
-		padding-top: 50px;
+		padding-top: 0;
 	}
 }
 
@@ -54,7 +60,7 @@
 
 @media (max-width: 480px) {
 	.payment-box-left-container {
-		width: 100%;
+		width: 95%;
 		height: auto;
 	}
 }
@@ -79,7 +85,7 @@
 
 @media (max-width: 480px) {
 	.text-title h3 {
-		font-size: 38px;
+		font-size: 32px;
 	}
 }
 
@@ -98,7 +104,13 @@
 @media (max-width: 480px) {
 	.subscription-left {
 		width: 100%;
-		height: 729px;
+		height: auto;
+		padding: 1em 0;
+		border-radius: 7px;
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		-ms-border-radius: 7px;
+		-o-border-radius: 7px;
 	}
 }
 
@@ -114,6 +126,12 @@
 	font-weight: 700;
 	font-size: 32px;
 	line-height: 38px;
+}
+
+@media (max-width: 480px) {
+	.text-description-left p {
+		font-size: 26px;
+	}
 }
 
 .logos-img-container {
@@ -201,8 +219,11 @@
 
 @media (max-width: 480px) {
 	.date-cvc-container {
+		flex-direction: column;
+		align-items: center;
 		width: 100%;
 		height: auto;
+		gap: 10px;
 	}
 }
 
@@ -213,7 +234,7 @@
 
 @media (max-width: 480px) {
 	.date-cvc-container div {
-		width: 50%;
+		width: 95%;
 		height: 96px;
 	}
 }
@@ -240,11 +261,7 @@
 
 @media (max-width: 480px) {
 	.date-cvc-container div input {
-		width: 192px;
-		height: 58px;
-		border: 1.5px solid #b1adca;
-		border-radius: 7px;
-		padding: 15px 10px 15px 22px;
+		width: 100%;
 	}
 }
 
@@ -255,7 +272,7 @@
 
 @media (max-width: 480px) {
 	.payment-box-right-container {
-		width: 100%;
+		width: 95%;
 		height: auto;
 	}
 }
@@ -277,9 +294,14 @@
 @media (max-width: 480px) {
 	.subscription-right {
 		width: 100%;
-		height: 729px;
+		height: auto;
 		padding-right: 5px;
 		padding-left: 5px;
+		border-radius: 7px;
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		-ms-border-radius: 7px;
+		-o-border-radius: 7px;
 	}
 }
 
@@ -298,6 +320,15 @@
 	text-align: center;
 }
 
+@media (max-width: 480px) {
+	.text-anual-number {
+		justify-content: space-evenly;
+	}
+	.text-anual-number p {
+		font-size: 26px;
+	}
+}
+
 .text-details {
 	width: 100%;
 	height: auto;
@@ -306,6 +337,13 @@
 	flex-direction: column;
 	gap: 1.5em;
 	margin: 2em 0 3em 0;
+}
+
+@media (max-width: 480px) {
+	.text-details {
+		margin: 0;
+		text-align: center;
+	}
 }
 
 .text-details p {

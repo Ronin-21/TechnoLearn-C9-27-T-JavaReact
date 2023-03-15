@@ -67,6 +67,9 @@
 		height: auto;
 		padding: 2em 0;
 	}
+	.newsletter-content button {
+		font-size: 26px !important;
+	}
 	.newsletter-title {
 		font-size: 42px;
 	}

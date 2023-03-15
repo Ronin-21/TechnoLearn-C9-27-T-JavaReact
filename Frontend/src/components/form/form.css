@@ -58,3 +58,31 @@
 	width: 1.3em;
 	height: 1.3em;
 }
+
+@media (max-width: 480px) {
+	.register-container {
+		padding: 2em 0;
+	}
+	.register-title {
+		font-size: 42px;
+		text-align: center;
+	}
+	.register-subtitle {
+		font-size: 32px;
+		margin-bottom: 1em;
+	}
+	.register-form {
+		width: 100%;
+	}
+	.register-form input {
+		width: 300px;
+		height: 38px;
+	}
+	.register-container button {
+		font-size: 24px !important;
+	}
+	.register-form-check input {
+		width: 1.3em;
+		height: 1.3em;
+	}
+}

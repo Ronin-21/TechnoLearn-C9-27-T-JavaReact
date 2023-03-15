@@ -16,3 +16,16 @@
 .text a {
 	color: var(--primaryColor);
 }
+
+@media (max-width: 480px) {
+	.notfound-container {
+		min-height: 736px;
+	}
+	.notfound-container img {
+		width: 80%;
+	}
+	.text {
+		font-size: 18px;
+		text-align: center;
+	}
+}

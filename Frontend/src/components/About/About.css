@@ -49,11 +49,16 @@
 	.about-box {
 		width: 90%;
 	}
+	.about-box button {
+		font-size: 26px !important;
+		margin: 0.5em 0;
+	}
 	.about-title {
 		font-size: 42px;
 	}
 	.about-text {
 		font-size: 18px;
+		margin-bottom: 0;
 	}
 	.about-svg {
 		width: 320px;

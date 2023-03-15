@@ -2,13 +2,6 @@
 	position: relative;
 }
 
-.slider-video-container iframe {
-	object-fit: cover;
-	object-position: top;
-	aspect-ratio: 16 / 9;
-	width: 1300px;
-}
-
 .btn-video {
 	position: absolute;
 	top: 50%;
@@ -29,4 +22,16 @@
 
 .right {
 	right: 0;
+}
+
+@media (max-width: 480px) {
+	.slider-container-video div:nth-child(2) {
+		width: 360px !important;
+		height: 360px !important;
+	}
+	.btn-video {
+		height: 42px;
+		width: 32px;
+		font-size: 26px;
+	}
 }

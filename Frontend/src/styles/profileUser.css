@@ -56,18 +56,6 @@
 	box-shadow: 2px 2px 15px 0px var(--primaryColor);
 }
 
-.profile-avatar-info {
-	font-size: 18px;
-	display: flex;
-	flex-direction: column;
-	gap: 0.5em;
-}
-
-.profile-avatar-info span {
-	font-size: 1.2em;
-	font-weight: 600;
-}
-
 .profile-courses-container {
 	padding: 10em 0;
 	background-color: #fff;
@@ -91,4 +79,32 @@
 	align-items: center;
 	justify-content: flex-start;
 	gap: 3em;
+}
+
+@media (max-width: 480px) {
+	.profile-container {
+		min-height: auto;
+		padding: 2em 0;
+	}
+	.profile-title {
+		font-size: 42px;
+	}
+	.profile-username {
+		font-size: 32px;
+		margin-bottom: 0;
+	}
+	.profile-avatar {
+		width: 250px;
+		padding: 2em;
+	}
+	.profile-courses-container {
+		padding: 2em 0 4em 0;
+		gap: 2em;
+	}
+	.profile-courses-title {
+		font-size: 42px;
+		margin-left: 0;
+		align-self: center;
+		text-align: center;
+	}
 }

@@ -134,3 +134,8 @@
 	-ms-border-radius: 7px;
 	-o-border-radius: 7px;
 }
+@media only screen and (max-width: 390px) {
+	.card-btn-text button {
+		font-size: 22px !important;
+	}
+}
