@@ -68,12 +68,20 @@ const Navbar = () => {
 				<NavLink to='/user' onClick={closeMenu}>
 					Perfil
 				</NavLink>
-				<NavLink
-					to='/login'
-					className='flex align-center justify-center gap-2'
-					onClick={closeMenu}>
-					Log In
-				</NavLink>
+				{!isLoggedIn ? (
+					<NavLink to='/login' onClick={closeMenu}>
+						<p>Log In</p>
+					</NavLink>
+				) : (
+					<NavLink
+						to='/'
+						onClick={() => {
+							closeMenu();
+							dispatch(logout());
+						}}>
+						<p>Log Out</p>
+					</NavLink>
+				)}
 			</div>
 		</nav>
 	);
